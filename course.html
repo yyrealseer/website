@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="h-Hant-TW ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>混音與母帶製作 | YY Studio</title>
+    <!-- GoogleFont -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif+TC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- page.css -->
+    <link href="page.css" rel="stylesheet" />
+    <link href="Mobile-Page.css" rel="stylesheet" />
+    <!-- Animate.css v3.5.2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
+    <!-- swiper.css -->
+    <link href="/node_modules/swiper/swiper-bundle.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header id="mobile-navigation">
+        <img id="navigation-icon-closed" style="height:40px; z-index: 3;" src="/ICON/Arrow-Left.png">
+        <div class="mobile-navigation-container" id="mobile-navigation-container-closed">
+            <div class="直立分頁" id="mobile-navigation-list">
+                <a href="mixing.html">
+                    混音與母帶製作
+                </a>
+                <a href="arrange.html">
+                    編曲
+                </a>
+                <a href="course.html">
+                    DEMO創作課程
+                </a>
+            </div>
+        </div>
+    </header>
+    <header id="mobile-header"></header>
+    <header id="header">
+        <div class="header-container">
+            <a href="/YY Studio.html" id="LOGO">
+                <img id="LOGO2" style="height:var(--LOGO-height);" ; src="/LOGO_White.png">
+            </a>
+        </div>
+    </header>
+    <div class="serverce-descript">
+        <div id="navigation">
+            <div id="pages">
+                <h class="pages">
+                    服務項目
+                </h>
+                <hr>
+                <a class="pages" href="mixing.html">
+                    混音與母帶製作
+                </a>
+                <a class="pages" href="arrange.html">
+                    編曲
+                </a>
+                <a class="pages" href="course.html">
+                    創作/製作課程
+                </a>
+            </div>
+        </div>
+        <div id="content">
+            <h id="content-tittle">服務項目-DEMO創作課程</h>
+            <p>　　幫助對音樂有興趣的人成為一位音樂創作者。在課程中，我將分享創作技巧、構思方法和製作流程，並指導學生逐步完成自己的音樂作品。</p>
+
+            <p>$3000/四堂 ，可先預約15分鐘免費線上諮詢</p>
+
+            <p style="color: var(--sub-color);">課程大綱 (課程內容可依個人需求安排) ：</p>
+
+            <ul>
+                <li class="tittle">詞曲創作</li>
+            </ul>
+
+            <p style="margin-left:80px">流行歌常用的和弦進行</p>
+
+            <p style="margin-left:80px">寫詞/寫曲邏輯</p>
+
+            <p style="margin-left:80px">基礎流行音樂樂理</p>
+
+            <p style="margin-left:80px">和聲編寫</p>
+
+            <ul>
+                <li class="tittle">電腦編曲</li>
+            </ul>
+
+            <p style="margin-left:80px">DAW軟體操作</p>
+
+            <p style="margin-left:80px">流行歌常用配器手法</p>
+
+            <p style="margin-left:80px">虛擬樂器使用</p>
+
+            <p style="margin-left:80px">吉他、BASS等...外接樂器錄製</p>
+
+            <ul>
+                <li class="tittle">個人DEMO製作</li>
+            </ul>
+
+            <p style="margin-left:80px">基礎人聲處理</p>
+
+            <p style="margin-left:80px">聲音空間感塑造</p>
+
+            <p style="margin-left:80px">各式插件(vst plugin)的使用</p>
+
+            <p style="margin-left:80px">基礎混音 (進階)</p>
+
+            <p style="margin-left:80px">聲音的頻率、動態 (進階)</p>
+
+            <p style="color: var(--warn-color);">注意事項：</p>
+
+            <ul>
+                <li>暫時因場地因素，目前只提供線上或到府（限雙北市區）教學，未來可能會移至工作室上課，敬請期待。</li>
+                <li>上課使用的DAW為Cubase pro 12，操作大同小異，也可使用自己習慣的軟體。</li>
+                <li>一堂課/周，若有特殊需求可另外調整。</li>
+            </ul>
+            <a class="book" href="https://forms.gle/ogop721i5NfyJHmV8">立即預約15分鐘免費線上諮詢</a>
+            <div id="FAQ"></div>
+        </div>
+    </div>
+    <button id="backtop" style="font-family: 'Noto sans';z-index: 100;padding: 8px 18px;">
+        TOP
+    </button>
+    <footer class="footer">
+
+        <!-------- 外部JS -------->
+        <!-- navigation.js -->
+        <script src="JS/navigation.js" lang="JavaScript"></script>
+        <!-- Jquery.js -->
+        <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+        <!-------- JS -------->
+        <!-- mobile-navigation.js -->
+        <script type="text/javascript" src="JS/mobile-navigation.js"></script>
+
+        <!-------- INPUT -------->
+        <!-- Mobil header -->
+        <script>
+            $(function () {
+                $('#mobile-header').load('input_mobile-header.html');
+            });
+        </script>
+        <!-- FAQ -->
+        <script>
+            $(function () {
+                $('#FAQ').load('input_FAQ.html');
+            });
+        </script>
+        <!-- Footer -->
+        <script>
+            $(function () {
+                $('.footer').load('input_footer.html');
+            });
+        </script>
+
+</body>
+
+</html>
