@@ -181,7 +181,7 @@ button {
 /*--------------------首頁--------------------*/
 
 .BANNER {
-    background: url(https://theghostproduction.s3.amazonaws.com/wp-content/uploads/2020/02/06195504/promoting-as-music-producer.jpg);
+    background: url(/img/BANNER_1_colorgraded.png);
     background-size: 100vw auto;
     background-attachment: fixed;
     background-color: #ffffff00;
