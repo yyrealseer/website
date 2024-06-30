@@ -201,9 +201,9 @@ button {
 }
 
 #BANNER2 {
-    background: url(https://cdn.dribbble.com/users/2506590/screenshots/6694761/ezgif.com-video-to-gif.gif);
+    background: url(/img/Album.gif);
     background-size: 100vw auto;
-    background-attachment: fixed;
+    background-position: center;
 }
 
 #BANNER2-content {
