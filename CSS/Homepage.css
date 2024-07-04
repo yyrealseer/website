@@ -303,7 +303,7 @@ button {
 }
 
 #experience {
-    background: url(https://static.wixstatic.com/media/6be8e0_df8ffafb0bdb41d08f55dcaeadb165fc~mv2.jpg/v1/fill/w_2500,h_1186,al_c/6be8e0_df8ffafb0bdb41d08f55dcaeadb165fc~mv2.jpg);
+    background: url(/img/Studio.png);
     background-size: cover;
     height: fit-content;
 }
