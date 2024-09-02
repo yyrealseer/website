@@ -12,10 +12,10 @@ app.use(express.urlencoded({ extended: true })); // 解析 application/x-www-for
 // 支付路由
 app.post('/pay', (req, res) => {
     const orderInfo = {
-        orderNo: '你的訂單編號',
-        amount: 100,
-        description: '商品描述',
-        email: 'customer@example.com'
+        orderNo: req.body.MerchantOrderNo,,
+        amount: req.body.Amt,
+        description: req.body.ItemDesc,
+        email: req.body.Email
     };
 
     const paymentData = createTradeInfo(orderInfo);
