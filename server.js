@@ -23,10 +23,10 @@ app.post('/pay', (req, res) => {
     // 動態生成 HTML 表單，並自動提交到藍新金流的支付網關
     const formHTML = `
         <form id="paymentForm" method="POST" action="https://core.newebpay.com/MPG/mpg_gateway">
-            <input type="hidden" name="MerchantID" value="${paymentData.MerchantID}" />
-            <input type="hidden" name="TradeInfo" value="${paymentData.TradeInfo}" />
-            <input type="hidden" name="TradeSha" value="${paymentData.TradeSha}" />
-            <input type="hidden" name="Version" value="${paymentData.Version}" />
+            MID: <input name="MerchantID" value="${paymentData.MerchantID}" readonly>
+            Version: <input name="Version" value="${paymentData.Version}" readonly>
+            TradeInfo: <input name="TradeInfo" value="${paymentData.TradeInfo}" readonly>
+            TradeSha: <input name="TradeSha" value="${paymentData.TradeSha}" readonly>
         </form>
         <script>
             document.getElementById('paymentForm').submit(); // 自動提交表單

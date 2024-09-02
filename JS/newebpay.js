@@ -13,7 +13,7 @@ function createTradeInfo(orderInfo) {
         MerchantID: process.env.NEWEBPAY_MERCHANT_ID,
         RespondType: 'JSON',
         TimeStamp: Date.now().toString(),
-        Version: '1.5',
+        Version: '2.0',
         MerchantOrderNo: orderInfo.orderNo,
         Amt: orderInfo.amount,
         ItemDesc: orderInfo.description,
