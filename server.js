@@ -1,6 +1,6 @@
 // server.js
 const express = require('express');
-const axios = require('axios'); 
+const axios = require('axios');
 const { createTradeInfo, verifyPayment } = require('./JS/newebpay.js');
 
 const app = express();
@@ -21,16 +21,18 @@ app.post('/pay', (req, res) => {
 
     const paymentData = createTradeInfo(orderInfo);
 
-    // 發送 POST 請求到藍新金流的支付網關
-    axios.post('https://core.newebpay.com/MPG/mpg_gateway', paymentData)
-        .then(response => {
-            console.log('支付網關的響應：', response.data);
-            res.json(response.data); // 返回支付結果給客戶端
-        })
-        .catch(error => {
-            console.error('支付請求出錯：', error);
-            res.status(500).send('支付請求失敗');
-        });
+    // 動態生成 HTML 表單，並自動提交到藍新金流的支付網關
+    const formHTML = `
+        <form id="paymentForm" method="POST" action="https://core.newebpay.com/MPG/mpg_gateway">
+            <input type="hidden" name="MerchantID" value="${paymentData.MerchantID}" />
+            <input type="hidden" name="TradeInfo" value="${paymentData.TradeInfo}" />
+            <input type="hidden" name="TradeSha" value="${paymentData.TradeSha}" />
+            <input type="hidden" name="Version" value="${paymentData.Version}" />
+        </form>
+        <script>
+            document.getElementById('paymentForm').submit(); // 自動提交表單
+        </script>
+    `;
 });
 
 // 支付結果回調路由
