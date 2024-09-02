@@ -32,6 +32,8 @@
     <link href="/node_modules/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/e86dcc2690.js" crossorigin="anonymous"></script>
+    <!-- beat-checkout.js -->
+    <script type="text/javascript" src="./JS/beat-checkout.js"></script>
 </head>
 
 <body>
@@ -75,6 +77,12 @@
                     <button class="thumbnail" style="background-image: url('./BEAT/img/RazorRush .jpg');"
                         onclick="AudioPlayer.changeAudio('./BEAT/track/240828_RazorRush_Sample.mp3', 'RazorRush')"></button>
                     <h class="beat-name">RazorRush</h>
+                    <div class="produc-info">
+                        <p class="Price-tag">$3000</p>
+                        <button class="checkout-btn" onclick="showPopup('RazorRush', 3000)">
+                            <i class="fa-regular fa-cart-shopping"></i>
+                        </button>
+                    </div>
                     <div class="tag-container">
                         <p class="tag type">Hip-Hop</p>
                         <p class="tag type">Drill</p>
@@ -84,10 +92,17 @@
                         <p class="tag mood">Dramatic</p>
                     </div>
                 </div>
+
                 <div class="track">
                     <button class="thumbnail" style="background-image: url('./BEAT/img/BoogieDelight.png');"
                         onclick="AudioPlayer.changeAudio('./BEAT/track/240824_BoogieDelight_Sample.mp3', 'BoogieDelight')"></button>
                     <h class="beat-name">BoogieDelight</h>
+                    <div class="produc-info">
+                        <p class="Price-tag">$3000</p>
+                        <button class="checkout-btn" onclick="showPopup('BoogieDelight', 3000)">
+                            <i class="fa-regular fa-cart-shopping"></i>
+                        </button>
+                    </div>
                     <div class="tag-container">
                         <p class="tag type">Funk</p>
                         <p class="tag type">110 bpm</p>
@@ -96,10 +111,17 @@
                         <p class="tag mood">Funky</p>
                     </div>
                 </div>
+
                 <div class="track">
                     <button class="thumbnail" style="background-image: url('./BEAT/img/MoonLit .jpg');"
                         onclick="AudioPlayer.changeAudio('./BEAT/track/240823_MoonLit_Sample.mp3' , 'MoonLit')"></button>
                     <h class="beat-name">MoonLit</h>
+                    <div class="produc-info">
+                        <p class="Price-tag">$3000</p>
+                        <button class="checkout-btn" onclick="showPopup('MoonLit', 3000)">
+                            <i class="fa-regular fa-cart-shopping"></i>
+                        </button>
+                    </div>
                     <div class="tag-container">
                         <p class="tag type">Hip-Hop</p>
                         <p class="tag type">Boombap</p>
@@ -114,6 +136,12 @@
                     <button class="thumbnail" style="background-image: url('./BEAT/img/FlowerInVase.jpg');"
                         onclick="AudioPlayer.changeAudio('./BEAT/track/240822_FlowerInVase_Sample.mp3', 'FlowerInVase') "></button>
                     <h class="beat-name">FlowerInVase</h>
+                    <div class="produc-info">
+                        <p class="Price-tag">$3000</p>
+                        <button class="checkout-btn" onclick="showPopup('FlowerInVase', 3000)">
+                            <i class="fa-regular fa-cart-shopping"></i>
+                        </button>
+                    </div>
                     <div class="tag-container">
                         <p class="tag type">R&B/Soul</p>
                         <p class="tag type">68 bpm</p>
@@ -124,6 +152,41 @@
                 </div>
 
             </div>
+        </div>
+
+        <!-- 背景遮罩 -->
+        <div id="overlay" onclick="hidePopup()"></div>
+
+        <!-- 彈出表單 -->
+        <div id="popupForm" style="flex-direction: row;">
+            <div class="checkout-notice">
+                <h1 style="color: #b10000;font-family: 'Noto Serif TC';text-align: center;">
+                    購買須知 / NOTICE</h1>
+                <li class="notice-text">購買前請先閱讀購物須知，點擊"去結帳"即同意以下內容。</li>
+                <li class="notice-text">此商品為虛擬商品(Digital Pruduct)，售出後不退貨。</li>
+                <li class="notice-text">付款成功後，會收到包含分軌下載鏈結的Email，若未收到請至"聯絡我們"聯繫(留意"垃圾信箱")。</li>
+                <p class="notice-text">
+                    現在購買本商品即贈送免費混音及母帶製作，錄好音後可至"線上諮詢"留下你的LINE ID，我們將與你聯絡！
+                <p>
+            </div>
+            <form class="checkout-form" action="https://api.yyrealseer.com/pay" method="POST">
+                <label class="checkout-title" for="MerchantOrderNo">訂單編號:</label>
+                <input class="checkout-list readonly" type="text" id="MerchantOrderNo" name="MerchantOrderNo" required
+                    readonly><br><br>
+
+                <label class="checkout-title" for="Amt">金額:</label>
+                <input class="checkout-list readonly" type="number" id="Amt" name="Amt" required readonly><br><br>
+
+                <label class="checkout-title" for="ItemDesc">曲名:</label>
+                <input class="checkout-list readonly" type="text" id="ItemDesc" name="ItemDesc" required
+                    readonly><br><br>
+
+                <label class="checkout-title" for="Email">電子郵件:</label>
+                <input class="checkout-list" type="email" id="Email" name="Email" required><br><br>
+
+                <button style=" background-color: var(--main-color); padding: 2px 10px; border-radius: 5px;"
+                    type="submit">去結帳</button>
+            </form>
         </div>
 
 
@@ -147,7 +210,7 @@
         <!-- Mobil header -->
         <script>
             $(function () {
-                $('#mobile-header').load('input_mobile-header.html');
+                $('#mobile-header').load('./input/input_mobile-header.html');
             });
         </script>
         <!-- Footer -->

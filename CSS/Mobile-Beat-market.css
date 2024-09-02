@@ -12,7 +12,7 @@
     }
 
     .track {
-        margin: 10px 25px;
+        margin: 10px 20px;
     }
 
     .thumbnail {
@@ -22,6 +22,15 @@
 
     .beat-name {
         font-size: 14px;
+    }
+
+    .Price-tag {
+        font-size: 14px;
+    }
+
+    .checkout-btn {
+        width: 30px;
+        height: 30px;
     }
 
     .tag-container {
@@ -37,5 +46,44 @@
         bottom: 13% !important;
     }
 
+    #popupForm {
+        width: 70vw;
+        height: 70vh;
+    }
+
+    .checkout-form {
+        text-align: left;
+        width: auto;
+        padding: 0;
+    }
+
+    .checkout-notice {
+        width: auto;
+        padding: 0 20px;
+        border-right: 0px groove #929292;
+        border-bottom: 1px groove #929292;
+    }
+
+    .checkout-title {
+        font-size: 10px;
+    }
+
+    .checkout-list {
+        font-size: 10px;
+        width: 100%;
+        margin: 0;
+    }
+
+    .checkout-notice h1 {
+        font-size: 26px;
+    }
+
+    .checkout-notice p {
+        font-size: 14px
+    }
+
+    .notice-text {
+        font-size: 12px;
+    }
 
 }
