@@ -6,7 +6,7 @@
     <title>Payment Test</title>
 </head>
 <body>
-    <form onsubmit="return showRequest()" method="POST">
+    <form  action="/pay" method="POST">
         <!-- 用戶輸入 MerchantOrderNo -->
         <label for="MerchantOrderNo">訂單編號:</label>
         <input type="text" id="MerchantOrderNo" name="MerchantOrderNo" required><br><br>
@@ -25,9 +25,5 @@
 
         <button type="submit">提交</button>
     </form>
-    <script>
-        function showRequest() {
-            console.log(tradeInfo);
-        }
 </body>
 </html>
