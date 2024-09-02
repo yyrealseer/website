@@ -5,8 +5,9 @@ const { createTradeInfo, verifyPayment } = require('./JS/newebpay.js');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// 使用 express.json() 中間件來解析 JSON 格式的請求
+// 使用 express.json() 和 express.urlencoded() 中間件來解析 JSON 和表單格式的請求
 app.use(express.json());
+app.use(express.urlencoded({ extended: true })); // 解析 application/x-www-form-urlencoded 格式的數據
 
 // 支付路由
 app.post('/pay', (req, res) => {
