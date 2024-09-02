@@ -4,6 +4,7 @@
   "main": "Homepage.js",
   "type": "module",
   "scripts": {
+    "start": "node Homepage.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -11,6 +12,7 @@
   "dependencies": {
     "headroom.js": "^0.12.0",
     "jquery": "^3.7.1",
+    "node-newebpay": "^2.0.0",
     "swiper": "^11.1.4"
   },
   "keywords": [],
