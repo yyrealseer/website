@@ -1,6 +1,6 @@
-// 使用 import 代替 require
-import express from 'express';
-import { createTradeInfo, verifyPayment } from './JS/newebpay.js';// 引入新創建的支付模塊
+// server.js
+const express = require('express'); // 使用 require 語法
+const { createTradeInfo, verifyPayment } = require('./JS/newebpay.js'); // 引入新創建的支付模塊
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,10 +23,12 @@ app.post('/payment-callback', (req, res) => {
     const paymentData = req.body;
 
     if (verifyPayment(paymentData)) {
-        // 支付成功邏輯
         res.sendStatus(200);
     } else {
-        // 支付失敗邏輯
         res.sendStatus(400);
     }
+});
+
+app.listen(port, () => {
+    console.log(`伺服器正在運行於 http://localhost:${port}`);
 });
