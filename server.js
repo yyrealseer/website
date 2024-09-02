@@ -19,7 +19,17 @@ app.post('/pay', (req, res) => {
     };
 
     const paymentData = createTradeInfo(orderInfo);
-    res.json(paymentData); // 將交易資料返回給前端
+
+    // 發送 POST 請求到藍新金流的支付網關
+    axios.post('https://core.newebpay.com/MPG/mpg_gateway', paymentData)
+        .then(response => {
+            console.log('支付網關的響應：', response.data);
+            res.json(response.data); // 返回支付結果給客戶端
+        })
+        .catch(error => {
+            console.error('支付請求出錯：', error);
+            res.status(500).send('支付請求失敗');
+        });
 });
 
 // 支付結果回調路由
