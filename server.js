@@ -32,6 +32,7 @@ app.post('/pay', (req, res) => {
             document.getElementById('paymentForm').submit(); // 自動提交表單
         </script>
     `;
+    res.send(formHTML);
 });
 
 // 支付結果回調路由
