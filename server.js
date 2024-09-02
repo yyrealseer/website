@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true })); // 解析 application/x-www-for
 // 支付路由
 app.post('/pay', (req, res) => {
     const orderInfo = {
-        orderNo: req.body.MerchantOrderNo,,
+        orderNo: req.body.MerchantOrderNo,
         amount: req.body.Amt,
         description: req.body.ItemDesc,
         email: req.body.Email
