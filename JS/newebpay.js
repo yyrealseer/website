@@ -1,5 +1,6 @@
 // newebpay.js
-const { NewebPay } = require('node-newebpay');
+import pkg from 'node-newebpay';
+const { NewebPay } = pkg;
 
 // 設置 NewebPay 參數
 const newebpay = new NewebPay({
