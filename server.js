@@ -1,6 +1,6 @@
 // 使用 import 代替 require
 import express from 'express';
-import { createTradeInfo, verifyPayment } = require('./JS/newebpay.js'); // 引入新創建的支付模塊
+import { createTradeInfo, verifyPayment } from './JS/newebpay.js';// 引入新創建的支付模塊
 
 const app = express();
 const port = process.env.PORT || 3000;
