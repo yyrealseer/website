@@ -1,10 +1,10 @@
 {
   "name": "yy-studio",
   "version": "1.0.0",
-  "main": "Homepage.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node Homepage.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
