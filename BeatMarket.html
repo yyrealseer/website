@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="h-Hant-TW ">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KH4NPVYE4F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-KH4NPVYE4F');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常見問題FAQ | YY Studio</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- GoogleFont -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif+TC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Page.css -->
+    <link href="./CSS/Page.css" rel="stylesheet" />
+    <link href="./CSS/Mobile-Page.css" rel="stylesheet" />
+    <link href="./CSS/Beat-market.css" rel="stylesheet" />
+    <link href="./CSS/Mobile-Beat-market.css" rel="stylesheet" />
+    <!-- Animate.css v3.5.2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
+    <!-- swiper.css -->
+    <link href="/node_modules/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e86dcc2690.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="header">
+        <div class="header-container">
+            <a href="/" id="LOGO">
+                <img id="LOGO2" style="height:var(--LOGO-height);" ; src="/LOGO_White.png">
+            </a>
+        </div>
+    </header>
+    <header id="mobile-header"></header>
+    <div class="serverce-descript">
+        <div id="navigation">
+            <div id="pages">
+                <h class="pages">
+                    選單
+                </h>
+                <hr>
+                <a class="pages" href="/">
+                    首頁
+                </a>
+                <a class="pages" href="mixing.html">
+                    服務項目
+                </a>
+                <a class="pages" href="FAQ.html">
+                    常見問題
+                </a>
+                <a class="pages" href="collaborate.html">
+                    合作專區
+                </a>
+            </div>
+        </div>
+        <audio-player src="-" id="AudioPlayer" title="-" loop></audio-player>
+
+        <div class="container" style="width: 90%;">
+
+            <h class="large-title">Beat Market</h>
+
+            <div class=" beat-container">
+                <div class="track">
+                    <button class="thumbnail" style="background-image: url('./BEAT/img/RazorRush .jpg');"
+                        onclick="AudioPlayer.changeAudio('./BEAT/track/240828_RazorRush_Sample.mp3', 'RazorRush')"></button>
+                    <h class="beat-name">RazorRush</h>
+                    <div class="tag-container">
+                        <p class="tag type">Hip-Hop</p>
+                        <p class="tag type">Drill</p>
+                        <p class="tag type">142 bpm</p>
+                        <p class="tag mood">Angry</p>
+                        <p class="tag mood">Dark</p>
+                        <p class="tag mood">Dramatic</p>
+                    </div>
+                </div>
+                <div class="track">
+                    <button class="thumbnail" style="background-image: url('./BEAT/img/BoogieDelight.png');"
+                        onclick="AudioPlayer.changeAudio('./BEAT/track/240824_BoogieDelight_Sample.mp3', 'BoogieDelight')"></button>
+                    <h class="beat-name">BoogieDelight</h>
+                    <div class="tag-container">
+                        <p class="tag type">Funk</p>
+                        <p class="tag type">110 bpm</p>
+                        <p class="tag mood">Inspirational</p>
+                        <p class="tag mood">Happy</p>
+                        <p class="tag mood">Funky</p>
+                    </div>
+                </div>
+                <div class="track">
+                    <button class="thumbnail" style="background-image: url('./BEAT/img/MoonLit .jpg');"
+                        onclick="AudioPlayer.changeAudio('./BEAT/track/240823_MoonLit_Sample.mp3' , 'MoonLit')"></button>
+                    <h class="beat-name">MoonLit</h>
+                    <div class="tag-container">
+                        <p class="tag type">Hip-Hop</p>
+                        <p class="tag type">Boombap</p>
+                        <p class="tag type">75 bpm</p>
+                        <p class="tag mood">Calm</p>
+                        <p class="tag mood">Sad</p>
+                        <p class="tag mood">Romantic</p>
+                    </div>
+                </div>
+
+                <div class="track">
+                    <button class="thumbnail" style="background-image: url('./BEAT/img/FlowerInVase.jpg');"
+                        onclick="AudioPlayer.changeAudio('./BEAT/track/240822_FlowerInVase_Sample.mp3', 'FlowerInVase') "></button>
+                    <h class="beat-name">FlowerInVase</h>
+                    <div class="tag-container">
+                        <p class="tag type">R&B/Soul</p>
+                        <p class="tag type">68 bpm</p>
+                        <p class="tag mood">Romantic</p>
+                        <p class="tag mood">Calm</p>
+                        <p class="tag mood">Bright</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div style="height: 5000px;"></div>
+        <div id="output"></div>
+
+    </div>
+
+    <footer class="footer">
+
+        <!-------- 外部JS -------->
+        <!-- navigation.js -->
+        <script src="JS/navigation.js" lang="JavaScript"></script>
+        <!-- Jquery.js -->
+        <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+        <!-------- JS -------->
+        <!-- plaer.js -->
+        <script type="text/javascript" src="/JS/player.js"></script>
+
+        <!-------- INPUT -------->
+        <!-- Mobil header -->
+        <script>
+            $(function () {
+                $('#mobile-header').load('input_mobile-header.html');
+            });
+        </script>
+        <!-- Footer -->
+        <script>
+            $(function () {
+                $('.footer').load('input_footer.html');
+            });
+        </script>
+</body>
+
+</html>

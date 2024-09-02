@@ -66,7 +66,7 @@ button {
 
 /*頁內文字*/
 
-.box-tittle {
+.box-title {
     display: block;
     margin: 0 auto;
     padding-bottom: 3%;
@@ -188,7 +188,7 @@ button {
 }
 
 
-#BANNER-tittle {
+#BANNER-title {
     font-size: 130px;
     font-family: 'Noto Serif TC', 'Noto Sans TC', '微軟正黑體';
     text-align: center;

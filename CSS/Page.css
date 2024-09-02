@@ -99,7 +99,7 @@ button {
 
 /*頁內文字*/
 
-.box-tittle {
+.box-title {
     display: block;
     margin: 0 auto;
     padding-bottom: 3%;
@@ -207,12 +207,12 @@ hr {
     width: 100%;
 }
 
-.tittle {
+.title {
     font-size: 22px;
     line-height: 38px;
 }
 
-#content-tittle {
+#content-title {
     font-size: 50px;
     line-height: 180px;
     display: block;
