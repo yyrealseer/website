@@ -75,44 +75,53 @@ app.post('/pay', async (req, res) => {
 
 // 支付成功回調路由
 app.get('/payment-success', async (req, res) => {
-    console.log('收到的支付成功回調數據:', JSON.stringify(req.body, null, 2));
+    const { token, PayerID } = req.query; // 從 URL 中提取 PayPal 的回調參數
 
-    const { invoice_id, currency, amount, ItemDesc, Email } = req.body;
-
-    // 在此處你可以檢查接收到的回調數據的有效性和完整性
-    if (!invoice_id || !currency || !amount || !ItemDesc || !Email) {
-        console.error('支付回調數據缺失');
-        return res.status(400).send('無效的支付回調數據');
+    if (!token || !PayerID) {
+        console.error('支付成功回調參數缺失');
+        return res.status(400).send('支付成功回調參數缺失');
     }
 
     try {
-        // 更新訂單狀態，發送確認郵件，或執行其他業務邏輯
+        // 捕獲支付訂單的請求
+        const request = new paypal.orders.OrdersCaptureRequest(token);
+        request.requestBody({});
 
-        // 構造下載鏈接（需要根據你的業務邏輯進行修改）
-        const downloadLink = process.env[`${ItemDesc.toUpperCase()}_LINK`] || process.env.DEFAULT_LINK;
+        // 執行捕獲支付訂單的請求
+        const capture = await client.execute(request);
 
-        // 發送確認郵件
-        const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: Email,
-            subject: '您的訂單已成功付款',
-            text: `感謝您的購買！您可以通過以下鏈接下載您購買的音樂分軌： ${downloadLink}`
-        };
+        if (capture.result.status === 'COMPLETED') {
+            // 在此處執行你的業務邏輯，例如更新訂單狀態或發送郵件
+            console.log('支付已完成：', capture.result);
 
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.error('發送郵件時發生錯誤：', error);
-                return res.status(500).send('支付成功，但發送郵件時出錯');
-            } else {
-                console.log('確認郵件已發送：' + info.response);
-                return res.status(200).send('支付成功，確認郵件已發送');
-            }
-        });
-    } catch (error) {
-        console.error('處理支付成功回調時出錯：', error);
-        res.status(500).send('處理支付成功回調時出錯');
-    }
-});
+            // 根據商品描述獲取下載鏈接
+            const ItemDesc = capture.result.purchase_units[0].description; // 取得商品描述
+            const Email = capture.result.payer.email_address; // 取得付款人的電子郵件地址
+            // 構造下載鏈接（需要根據你的業務邏輯進行修改）
+            const downloadLink = process.env[`${ItemDesc.toUpperCase()}_LINK`] || process.env.DEFAULT_LINK;
+
+            // 發送確認郵件
+            const mailOptions = {
+                from: process.env.EMAIL_USER,
+                to: Email,
+                subject: '您的訂單已成功付款',
+                text: `感謝您的購買！您可以通過以下鏈接下載您購買的音樂分軌： ${downloadLink}`
+            };
+
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    console.error('發送郵件時發生錯誤：', error);
+                    return res.status(500).send('支付成功，但發送郵件時出錯');
+                } else {
+                    console.log('確認郵件已發送：' + info.response);
+                    return res.status(200).send('支付成功，確認郵件已發送');
+                }
+            });
+        } catch (error) {
+            console.error('處理支付成功回調時出錯：', error);
+            res.status(500).send('處理支付成功回調時出錯');
+        }
+    });
 
 // 支付取消回調路由
 app.get('/payment-cancel', (req, res) => {
