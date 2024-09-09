@@ -97,7 +97,6 @@ app.get('/payment-success', async (req, res) => {
             // 根據商品描述獲取下載鏈接
             const ItemDesc = capture.result.purchase_units[0].description; // 取得商品描述
             const Email = capture.result.payer.email_address; // 取得付款人的電子郵件地址
-            // 構造下載鏈接（需要根據你的業務邏輯進行修改）
             const downloadLink = process.env[`${ItemDesc.toUpperCase()}_LINK`] || process.env.DEFAULT_LINK;
 
             // 發送確認郵件
@@ -114,14 +113,19 @@ app.get('/payment-success', async (req, res) => {
                     return res.status(500).send('支付成功，但發送郵件時出錯');
                 } else {
                     console.log('確認郵件已發送：' + info.response);
-                    return res.status(200).send('支付成功，確認郵件已發送');
+                    // 發送付款成功的 HTML 頁面給用戶
+                    return res.sendFile(path.join(__dirname, 'payment-success.html'));
                 }
             });
-        } catch (error) {
-            console.error('處理支付成功回調時出錯：', error);
-            res.status(500).send('處理支付成功回調時出錯');
+        } else {
+            console.error('支付未完成');
+            res.status(400).send('支付未完成');
         }
-    });
+    } catch (error) {
+        console.error('捕獲訂單時出錯：', error);
+        res.status(500).send('捕獲訂單時出錯');
+    }
+});
 
 // 支付取消回調路由
 app.get('/payment-cancel', (req, res) => {
