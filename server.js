@@ -74,7 +74,7 @@ app.post('/pay', async (req, res) => {
 });
 
 // 支付成功回調路由
-app.post('/payment-success', async (req, res) => {
+app.get('/payment-success', async (req, res) => {
     console.log('收到的支付成功回調數據:', JSON.stringify(req.body, null, 2));
 
     const { invoice_id, currency, amount, ItemDesc, Email } = req.body;
