@@ -93,7 +93,7 @@ app.get('/payment-success', async (req, res) => {
         if (capture.result.status === 'COMPLETED') {
 
             console.log('支付已完成：', capture.result);
-            res.redirect('./success');// 重定向至付款成功頁面
+            res.redirect('https://yyrealseer.com/success');// 重定向至付款成功頁面
 
             // 根據商品描述獲取下載鏈接
             const reference_id = capture.result.purchase_units[0].reference_id; // 取得商品描述
