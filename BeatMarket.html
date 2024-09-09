@@ -170,12 +170,15 @@
                 <p>
             </div>
             <form class="checkout-form" action="https://api.yyrealseer.com/pay" method="POST">
-                <label class="checkout-title" for="MerchantOrderNo">訂單編號:</label>
-                <input class="checkout-list readonly" type="text" id="MerchantOrderNo" name="MerchantOrderNo" required
+                <label class="checkout-title" for="invoiceId">訂單編號:</label>
+                <input class="checkout-list readonly" type="text" id="invoiceId" name="invoiceId" required
                     readonly><br><br>
 
-                <label class="checkout-title" for="Amt">金額:</label>
-                <input class="checkout-list readonly" type="number" id="Amt" name="Amt" required readonly><br><br>
+                <label class="checkout-title" for="currency">幣值:</label>
+                <input class="checkout-list readonly" type="currency" id="currency" name="currency" value="TWD" required readonly><br><br>
+
+                <label class="checkout-title" for="amount">金額:</label>
+                <input class="checkout-list readonly" type="number" id="amount" name="amount" required readonly><br><br>
 
                 <label class="checkout-title" for="ItemDesc">曲名:</label>
                 <input class="checkout-list readonly" type="text" id="ItemDesc" name="ItemDesc" required
@@ -197,26 +200,26 @@
 
     <footer class="footer"></footer>
 
-        <!-------- 外部JS -------->
-        <!-- Jquery.js -->
-        <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
-        <!-------- JS -------->
-        <!-- plaer.js -->
-        <script type="text/javascript" src="/JS/player.js"></script>
+    <!-------- 外部JS -------->
+    <!-- Jquery.js -->
+    <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <!-------- JS -------->
+    <!-- plaer.js -->
+    <script type="text/javascript" src="/JS/player.js"></script>
 
-        <!-------- INPUT -------->
-        <!-- Mobil header -->
-        <script>
-            $(function () {
-                $('#mobile-header').load('./input/input_mobile-header.html');
-            });
-        </script>
-        <!-- Footer -->
-        <script>
-            $(function () {
-                $('.footer').load('./input/input_footer.html');
-            });
-        </script>
+    <!-------- INPUT -------->
+    <!-- Mobil header -->
+    <script>
+        $(function () {
+            $('#mobile-header').load('./input/input_mobile-header.html');
+        });
+    </script>
+    <!-- Footer -->
+    <script>
+        $(function () {
+            $('.footer').load('./input/input_footer.html');
+        });
+    </script>
 </body>
 
 </html>

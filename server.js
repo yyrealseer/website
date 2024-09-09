@@ -1,16 +1,19 @@
-// server.js
 const express = require('express');
-const { createTradeInfo, verifyPayment } = require('./JS/newebpay.js');
+const paypal = require('@paypal/checkout-server-sdk');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
-dotenv.config(); // 加載主環境變數文件
+
+dotenv.config(); // 加載環境變數文件
 dotenv.config({ path: './.env.links' }); // 加載額外的環境變數文件
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// 設置 nodemailer 的傳輸器
+// PayPal SDK 配置
+const environment = new paypal.core.SandboxEnvironment(process.env.PAYPAL_CLIENT_ID, process.env.PAYPAL_CLIENT_SECRET); // 使用沙盒環境
+const client = new paypal.core.PayPalHttpClient(environment);
 
+// 設置 nodemailer 的傳輸器
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
@@ -21,88 +24,101 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-app.use(express.urlencoded({ extended: true })); // 解析 application/x-www-form-urlencoded 格式的數據
-app.use(express.json()); // 解析 application/json 格式的數據
-const querystring = require('querystring'); // 導入 querystring 模組
+// 設置中間件以解析不同類型的數據
+app.use(express.urlencoded({ extended: true })); // 支持 urlencoded 格式
+app.use(express.json()); // 支持 json 格式
 
 // 支付路由
-app.post('/pay', (req, res) => {
+app.post('/pay', async (req, res) => {
+    console.log('收到的請求數據:', JSON.stringify(req.body, null, 2)); // 使用 JSON.stringify 展開完整的請求數據
     const orderInfo = {
-        orderNo: req.body.MerchantOrderNo,
-        amount: req.body.Amt,
+        invoiceId: req.body.invoice_id,  // 使用 invoice_id 存儲訂單號碼
+        currency: req.body.currency,     // 單獨傳遞幣別
+        amount: req.body.amount,         // 單獨傳遞金額
         description: req.body.ItemDesc,
         email: req.body.Email,
-        CustomField1: req.body.CustomField1
     };
 
-    const paymentData = createTradeInfo(orderInfo);
-``
-    // 動態生成 HTML 表單，並自動提交到藍新金流的支付網關
-    const formHTML = `
-        <form id="paymentForm" method="POST" action="https://core.newebpay.com/MPG/mpg_gateway" style="display:none;">
-            MID: <input type="hidden" name="MerchantID" value="${paymentData.MerchantID}" readonly><br>
-            Version: <input type="hidden" name="Version" value="${paymentData.Version}" readonly><br>
-            TradeInfo: <input type="hidden" name="TradeInfo" value="${paymentData.TradeInfo}" readonly><br>
-            TradeSha: <input type="hidden" name="TradeSha" value="${paymentData.TradeSha}" readonly><br>
-        </form>
-        <script>
-            document.getElementById('paymentForm').submit(); // 自動提交表單
-        </script>
-    `;
-    console.log(paymentData, formHTML);
-    res.send(formHTML);
-});
+    // 檢查幣別和金額是否存在且有效
+    if (!orderInfo.currency || !orderInfo.amount || isNaN(orderInfo.amount)) {
+        console.log('無效的金額或幣別:', orderInfo.currency, orderInfo.amount);
+        return res.status(400).send('幣別和金額為必填欄位，且金額必須為有效的數字（例如：currency: "TWD", amount: "50.00"）。');
+    }
 
-
-// 支付結果回調路由
-app.post('/payment-callback', (req, res) => {
-    console.log('Received callback data:', req.body);
-
-    const paymentData = req.body; // 使用 express.urlencoded 解析的結果
-
-    if (paymentData.Status === "SUCCESS" && paymentData.TradeInfo) {
-        const decryptedData = verifyPayment(paymentData); // 獲取解密後的數據
-        if (decryptedData) {
-            console.log('Payment verification succeeded');
-            console.log(decryptedData.CustomField1);
-
-            const email = decryptedData.CustomField1; // 從自訂欄位中獲取 Email
-            const itemDesc = decryptedData.ItemDesc;
-
-            if (email) {
-                // 根據 itemDesc 查找對應的下載鏈接
-                const downloadLink = process.env[`${itemDesc.toUpperCase()}_LINK`] || process.env.DEFAULT_LINK;
-
-                const mailOptions = {
-                    from: process.env.EMAIL_USER,
-                    to: email,
-                    subject: '您的訂單已成功付款',
-                    text: `感謝您的購買！您可以通過以下鏈結下載您購買的音樂分軌： ${downloadLink}`
-                };
-
-                transporter.sendMail(mailOptions, (error, info) => {
-                    if (error) {
-                        console.error('發送郵件時發生錯誤：', error);
-                        res.sendStatus(500);
-                    } else {
-                        console.log('郵件已發送：' + info.response);
-                        res.sendStatus(200);
-                    }
-                });
-            } else {
-                console.error('無效的電子郵件地址');
-                res.sendStatus(400);
-            }
-        } else {
-            console.log('Payment verification failed');
-            res.sendStatus(400);
+    const request = new paypal.orders.OrdersCreateRequest();
+    request.prefer("return=representation");
+    request.requestBody({
+        intent: 'CAPTURE',
+        purchase_units: [{
+            reference_id: orderInfo.invoiceId,  // 使用 reference_id 或 invoice_id
+            amount: {
+                currency_code: orderInfo.currency, // 設置幣別（例如 TWD）
+                value: parseFloat(orderInfo.amount).toFixed(2) // 金額需要轉換為字符串，且保持兩位小數
+            },
+            description: orderInfo.description // 商品描述
+        }],
+        application_context: {
+            return_url: `${req.protocol}://${req.get('host')}/payment-success`,
+            cancel_url: `${req.protocol}://${req.get('host')}/payment-cancel`
         }
-    } else {
-        console.log('Invalid payment data format received:', paymentData);
-        res.sendStatus(400);
+    });
+
+    try {
+        const order = await client.execute(request);
+        res.redirect(303, order.result.links.find(link => link.rel === 'approve').href);
+    } catch (error) {
+        console.error('創建 PayPal 訂單時出錯：', error.message);
+        res.status(500).send('創建 PayPal 訂單時出錯');
     }
 });
 
+// 支付成功回調路由
+app.post('/payment-success', async (req, res) => {
+    console.log('收到的支付成功回調數據:', JSON.stringify(req.body, null, 2));
+
+    const { invoice_id, currency, amount, ItemDesc, Email } = req.body;
+
+    // 在此處你可以檢查接收到的回調數據的有效性和完整性
+    if (!invoice_id || !currency || !amount || !ItemDesc || !Email) {
+        console.error('支付回調數據缺失');
+        return res.status(400).send('無效的支付回調數據');
+    }
+
+    try {
+        // 更新訂單狀態，發送確認郵件，或執行其他業務邏輯
+
+        // 構造下載鏈接（需要根據你的業務邏輯進行修改）
+        const downloadLink = process.env[`${ItemDesc.toUpperCase()}_LINK`] || process.env.DEFAULT_LINK;
+
+        // 發送確認郵件
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: Email,
+            subject: '您的訂單已成功付款',
+            text: `感謝您的購買！您可以通過以下鏈接下載您購買的音樂分軌： ${downloadLink}`
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error('發送郵件時發生錯誤：', error);
+                return res.status(500).send('支付成功，但發送郵件時出錯');
+            } else {
+                console.log('確認郵件已發送：' + info.response);
+                return res.status(200).send('支付成功，確認郵件已發送');
+            }
+        });
+    } catch (error) {
+        console.error('處理支付成功回調時出錯：', error);
+        res.status(500).send('處理支付成功回調時出錯');
+    }
+});
+
+// 支付取消回調路由
+app.get('/payment-cancel', (req, res) => {
+    res.send('支付已取消');
+});
+
+// 啟動伺服器
 app.listen(port, () => {
     console.log(`伺服器正在運行於 http://localhost:${port}`);
 });

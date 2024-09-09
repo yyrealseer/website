@@ -1,10 +1,11 @@
 // 顯示彈出表單
-function showPopup(itemDesc, amt) {
+function showPopup(itemDesc, amount) {
     // 動態設置表單的值
     document.getElementById('ItemDesc').value = itemDesc;
-    document.getElementById('Amt').value = amt;
-    document.getElementById('MerchantOrderNo').value = generateMerchantOrderNo();
+    document.getElementById('amount').value = parseFloat(amount).toFixed(2);
+    document.getElementById('invoiceId').value = generateMerchantOrderNo();
     document.getElementById('popupForm').style.display = 'flex';
+    
     // 顯示表單和背景遮罩
     if (window.innerWidth <= 767) { // 偵測螢幕寬度
         document.getElementById('popupForm').style.flexDirection = 'column'; // 手機板樣式

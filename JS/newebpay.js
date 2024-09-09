@@ -2,6 +2,7 @@
 const NewebPay = require('node-newebpay'); // 使用 require 導入模組
 const dotenv = require('dotenv');
 
+
 dotenv.config(); // 加載 .env 文件中的環境變數
 
 // 使用環境變量中的密鑰和 IV 來創建 NewebPay 實例
@@ -18,7 +19,6 @@ function createTradeInfo(orderInfo) {
         Amt: orderInfo.amount,
         ItemDesc: orderInfo.description,
         Email: orderInfo.email,
-        CustomField1: orderInfo.email // 使用自訂欄位來保存 Email
     };
 
     // 將交易資料進行 AES 加密
