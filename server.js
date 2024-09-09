@@ -10,7 +10,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // PayPal SDK 配置
-const environment = new paypal.core.SandboxEnvironment(process.env.PAYPAL_CLIENT_ID, process.env.PAYPAL_CLIENT_SECRET); // 使用沙盒環境
+const environment = new paypal.core.LiveEnvironment(process.env.PAYPAL_CLIENT_ID, process.env.PAYPAL_CLIENT_SECRET); // 使用沙盒環境
 const client = new paypal.core.PayPalHttpClient(environment);
 
 // 設置 nodemailer 的傳輸器
@@ -105,7 +105,7 @@ app.get('/payment-success', async (req, res) => {
             const mailOptions = {
                 from: process.env.EMAIL_USER,
                 to: Email,
-                subject: '您的訂單已成功付款',
+                subject: 'YY Studio | 您的訂單已成功付款',
                 text: `感謝您的購買！您可以通過以下鏈接下載您購買的音樂分軌： ${downloadLink}`
             };
 
