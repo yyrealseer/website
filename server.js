@@ -1,13 +1,29 @@
 // server.js
 const express = require('express');
 const { createTradeInfo, verifyPayment } = require('./JS/newebpay.js');
+const nodemailer = require('nodemailer');
+const dotenv = require('dotenv');
+dotenv.config(); // 加載主環境變數文件
+dotenv.config({ path: './.env.links' }); // 加載額外的環境變數文件
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// 使用 express.json() 和 express.urlencoded() 中間件來解析 JSON 和表單格式的請求
-app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // 解析 application/x-www-form-urlencoded 格式的數據
+// 設置 nodemailer 的傳輸器
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail', // 這裡使用 Gmail 作為範例，您可以使用其他服務
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+        user: process.env.EMAIL_USER, // 你的郵件帳號
+        pass: process.env.EMAIL_PASS  // 你的郵件密碼或應用程式密碼
+    }
+});
+
+app.use(express.text()); // 解析純文本格式的數據
+const querystring = require('querystring'); // 導入 querystring 模組
 
 // 支付路由
 app.post('/pay', (req, res) => {
@@ -35,13 +51,51 @@ app.post('/pay', (req, res) => {
     res.send(formHTML);
 });
 
+
 // 支付結果回調路由
 app.post('/payment-callback', (req, res) => {
-    const paymentData = req.body;
+    console.log('Received callback data:', req.body);
 
-    if (verifyPayment(paymentData)) {
-        res.sendStatus(200);
+    const paymentData = querystring.parse(req.body);
+
+    if (paymentData.Status === "SUCCESS" && paymentData.TradeInfo) {
+        if (verifyPayment(paymentData)) {
+            console.log('Payment verification succeeded');
+
+            const decryptedData = verifyPayment(paymentData);
+            const email = decryptedData.Email;
+            const itemDesc = decryptedData.ItemDesc;
+
+            if (email) {
+                // 根據 itemDesc 查找對應的下載鏈接
+                const downloadLink = process.env[`${itemDesc.toUpperCase()}_LINK`] || process.env.DEFAULT_LINK;
+
+                const mailOptions = {
+                    from: process.env.EMAIL_USER,
+                    to: email,
+                    subject: '您的訂單已成功付款',
+                    text: `感謝您的購買！您可以通過以下鏈結下載您購買的音樂分軌： ${downloadLink}`
+                };
+
+                transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        console.error('發送郵件時發生錯誤：', error);
+                        res.sendStatus(500);
+                    } else {
+                        console.log('郵件已發送：' + info.response);
+                        res.sendStatus(200);
+                    }
+                });
+            } else {
+                console.error('無效的電子郵件地址');
+                res.sendStatus(400);
+            }
+        } else {
+            console.log('Payment verification failed');
+            res.sendStatus(400);
+        }
     } else {
+        console.log('Invalid payment data format received:', paymentData);
         res.sendStatus(400);
     }
 });

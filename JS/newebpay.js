@@ -51,39 +51,13 @@ function verifyPayment(paymentData) {
 
         console.log('解密後的數據:', resultObj); // 打印解密後的數據來調試
 
-        // 檢查解密後的數據是否合法
-        if (resultObj && resultObj.Status === 'SUCCESS') {
-            // 交易成功
-            return true;
-        } else {
-            // 交易失敗或數據不合法
-            return false;
-        }
+        // 返回解密後的結果
+        return resultObj;
     } catch (error) {
         console.error('解密或驗證支付結果時發生錯誤:', error);
-        return false; // 發生錯誤時返回 false
+        return null; // 發生錯誤時返回 null
     }
 }
 
 // 導出函數供其他文件使用
 module.exports = { createTradeInfo, verifyPayment };
-
-// 測試代碼 (可選)
-if (require.main === module) {
-    // 創建測試的 orderInfo
-    const testOrderInfo = {
-        orderNo: '24/08/22',
-        amount: 500,
-        description: 'Neo-soul',
-        email: 'xavier890930@gmail.com'
-    };
-
-    // 測試 createTradeInfo 函數
-    const paymentData = createTradeInfo(testOrderInfo);
-    console.log('生成的交易資料:', paymentData);
-
-    // 模擬測試支付結果
-    const testPaymentData = { ...paymentData, Status: 'SUCCESS' }; // 假設支付成功
-    const isValid = verifyPayment(testPaymentData);
-    console.log('驗證支付結果:', isValid);
-}
