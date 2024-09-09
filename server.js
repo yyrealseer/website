@@ -59,7 +59,8 @@ app.post('/pay', async (req, res) => {
         }],
         application_context: {
             return_url: `${req.protocol}://${req.get('host')}/payment-success`,
-            cancel_url: `${req.protocol}://${req.get('host')}/payment-cancel`
+            cancel_url: `${req.protocol}://${req.get('host')}/payment-cancel`,
+            shipping_preference: 'NO_SHIPPING'
         }
     });
 
