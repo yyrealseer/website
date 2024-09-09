@@ -12,7 +12,6 @@ const port = process.env.PORT || 3000;
 // 設置 nodemailer 的傳輸器
 
 const transporter = nodemailer.createTransport({
-    service: 'gmail', // 這裡使用 Gmail 作為範例，您可以使用其他服務
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
@@ -32,7 +31,8 @@ app.post('/pay', (req, res) => {
         orderNo: req.body.MerchantOrderNo,
         amount: req.body.Amt,
         description: req.body.ItemDesc,
-        email: req.body.Email
+        email: req.body.Email,
+        CustomField1: req.body.CustomField1
     };
 
     const paymentData = createTradeInfo(orderInfo);
@@ -61,12 +61,12 @@ app.post('/payment-callback', (req, res) => {
     const paymentData = req.body; // 使用 express.urlencoded 解析的結果
 
     if (paymentData.Status === "SUCCESS" && paymentData.TradeInfo) {
-        const decryptedData = verifyPayment(paymentData);
+        const decryptedData = verifyPayment(paymentData); // 獲取解密後的數據
         if (decryptedData) {
             console.log('Payment verification succeeded');
+            console.log(decryptedData.CustomField1);
 
-            const decryptedData = verifyPayment(paymentData);
-            const email = decryptedData.Email;
+            const email = decryptedData.CustomField1; // 從自訂欄位中獲取 Email
             const itemDesc = decryptedData.ItemDesc;
 
             if (email) {

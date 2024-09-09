@@ -17,7 +17,8 @@ function createTradeInfo(orderInfo) {
         MerchantOrderNo: orderInfo.orderNo,
         Amt: orderInfo.amount,
         ItemDesc: orderInfo.description,
-        Email: orderInfo.email
+        Email: orderInfo.email,
+        CustomField1: orderInfo.email // 使用自訂欄位來保存 Email
     };
 
     // 將交易資料進行 AES 加密
