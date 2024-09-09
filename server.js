@@ -22,7 +22,8 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-app.use(express.text()); // 解析純文本格式的數據
+app.use(express.urlencoded({ extended: true })); // 解析 application/x-www-form-urlencoded 格式的數據
+app.use(express.json()); // 解析 application/json 格式的數據
 const querystring = require('querystring'); // 導入 querystring 模組
 
 // 支付路由
@@ -35,7 +36,7 @@ app.post('/pay', (req, res) => {
     };
 
     const paymentData = createTradeInfo(orderInfo);
-
+``
     // 動態生成 HTML 表單，並自動提交到藍新金流的支付網關
     const formHTML = `
         <form id="paymentForm" method="POST" action="https://core.newebpay.com/MPG/mpg_gateway">
@@ -57,10 +58,11 @@ app.post('/pay', (req, res) => {
 app.post('/payment-callback', (req, res) => {
     console.log('Received callback data:', req.body);
 
-    const paymentData = querystring.parse(req.body);
+    const paymentData = req.body; // 使用 express.urlencoded 解析的結果
 
     if (paymentData.Status === "SUCCESS" && paymentData.TradeInfo) {
-        if (verifyPayment(paymentData)) {
+        const decryptedData = verifyPayment(paymentData);
+        if (decryptedData) {
             console.log('Payment verification succeeded');
 
             const decryptedData = verifyPayment(paymentData);
