@@ -98,8 +98,8 @@ app.get('/payment-success', async (req, res) => {
             // 根據商品描述獲取下載鏈接
             const reference_id = capture.result.purchase_units[0].reference_id; // 取得商品描述
             const Email = capture.result.payer.email_address; // 取得付款人的電子郵件地址
-            const downloadLink = process.env[`${reference_id.toUpperCase()}_LINK`] || process.env.DEFAULT_LINK;
-            console.log('曲名：', `${reference_id.toUpperCase()}`);
+            const downloadLink = process.env[`${reference_id}_LINK`] || process.env.DEFAULT_LINK;
+            console.log('曲名：', `${reference_id}`);
 
             // 發送確認郵件
             const mailOptions = {
