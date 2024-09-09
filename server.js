@@ -35,7 +35,7 @@ app.post('/pay', async (req, res) => {
         invoiceId: req.body.invoice_id,  // 使用 invoice_id 存儲訂單號碼
         currency: req.body.currency,     // 單獨傳遞幣別
         amount: req.body.amount,         // 單獨傳遞金額
-        description: req.body.ItemDesc,
+        reference_id: req.body.description,
         email: req.body.Email,
     };
 
@@ -50,7 +50,7 @@ app.post('/pay', async (req, res) => {
     request.requestBody({
         intent: 'CAPTURE',
         purchase_units: [{
-            reference_id: orderInfo.invoiceId,  // 使用 reference_id 或 invoice_id
+            reference_id: orderInfo.reference_id,  // 使用 reference_id 或 invoice_id
             amount: {
                 currency_code: orderInfo.currency, // 設置幣別（例如 TWD）
                 value: parseFloat(orderInfo.amount).toFixed(2) // 金額需要轉換為字符串，且保持兩位小數
@@ -91,13 +91,14 @@ app.get('/payment-success', async (req, res) => {
         const capture = await client.execute(request);
 
         if (capture.result.status === 'COMPLETED') {
-            // 在此處執行你的業務邏輯，例如更新訂單狀態或發送郵件
+
             console.log('支付已完成：', capture.result);
+            res.redirect('./success');// 重定向至付款成功頁面
 
             // 根據商品描述獲取下載鏈接
-            const ItemDesc = capture.result.purchase_units[0].description; // 取得商品描述
+            const reference_id = capture.result.purchase_units[0].reference_id; // 取得商品描述
             const Email = capture.result.payer.email_address; // 取得付款人的電子郵件地址
-            const downloadLink = process.env[`${ItemDesc.toUpperCase()}_LINK`] || process.env.DEFAULT_LINK;
+            const downloadLink = process.env[`${reference_id.toUpperCase()}_LINK`] || process.env.DEFAULT_LINK;
 
             // 發送確認郵件
             const mailOptions = {

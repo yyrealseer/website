@@ -1,7 +1,7 @@
 // 顯示彈出表單
-function showPopup(itemDesc, amount) {
+function showPopup(description, amount) {
     // 動態設置表單的值
-    document.getElementById('ItemDesc').value = itemDesc;
+    document.getElementById('description').value = description;
     document.getElementById('amount').value = parseFloat(amount).toFixed(2);
     document.getElementById('invoiceId').value = generateMerchantOrderNo();
     document.getElementById('popupForm').style.display = 'flex';
