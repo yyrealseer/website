@@ -63,7 +63,7 @@ button {
     height: 100%;
     border: 1px solid;
     border-color: #ffffff00;
-    width: 100vw;
+    max-width: 100%;
 }
 
 #LOGO {
