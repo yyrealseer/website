@@ -1,35 +1,7 @@
-<!DOCTYPE html>
-<html lang="h-Hant-TW ">
-
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KH4NPVYE4F"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-KH4NPVYE4F');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <%= t('mixing.meta_title') %>
-    </title>
-    <!-- GoogleFont -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif+TC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <!-- Page.css -->
-    <link href="/CSS/Page.css" rel="stylesheet" />
-    <link href="/CSS/Mobile-Page.css" rel="stylesheet" />
-    <!-- Animate.css v3.5.2 -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/e86dcc2690.js" crossorigin="anonymous"></script>
-</head>
+<%- include('input/input_layout',
+ { metaTitle: t('mixing.meta_title'), 
+ metaDescription: t('mixing.meta_description'), 
+ ogTitle:t('mixing.meta_title'), ogDescription: t('mixing.meta_description') }) %>
 
 <body>
     <%- include('input/input_mobile-service') %>

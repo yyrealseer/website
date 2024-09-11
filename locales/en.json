@@ -44,9 +44,9 @@
 			"course_description": "One lesson per week, online teaching (in English), with customizable content according to your needs.",
 			"service_btn": "MORE"
 		},
-		"compilationcontent_mixing": "Mixing Track Compilation",
-		"compilationcontent_arranging": "Arrangement Track Compilation",
-		"compilationcontent_songwrighting": "Songwriting Track Compilation"
+		"compilationcontent_mixing": "Mixing",
+		"compilationcontent_arranging": "Arrangement",
+		"compilationcontent_songwrighting": "Songwriting"
 	},
 	"service": {
 		"title": "Services",
