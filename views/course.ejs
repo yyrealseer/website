@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="h-Hant-TW ">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KH4NPVYE4F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-KH4NPVYE4F');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= t('course.meta_title') %>
+    </title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- GoogleFont -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif+TC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Page.css -->
+    <link href="/CSS/Page.css" rel="stylesheet" />
+    <link href="/CSS/Mobile-Page.css" rel="stylesheet" />
+    <!-- Animate.css v3.5.2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e86dcc2690.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <%- include('input/input_mobile-service') %>
+        <%- include('input/input_mobile-header') %>
+            <header id="header">
+                <div class="header-container">
+                    <a href="/" id="LOGO">
+                        <img id="LOGO2" style="height:var(--LOGO-height);" ; src="/ICON/LOGO_White.png">
+                    </a>
+                </div>
+            </header>
+            <div class="serverce-descript">
+                <%- include('input/input_service') %>
+                    <div id="content">
+                        <h id="content-title">
+                            <%= t('course.content.service_title') %>
+                        </h>
+                        <p>　　<%= t('course.content.service_description') %>
+                        </p>
+
+                        <p>
+                            <%= t('course.content.price') %>
+                        </p>
+
+                        <p style="color: var(--sub-color);">
+                            <%= t('course.content.title') %>
+                        </p>
+
+                        <ul>
+                            <li class="title">
+                                <%= t('course.content.lyric_composition') %>
+                            </li>
+                        </ul>
+
+                        <p style="margin-left:80px">
+                            <%= t('course.content.topic1') %>
+                        </p>
+
+                        <p style="margin-left:80px">
+                            <%= t('course.content.topic2') %>
+                        </p>
+
+                        <p style="margin-left:80px">
+                            <%= t('course.content.topic3') %>
+                        </p>
+
+                        <p style="margin-left:80px">
+                            <%= t('course.content.topic4') %>
+                        </p>
+
+                        <ul>
+                            <li class="title">
+                                <%= t('course.content.computer_arrangement') %>
+                            </li>
+                        </ul>
+
+                        <p style="margin-left:80px">
+                            <%= t('course.content.software_topic1') %>
+                        </p>
+
+                        <p style="margin-left:80px">
+                            <%= t('course.content.software_topic2') %>
+                        </p>
+
+                        <p style="margin-left:80px">
+                            <%= t('course.content.software_topic3') %>
+                        </p>
+
+                        <p style="margin-left:80px">
+                            <%= t('course.content.software_topic4') %>
+                        </p>
+
+                        <ul>
+                            <li class="title">
+                                <%= t('course.content.personal_demo') %>
+                            </li>
+                        </ul>
+
+                        <p style="margin-left:80px">
+                            <%= t('course.content.demo_topic1') %>
+                        </p>
+
+                        <p style="margin-left:80px">
+                            <%= t('course.content.demo_topic2') %>
+                        </p>
+
+                        <p style="margin-left:80px">
+                            <%= t('course.content.demo_topic3') %>
+                        </p>
+
+                        <p style="margin-left:80px">
+                            <%= t('course.content.demo_topic4') %>
+                        </p>
+
+                        <p style="margin-left:80px">
+                            <%= t('course.content.demo_topic5') %>
+                        </p>
+
+                        <p style="color: var(--warn-color);">
+                            <%= t('course.content.notice.title') %>
+                        </p>
+
+                        <ul>
+                            <li>
+                                <%= t('course.content.notice.item1') %>
+                            </li>
+                            <li>
+                                <%= t('course.content.notice.item2') %>
+                            </li>
+                            <li>
+                                <%= t('course.content.notice.item3') %>
+                            </li>
+                        </ul>
+                        <a class="book" href="https://forms.gle/ogop721i5NfyJHmV8">
+                            <%= t('course.content.book_consultation') %>
+                        </a>
+                        <%- include('input/input_FAQ') %>
+                    </div>
+            </div>
+            <%- include('input/input_changeLanguage') %>
+                <%- include('input/input_backtopBtn') %>
+                    <%- include('input/input_footer') %>
+
+</body>
+
+</html>

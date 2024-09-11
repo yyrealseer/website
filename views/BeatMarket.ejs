@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="h-Hant-TW ">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KH4NPVYE4F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-KH4NPVYE4F');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= t('beatmarket.meta_title') %></title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- GoogleFont -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif+TC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Page.css -->
+    <link href="/CSS/Page.css" rel="stylesheet" />
+    <link href="/CSS/Mobile-Page.css" rel="stylesheet" />
+    <link href="/CSS/Beat-market.css" rel="stylesheet" />
+    <link href="/CSS/Mobile-Beat-market.css" rel="stylesheet" />
+    <!-- Animate.css v3.5.2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e86dcc2690.js" crossorigin="anonymous"></script>
+    <!-- beat-checkout.js -->
+    <script type="text/javascript" src="/JS/beat-checkout.js"></script>
+</head>
+
+<body>
+    <header id="header">
+        <div class="header-container">
+            <a href="/" id="LOGO">
+                <img id="LOGO2" style="height:var(--LOGO-height);" ; src="/ICON/LOGO_White.png">
+            </a>
+        </div>
+    </header>
+    <%- include('input/input_mobile-header') %>
+    <div class="serverce-descript">
+        <%- include('input/input_pages-navigation') %>
+        <audio-player src="-" id="AudioPlayer" title="-" loop></audio-player>
+
+        <div class="container" style="width: 90%;">
+
+            <h class="large-title"><%= t('beatmarket.large_title') %></h>
+
+            <div class=" beat-container">
+                <div class="track">
+                    <button class="thumbnail" style="background-image: url('/BEAT/img/<%= t('beatmarket.RazorRush.name') %>.jpg');"
+                        onclick="AudioPlayer.changeAudio('./BEAT/track/<%= t('beatmarket.RazorRush.file_name') %>', '<%= t('beatmarket.RazorRush.name') %>')"></button>
+                    <h class="beat-name"><%= t('beatmarket.RazorRush.name') %></h>
+                    <div class="produc-info">
+                        <p class="Price-tag"><%= t('beatmarket.RazorRush.price_tag') %></p>
+                        <button class="checkout-btn" onclick="showPopup('<%= t('beatmarket.RazorRush.name') %>', <%= t('beatmarket.RazorRush.price_value') %>)">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+                    <div class="tag-container">
+                        <p class="tag type"><%= t('beatmarket.RazorRush.type1') %></p>
+                        <p class="tag type"><%= t('beatmarket.RazorRush.type2') %></p>
+                        <p class="tag type"><%= t('beatmarket.RazorRush.bpm') %> BPM</p>
+                        <p class="tag mood"><%= t('beatmarket.RazorRush.mood1') %></p>
+                        <p class="tag mood"><%= t('beatmarket.RazorRush.mood2') %></p>
+                        <p class="tag mood"><%= t('beatmarket.RazorRush.mood3') %></p>
+                    </div>
+                </div>
+
+                <div class="track">
+                    <button class="thumbnail" style="background-image: url('/BEAT/img/<%= t('beatmarket.BoogieDelight.name') %>.jpg');"
+                        onclick="AudioPlayer.changeAudio('./BEAT/track/<%= t('beatmarket.BoogieDelight.file_name') %>', '<%= t('beatmarket.BoogieDelight.name') %>')"></button>
+                    <h class="beat-name"><%= t('beatmarket.BoogieDelight.name') %></h>
+                    <div class="produc-info">
+                        <p class="Price-tag"><%= t('beatmarket.BoogieDelight.price_tag') %></p>
+                        <button class="checkout-btn" onclick="showPopup('<%= t('beatmarket.BoogieDelight.name') %>', <%= t('beatmarket.BoogieDelight.price_value') %>)">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+                    <div class="tag-container">
+                        <p class="tag type"><%= t('beatmarket.BoogieDelight.type1') %></p>
+                        <p class="tag type"><%= t('beatmarket.BoogieDelight.bpm') %> BPM</p>
+                        <p class="tag mood"><%= t('beatmarket.BoogieDelight.mood1') %></p>
+                        <p class="tag mood"><%= t('beatmarket.BoogieDelight.mood2') %></p>
+                        <p class="tag mood"><%= t('beatmarket.BoogieDelight.mood3') %></p>
+                    </div>
+                </div>
+
+                <div class="track">
+                    <button class="thumbnail" style="background-image: url('/BEAT/img/<%= t('beatmarket.MoonLit.name') %>.jpg');"
+                        onclick="AudioPlayer.changeAudio('./BEAT/track/<%= t('beatmarket.MoonLit.file_name') %>', '<%= t('beatmarket.MoonLit.name') %>')"></button>
+                    <h class="beat-name"><%= t('beatmarket.MoonLit.name') %></h>
+                    <div class="produc-info">
+                        <p class="Price-tag"><%= t('beatmarket.MoonLit.price_tag') %></p>
+                        <button class="checkout-btn" onclick="showPopup('<%= t('beatmarket.MoonLit.name') %>', <%= t('beatmarket.MoonLit.price_value') %>)">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+                    <div class="tag-container">
+                        <p class="tag type"><%= t('beatmarket.MoonLit.type1') %></p>
+                        <p class="tag type"><%= t('beatmarket.MoonLit.type2') %></p>
+                        <p class="tag type"><%= t('beatmarket.MoonLit.bpm') %> BPM</p>
+                        <p class="tag mood"><%= t('beatmarket.MoonLit.mood1') %></p>
+                        <p class="tag mood"><%= t('beatmarket.MoonLit.mood2') %></p>
+                        <p class="tag mood"><%= t('beatmarket.MoonLit.mood3') %></p>
+                    </div>
+                </div>
+
+                <div class="track">
+                    <button class="thumbnail" style="background-image: url('/BEAT/img/<%= t('beatmarket.FlowerInVase.name') %>.jpg');"
+                        onclick="AudioPlayer.changeAudio('./BEAT/track/<%= t('beatmarket.FlowerInVase.file_name') %>', '<%= t('beatmarket.FlowerInVase.name') %>')"></button>
+                    <h class="beat-name"><%= t('beatmarket.FlowerInVase.name') %></h>
+                    <div class="produc-info">
+                        <p class="Price-tag"><%= t('beatmarket.FlowerInVase.price_tag') %></p>
+                        <button class="checkout-btn" onclick="showPopup('<%= t('beatmarket.FlowerInVase.name') %>', <%= t('beatmarket.FlowerInVase.price_value') %>)">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+                    <div class="tag-container">
+                        <p class="tag type"><%= t('beatmarket.FlowerInVase.type1') %></p>
+                        <p class="tag type"><%= t('beatmarket.FlowerInVase.bpm') %> BPM</p>
+                        <p class="tag mood"><%= t('beatmarket.FlowerInVase.mood1') %></p>
+                        <p class="tag mood"><%= t('beatmarket.FlowerInVase.mood2') %></p>
+                        <p class="tag mood"><%= t('beatmarket.FlowerInVase.mood3') %></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 背景遮罩 -->
+        <div id="overlay" onclick="hidePopup()"></div>
+
+        <!-- 彈出表單 -->
+        <div id="popupForm" style="flex-direction: row;">
+            <div class="checkout-notice">
+                <h1 style="color: #b10000;font-family: 'Noto Serif TC';text-align: center;">
+                    <%= t('beatmarket.notice.title') %></h1>
+                <li class="notice-text"><%= t('beatmarket.notice.notice-text1') %></li>
+                <li class="notice-text"><%= t('beatmarket.notice.notice-text2') %></li>
+                <li class="notice-text"><%= t('beatmarket.notice.notice-text3') %></li>
+                <p class="notice-text">
+                    <%= t('beatmarket.notice.notice-text4') %>
+                <p>
+            </div>
+            <form class="checkout-form" action="https://api.yyrealseer.com/pay" method="POST">
+                <label class="checkout-title" for="invoiceId"><%= t('beatmarket.form.number') %></label>
+                <input class="checkout-list readonly" type="text" id="invoiceId" name="invoiceId" required
+                    readonly><br><br>
+
+                <label class="checkout-title" for="currency"><%= t('beatmarket.form.currency') %></label>
+                <input class="checkout-list readonly" type="currency" id="currency" name="currency" value="<%= t('beatmarket.currency') %>" required
+                    readonly><br><br>
+
+                <label class="checkout-title" for="amount"><%= t('beatmarket.form.amount') %></label>
+                <input class="checkout-list readonly" type="number" id="amount" name="amount" required readonly><br><br>
+
+                <label class="checkout-title" for="description"><%= t('beatmarket.form.description') %></label>
+                <input class="checkout-list readonly" type="text" id="description" name="description" required
+                    readonly><br><br>
+
+                <label class="checkout-title" for="Email"><%= t('beatmarket.form.Email') %></label>
+                <input class="checkout-list" type="email" id="Email" name="Email" required><br><br>
+
+                <button style=" background-color: var(--main-color); padding: 2px 10px; border-radius: 5px;"
+                    type="submit"><%= t('beatmarket.form.checkout') %></button>
+            </form>
+        </div>
+        <div style="height: 5000px;"></div>
+        <div id="output"></div>
+        <select id="language-select" onchange="changeLanguage()">
+            <option value="zh" <%=(currentLocale==='zh' ) ? 'selected' : '' %>>中文</option>
+            <option value="en" <%=(currentLocale==='en' ) ? 'selected' : '' %>>English</option>
+        </select>
+
+    </div>
+
+    <%- include('input/input_changeLanguage') %>
+    <%- include('input/input_footer') %>
+    <!-- plaer.js -->
+    <script type="text/javascript" src="/JS/player.js"></script>
+
+</body>
+
+</html>

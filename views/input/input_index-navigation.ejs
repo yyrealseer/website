@@ -1,0 +1,109 @@
+<header id="header">
+    <div class="header-container">
+        <div class="分頁 直立分頁" id="">
+            <button id="Go-track">
+                <%= t('header.work') %>
+            </button>
+            <button id="Go-serverce">
+                <%= t('header.service') %>
+            </button>
+            <button id="Go-about">
+                <%= t('header.about') %>
+            </button>
+            <img id="LOGO1" style="height:var(--LOGO-height); transform: rotate(270deg);" src="/ICON/LOGO_White.png"
+                style="transform: rotate(90);">
+        </div>
+    </div>
+</header>
+
+<style>
+    #header {
+        width: 100%;
+        height: 9%;
+        padding: 9px 0px;
+        position: fixed;
+        z-index: 2;
+        right: -47%;
+        top: -30%;
+    }
+
+    .header-container {
+        display: flex;
+        height: 100%;
+        padding: 0 2%;
+        border: 1px solid;
+        border-color: #ffffff00;
+    }
+
+    .直立分頁 {
+        align-items: center;
+        position: absolute;
+        left: -5%;
+        width: 100vw;
+    }
+
+    .分頁 {
+        width: 100vw;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .直立分頁 button {
+        background-color: #faebd700;
+        font-family: 'Noto Sans TC', 'Noto Serif TC', '微軟正黑體';
+        font-size: 24px;
+        color: #ffffff;
+        border: #0d2a3b;
+        padding-left: 3%;
+        text-shadow: #000000 2px -2px 4px;
+    }
+
+    @media (max-width: 767px) {
+        #header {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+    const goabout = document.getElementById("Go-about");
+    const goserverce = document.getElementById("Go-serverce");
+    const gotrack = document.getElementById("Go-track");
+
+    const LOGO1 = document.getElementById('LOGO1');
+
+    /*--------------------Header 1--------------------*/
+
+    goabout.addEventListener("click", function () {
+        const section = document.getElementById(`about`);
+        window.scrollTo({
+            top: section.offsetTop,
+        });
+    });
+    goserverce.addEventListener("click", function () {
+        const section = document.getElementById(`serverce`);
+        window.scrollTo({
+            top: section.offsetTop,
+        });
+    });
+    gotrack.addEventListener("click", function () {
+        const section = document.getElementById(`track-compilation`);
+        window.scrollTo({
+            top: section.offsetTop,
+        });
+    });
+
+    // 為LOGO添加點擊事件監聽器
+    if (LOGO1) {
+        LOGO1.addEventListener("click", function () {
+            window.scrollTo(0, 0);
+        });
+    }
+
+
+</script>
+
+<!-- Headroom.js v0.9.4 -->
+<script src="/JS/headroom.js"></script>
+<!-- header.js -->
+<script src="/JS/header.js" lang="JavaScript"></script>

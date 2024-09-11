@@ -1,0 +1,319 @@
+{
+	"index": {
+		"meta_title": "YY STUDIO | 創作你來，製作我來",
+		"meta_description": "我是一位擁有8年音樂創作經驗的自由接案者，提供混音、編曲和詞曲創作服務。如果你是一位充滿想法、卻缺少製作技能的創作者，我很榮幸能夠為你提供幫助，共同完成音樂作品並在數位平台上展現魅力。我擔任獨立音樂廠牌的混音師，並在數位平台上發行了多首作品。這段經歷讓我深刻了解到音樂創作的重要性，也讓我對製作工作有了更深的理解和熱情。",
+		"banner_title": "創作你來，製作我來",
+		"about_music_title": "關於音樂創作這條路",
+		"about_music_content": "成為音樂創作者的路上，通常都是孤獨且無助的，付諸心力寫出詞曲後，龐大的技術工作往往讓人難以負荷，陷入看不見盡頭的迷茫中。相信這是許多音樂創作者的心聲，要如何停止這個無限迴圈呢？首先，我們一步一步來！",
+		"steps": {
+			"step1_title": "Step 1 創作",
+			"step1_content": "歌曲為情感的載體，將你的情感Download在詞曲上，創作出充滿渲染力的作品，這步是音樂的靈魂所在，相信身為創作者的你再熟悉不過了。",
+			"step2_title": "Step 2 製作",
+			"step2_content": "包含編曲、混音和母帶處理等，將你的詞曲昇華成一首高品質的音樂作品，技術門檻較高、較費時，若是一人團隊通常很難完成，導致作品質量受限。而YY Studio因此而生，幫你分擔技術性工作之外，讓你的好作品不會因為製作品質不佳而流失該有的潛力。",
+			"step3_title": "Step 3 數位發行",
+			"step3_content": "透過發行商上架於數位平台(Spotify、KKBOX等...)，累積聽眾並賺取收益，這時只要專心經營自己的社群，全速往音樂夢邁進！"
+		},
+		"banner2_content": "而YY Studio就是你的工具箱！",
+		"start_now_title": "現在就出發",
+		"start_now_content": "作為獨立創作者，相信創作才是最重要的，讓我幫你解決製作上的煩惱，讓你專注於音樂的創作。擁有8年音樂創作經驗，我能夠提供專業的混音和編曲服務，以提升你的作品吸引力，讓你的音樂在數位平台上脫穎而出。與我合作，讓你的音樂成就你的夢想！開啟音樂之旅的全新篇章！",
+		"about": {
+			"about_me": "關於我",
+			"profile_description": "我是一位擁有8年音樂創作經驗的自由接案者，提供混音、編曲和詞曲創作服務。如果你是一位充滿想法、卻缺少製作技能的創作者，我很榮幸能夠為你提供幫助，共同完成音樂作品並在數位平台上展現魅力。我擔任獨立音樂廠牌的混音師，並在數位平台上發行了多首作品。這段經歷讓我深刻了解到音樂創作的重要性，也讓我對製作工作有了更深的理解和熱情。",
+			"experience_title": "專業背景",
+			"experience_2015": " -2015年：",
+			"experience_2015_p2": "投入音樂創作。",
+			"experience_2016": " -2016年：",
+			"experience_2016_p2": "發布第一首作品。",
+			"experience_2019": " -2019年：",
+			"experience_2019_p2": "帶領團隊製作了新店高中畢業歌《高塔下》。",
+			"experience_2019_p2_2": "擔任《恩愛一路行》公益歌曲的編曲工作，此曲由中華民國僵直性脊椎炎關懷協會與中華民國類風濕性關節炎之友協會合作發布。",
+			"experience_2021": " -2021年：",
+			"experience_2021_p2": "擔任獨立廠牌「Jailbirds 囚鳥」的混音師及創作者。與「ChynaTown 華風數位」合作並將作品發行於數位平台。"
+		},
+		"services": {
+			"service_title": "服務項目",
+			"production": "買Beat送混音 (限時專案！)",
+			"mixing": "混音與母帶製作",
+			"arranging": "編曲",
+			"course": "創作/製作課程",
+			"production_content": "購買Beat即可享受免費的專業混音和母帶製作服務（原價$5000/首）！只需到我們的BeatMarket平台選購YY Studio的Beat分軌，我們將免費為您進行混音及母帶後製處理，讓您的作品達到最佳品質！",
+			"production_price": "NT$(Beat價格)",
+			"mixing_content": "提供專業的混音服務，將音軌進行調音、平衡和效果處理，確保音樂作品的聲音清晰、平衡且具有動感。同時，也提供母帶製作服務，將最終混音結果進行調整和優化，確保作品在不同播放環境下都能保持高品質。",
+			"mixing_price": "NT$5000/首",
+			"mixing_description": "包含兩次免費修改，超過另收修改費 $625/次。",
+			"arranging_content": "根據客戶提供的原始音樂DEMO或詞曲，進行編曲工作。這包括選擇合適的音色、樂器和編曲風格，並將它們組合成一個完整的音樂作品，根據客戶的需求進行量身定制。",
+			"arranging_price": "NT$5000/首",
+			"arranging_description": "包含兩次免費修改，超過另收修改費 $625/次。",
+			"course_content": "幫助對音樂有興趣的人成為一位音樂創作者。在課程中，我將分享創作技巧、構思方法和製作流程，並指導學生逐步完成自己的音樂作品。",
+			"course_price": "NT$3000/四堂",
+			"course_description": "一週一堂課，當面(限台中市區)/線上教學，可依據你的需求調整課綱。",
+			"service_btn": "了解更多"
+		},
+		"compilationcontent_mixing": "混音作品",
+		"compilationcontent_arranging": "編曲作品",
+		"compilationcontent_songwrighting": "詞曲創作作品"
+	},
+	"service": {
+		"title": "服務項目",
+		"beat_special": "買Beat送混音(限時專案！)",
+		"mixing": "混音與母帶製作",
+		"arranging": "編曲",
+		"demo_course": "創作/製作課程"
+	},
+	"header": {
+		"home": "首頁",
+		"list": "選單",
+		"work": "作品",
+		"service": "服務項目",
+		"about": "關於我",
+		"beat_market": "BeatMarket",
+		"consultation": "線上諮詢",
+		"faq": "常見問題"
+	},
+	"footer": {
+		"collaborate": "合作專區",
+		"youtube": "Youtube頻道"
+	},
+	"arrange": {
+		"meta_title": "混音與母帶製作 | YY Studio",
+		"content": {
+			"service_title": "服務項目-編曲",
+			"service_description": "根據客戶提供的原始音樂DEMO或詞曲，進行編曲工作。這包括選擇合適的音色、樂器和編曲風格，並將它們組合成一個完整的音樂作品，根據客戶的需求進行量身定制。",
+			"price": "NT$5000/首",
+			"modification": "包含兩次免費修改，超過另收修改費 $625/次。",
+			"prepare_title": "你需準備的有：",
+			"prepare_items": {
+				"prepare_items1": "詞曲DEMO(有人聲佳)",
+				"prepare_items2": "希望的風格、樂器配置、若有reference也可提供。",
+				"prepare_items3": "若有希望保留原本的和弦進行或段落，請提前告知。"
+			},
+			"notice_title": "注意事項：",
+			"notices": {
+				"notices1": "確認合作後會先收取1/3訂金，最後成品預覽版確認沒問題後收取剩下2/3尾款後交付最終音檔。",
+				"notices2": "若有特殊檔案規格需求請先告知，若沒有的話預設成品規格為：MP3(192 kbit/s)、WAV(16 bit/44.1 kHz)。",
+				"notices3": "合作途中因不可歸責於本工作室之原因而終止合作，訂金不退還。",
+				"notices4": "交貨期間為收到素材後約5-7個工作天。"
+			},
+			"book_consultation": "立即預約15分鐘免費線上諮詢"
+		}
+	},
+	"mixing": {
+		"meta_title": "混音與母帶製作 | YY Studio",
+		"content": {
+			"service_title": "服務項目-混音與母帶製作",
+			"service_description": "提供專業的混音服務，將音軌進行調音、平衡和效果處理，確保音樂作品的聲音清晰、平衡且具有動感。同時，也提供母帶製作服務，將最終混音結果進行調整和優化，確保作品在不同播放環境下都能保持高品質。",
+			"price": "NT$5000/首",
+			"modification": "包含兩次免費修改，超過另收修改費 $625/次。",
+			"prepare_title": "你需準備的有：",
+			"prepare_items": {
+				"prepare_items1": "主Vocal",
+				"prepare_items2": "樂器分軌",
+				"prepare_items3": "和聲兩軌*",
+				"prepare_items4": "Double Vocal兩軌*"
+			},
+			"prepare_note": "(*為非必要，若沒有的話Vocal會稍微比較單薄，分軌建議檔案格式為：WAV 24bits 48kHz)",
+			"notice_title": "注意事項：",
+			"notices": {
+				"notices1": "確認合作後會先收取1/3訂金，最後成品預覽版確認沒問題後收取剩下2/3尾款後交付最終音檔。",
+				"notices2": "若有特殊檔案規格需求請先告知，若沒有的話預設成品規格為：MP3(192 kbit/s)、WAV(16 bit/44.1 kHz)。",
+				"notices3": "合作途中因不可歸責於本工作室之原因而終止合作，訂金不退還。",
+				"notices4": "以上標價不包含修拍子、調音準，若有上述需求請提前告知，將依複雜度收取額外費用 ($625/H)。",
+				"notices5": "交貨期間為收到素材後約5-7個工作天。"
+			},
+			"book_consultation": "立即預約15分鐘免費線上諮詢"
+		}
+	},
+	"course": {
+		"meta_title": "創作/製作課程 | YY Studio",
+		"content": {
+			"service_title": "服務項目-DEMO創作課程",
+			"service_description": "幫助對音樂有興趣的人成為一位音樂創作者。在課程中，我將分享創作技巧、構思方法和製作流程，並指導學生逐步完成自己的音樂作品。",
+			"price": "NT$3000/四堂 ，可先預約15分鐘免費線上諮詢",
+			"title": "課程大綱 (課程內容可依個人需求安排) ：",
+			"lyric_composition": "詞曲創作",
+			"topic1": "流行歌常用的和弦進行",
+			"topic2": "寫詞/寫曲邏輯",
+			"topic3": "基礎流行音樂樂理",
+			"topic4": "和聲編寫",
+			"computer_arrangement": "電腦編曲",
+			"software_topic1": "DAW軟體操作",
+			"software_topic2": "流行歌常用配器手法",
+			"software_topic3": "虛擬樂器使用",
+			"software_topic4": "吉他、BASS等...外接樂器錄製",
+			"personal_demo": "個人DEMO製作",
+			"demo_topic1": "基礎人聲處理",
+			"demo_topic2": "聲音空間感塑造",
+			"demo_topic3": "各式插件(vst plugin)的使用",
+			"demo_topic4": "基礎混音 (進階)",
+			"demo_topic5": "聲音的頻率、動態 (進階)",
+			"notice": {
+				"title": "注意事項：",
+				"item1": "暫時因場地因素，目前只提供線上或線下（限台中市區）教學，未來可能會移至工作室上課，敬請期待。",
+				"item2": "上課使用的DAW為Cubase pro 12，操作大同小異，也可使用自己習慣的軟體。",
+				"item3": "一堂課/周，若有特殊需求可另外調整。"
+			},
+			"book_consultation": "立即預約15分鐘免費線上諮詢"
+		}
+	},
+	"production": {
+		"meta_title": "買Beat送混音(限時專案！) | YY Studio",
+		"content": {
+			"service_title": "服務項目-買Beat送混音",
+			"service_description": "購買Beat即可享受免費的專業混音和母帶製作服務（原價$5000/首）！只需到我們的BeatMarket平台選購YY Studio的Beat分軌，我們將免費為您進行混音及母帶後製處理，讓您的作品達到最佳品質！",
+			"price": "$(Beat價格)",
+			"modification": "混音部分包含兩次免費修改，超過另收修改費 $625/次。",
+			"prepare_title": "你需準備的有：",
+			"prepare_items1": "YY Studio購買的Beat分軌",
+			"prepare_items2": "主Vocal",
+			"prepare_items3": "和聲兩軌*",
+			"prepare_items4": "Double Vocal兩軌*",
+			"prepare_note": "(*為非必要，若沒有的話Vocal會稍微比較單薄，分軌建議檔案格式為：WAV 24bits 48kHz)",
+			"notice_title": "注意事項：",
+			"notices1": "確認合作後會先收取1/3訂金，最後成品預覽版確認沒問題後收取剩下2/3尾款後交付最終音檔。",
+			"notices2": "若有特殊檔案規格需求請先告知，若沒有的話預設成品規格為：MP3(192 kbit/s)、WAV(16 bit/44.1 kHz)。",
+			"notices3": "合作途中因不可歸責於本工作室之原因而終止合作，訂金不退還。",
+			"notices4": "以上標價不包含修拍子、調音準，若有上述需求請提前告知，將依複雜度收取額外費用 ($625/H)。",
+			"notices5": "交貨期間為收到素材後約5-7個工作天。",
+			"book_consultation": "立即前往BeatMarket選購"
+		}
+	},
+	"collaborate": {
+		"meta_title": "合作專區 | YY Studio",
+		"header": {
+			"list": "選單",
+			"home": "首頁",
+			"services": "服務項目",
+			"faq": "常見問題",
+			"beatmarket": "BeatMarket"
+		},
+		"form": {
+			"large_title": "合作專區",
+			"name": "姓名",
+			"email": "Email",
+			"subject": "主旨",
+			"message": "內容",
+			"submit_button": "送出"
+		},
+		"back_to_top": "TOP"
+	},
+	"faq": {
+		"meta_title": "常見問題FAQ | YY Studio",
+		"large_title": "常見問題FAQ",
+		"mixing": {
+			"title": "混音與母帶製作",
+			"q1": "要如何上傳歌曲分軌？",
+			"a1": "填完線上表單後，我們會跟你聯絡，並開一個雲端硬碟資料夾以用於傳輸檔案，之後可直接將歌曲分軌上傳於資料夾。",
+			"q2": "歌曲分軌有檔案格式限制嗎？",
+			"a2": "原則上只要是WAV音檔都可以，建議素材規格符合預設成品規格以上（16 bit/44.1 kHz），若低於此規格，最後成品也會與素材一致。建議素材格式(24 bit/48 kHz)",
+			"q3": "如果想指定成品規格的話可以嗎？",
+			"a3": "為符合上傳串流平台所需規格，預設成品規格為 MP3(192 kbit/s)、WAV(16 bit/44.1 kHz)，若需要更高的格式(如：24 bit/48kHz)，則須提前告知，且素材規格必須不低於指定規格。",
+			"q4": "為什麼一般錄音室的報價都要$30000/首以上，而你們只要$5000/首？會不會有品質疑慮？",
+			"a4": "現在市面上在做混音的單位有分「錄音室」以及「音樂工作室」，主要是由硬體設備的等級區分，「硬體設備」與「製作品質」不一定是正相關，YY Studio屬於「音樂工作室」的範疇，雖然沒有錄音室等級的硬體設備，但製作品質對於獨立創作的歌曲來說是足夠的，不過如果你很追求硬體設備品質且預算足夠的話，市面上的錄音室會是更好的選擇。"
+		},
+		"arranging": {
+			"title": "編曲",
+			"q1": "要如何上傳歌曲DEMO？",
+			"a1": "填完線上表單後，我們會跟你聯絡，並開一個雲端硬碟資料夾以用於傳輸檔案，之後可直接將歌曲DEMO上傳於資料夾。",
+			"q2": "YY Studio有特別擅長的曲風嗎？",
+			"a2": "R&B、Hiphop、POP。",
+			"q3": "最後成品可商業使用嗎？",
+			"a3": "編曲內容皆為全原創，不會使用有版權的Loop，因此可以放心使用。"
+		},
+		"demo_course": {
+			"title": "DEMO創作課程",
+			"q1": "可以線上上課嗎？",
+			"a1": "可以，你只需要準備一台可以視訊的電腦或手機，以及自己慣用的編曲軟體即可線上上課。",
+			"q2": "我還不會操作軟體，可以上線上課程嗎？",
+			"a2": "可以，線上上課時我會同時分享我的螢幕畫面，並一步一步教你如何操作軟體及軟體設定。",
+			"q3": "我還沒有音樂製作軟體怎麼辦？",
+			"a3": "可以在15分鐘免費諮詢的時候提出，我會再協助你。",
+			"q4": "如果約好上課時間前突然有事情怎麼辦？",
+			"a4": "如果上課前臨時有事，24HR以前提前請假可不算堂數，若在24HR以內臨時請假或曠課的話則算一堂課。"
+		}
+	},
+	"success": {
+		"meta_title": "付款成功！ | YY Studio",
+		"success_title": "購買成功",
+		"success_text": "感謝你的購買！下載鏈結已傳送至你的Email，請妥善保管。(若未收到下載鏈結請聯繫我們，留意垃圾信件！)",
+		"return_text": "返回Beat Market"
+	},
+	"beatmarket": {
+		"meta_title": "Beat Market | YY Studio",
+		"header": {
+			"list": "選單",
+			"home": "首頁",
+			"services": "服務項目",
+			"faq": "常見問題",
+			"beatmarket": "BeatMarket"
+		},
+		"large_title": "Beat Market",
+		"currency": "TWD",
+		"notice": {
+			"title": "購買須知 / NOTICE",
+			"notice-text1": "購買前請先閱讀購物須知，點擊\"去結帳\"即同意以下內容。",
+			"notice-text2": "此商品為虛擬商品(Digital Pruduct)，售出後不退貨。",
+			"notice-text3": "付款成功後，會收到包含分軌下載鏈結的Email，若未收到請至\"聯絡我們\"聯繫(留意\"垃圾信箱\")。",
+			"notice-text4": "現在購買本商品即贈送免費混音及母帶製作，錄好音後可至\"線上諮詢\"留下你的LINE ID，我們將與你聯絡！"
+		},
+		"form": {
+			"number": "訂單編號:",
+			"currency": "幣值:",
+			"amount": "金額:",
+			"description": "曲名:",
+			"Email": "電子郵件:",
+			"checkout": "去結帳"
+		},
+		"FlowerInVase": {
+			"name": "FlowerInVase",
+			"file_name": "240822_FlowerInVase_Sample.mp3",
+			"price_tag": "NT$3000",
+			"price_value": "3000",
+			"type1": "R&B/Soul",
+			"type2": "",
+			"type3": "",
+			"mood1": "Romantic",
+			"mood2": "Calm",
+			"mood3": "Bright",
+			"bpm": "68"
+		},
+		"MoonLit": {
+			"name": "MoonLit",
+			"file_name": "240823_MoonLit_Sample.mp3",
+			"price_tag": "NT$3000",
+			"price_value": "3000",
+			"type1": "Hip-Hop",
+			"type2": "Boombap",
+			"type3": "",
+			"mood1": "Calm",
+			"mood2": "Sad",
+			"mood3": "Romantic",
+			"bpm": "75"
+		},
+		"BoogieDelight": {
+			"name": "BoogieDelight",
+			"file_name": "240824_BoogieDelight_Sample.mp3",
+			"price_tag": "NT$3000",
+			"price_value": "3000",
+			"type1": "Funk",
+			"type2": "",
+			"type3": "",
+			"mood1": "Inspirational",
+			"mood2": "Happy",
+			"mood3": "Funky",
+			"bpm": "110"
+		},
+		"RazorRush": {
+			"name": "RazorRush",
+			"file_name": "240828_RazorRush_Sample.mp3",
+			"price_tag": "NT$3000",
+			"price_value": "3000",
+			"type1": "Hip-Hop",
+			"type2": "Drill",
+			"type3": "",
+			"mood1": "Angry",
+			"mood2": "Dark",
+			"mood3": "Dramatic",
+			"bpm": "142"
+		}
+	}
+}

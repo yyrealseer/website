@@ -1,0 +1,111 @@
+<footer id="footer">
+    <div class="footer-container">
+        <div class="footer-colume">
+            <a href="/">
+                <img id="LOGO3" src="./ICON/LOGO_White.png" style="width: 100px;"></a>
+        </div>
+        <div class="footer-colume">
+            <a href="mixing"><%= t('header.service') %></a>
+            <a href="FAQ"><%= t('header.faq') %></a>
+            <a href="https://forms.gle/ogop721i5NfyJHmV8"><%= t('header.consultation') %></a>
+        </div>
+        <div class="footer-colume">
+            <a href="https://www.youtube.com/channel/UCQlo_Jhps7iB7N-3UmZVfDg"><%= t('footer.youtube') %></a>
+            <a href="collaborate"><%= t('footer.collaborate') %></a>
+        </div>
+    </div>
+    <hr>
+    <div class="footer-container">
+        <div class="footer-row">
+            <a href="https://www.instagram.com/yyrealseer/">
+                <i class="fa-brands fa-instagram fa-xl"></i>
+            </a>
+            <a href="https://www.youtube.com/channel/UCQlo_Jhps7iB7N-3UmZVfDg">
+                <i class="fa-brands fa-youtube fa-xl"></i>
+            </a>
+            <a href="mailto:xavier890930@gmail.com">
+                <i class="fa-regular fa-envelope fa-xl"></i>
+            </a>
+            <a href="https://open.spotify.com/artist/0jh8SMRgHQ1W5pkzFkLgef?si=PScDY77TQa6lsuWHaXGETQ&nd=1">
+                <i class="fa-brands fa-spotify fa-xl"></i>
+            </a>
+            <a href="https://music.apple.com/tw/artist/yy-%E6%9D%8E%E5%AE%87%E6%8F%9A/1591668266">
+                <i class="fa-brands fa-apple fa-xl"></i>
+            </a>
+            <a href="https://soundcloud.com/yyrealseer">
+                <i class="fa-brands fa-soundcloud fa-xl"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<style>
+    footer {
+        width: 100%;
+        background-color: #171717;
+        padding: 4% 0;
+    }
+
+    .footer-container {
+        color: #ffffff;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        height: 100%;
+        padding: 0% 7%;
+    }
+
+    .footer-colume {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 50px;
+    }
+
+    footer hr {
+        width: 80%;
+        border-width: 1px;
+        border-color: #787878;
+        margin: 50px auto;
+    }
+
+    .footer-row a {
+        padding: 0 15px;
+        text-decoration: none;
+    }
+
+
+    footer a {
+        color: #ffffff;
+        font-size: 16px;
+        line-height: 40px;
+        text-decoration: none;
+    }
+
+    @media (max-width: 767px) {
+
+        footer {
+            width: 100%;
+            padding: 4% 0 !important;
+        }
+
+        .footer-container {
+            padding: 0 !important;
+        }
+
+        .footer-colume {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 13px 0px !important;
+        }
+
+        .footer-row {
+            padding: 0 22%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+    }
+</style>

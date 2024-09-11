@@ -1,0 +1,314 @@
+{
+	"index": {
+		"meta_title": "YY STUDIO | You Create, I Produce",
+		"meta_description": "I am a freelance music producer with 8 years of experience in music creation, offering mixing, arrangement, and songwriting services. If you are a creator full of ideas but lack production skills, I would be honored to assist you in completing your music works and showcasing them on digital platforms. As a mixing engineer for an independent music label, I have released several tracks on digital platforms. This experience has given me a deep understanding of the importance of music creation and a passion for the production process.",
+		"banner_title": "You Create, I Produce",
+		"about_music_title": "About the Journey of Music Creation",
+		"about_music_content": "The path to becoming a music creator is often lonely and helpless. After pouring your heart into writing lyrics and composing, the massive technical workload can be overwhelming, leading to endless confusion. This is the sentiment of many music creators. How can we stop this infinite loop? Let's start step by step!",
+		"steps": {
+			"step1_title": "Step 1: Create",
+			"step1_content": "A song is a carrier of emotions. Download your emotions into lyrics and melodies to create compelling works. This step is the soul of the music, and you, as a creator, are no stranger to it.",
+			"step2_title": "Step 2: Produce",
+			"step2_content": "Includes arrangement, mixing, and mastering, elevating your lyrics and composition into a high-quality music piece. The technical threshold is high and time-consuming, making it difficult for a one-person team to accomplish, which limits the quality of the work. YY Studio is here to share the technical work so that your good works don't lose their potential due to poor production quality.",
+			"step3_title": "Step 3: Digital Distribution",
+			"step3_content": "Publish your work on digital platforms (Spotify, KKBOX, etc.) through distributors, accumulate listeners, and earn income. At this point, focus on managing your social media and fully pursue your music dreams!"
+		},
+		"banner2_content": "YY Studio is your toolbox!",
+		"start_now_title": "Start Now",
+		"start_now_content": "As an independent creator, I believe creation is the most important thing. Let me help you solve production problems so you can focus on music creation. With 8 years of experience in music creation, I can provide professional mixing and arrangement services to enhance your works' appeal and make your music stand out on digital platforms. Collaborate with me, and let your music fulfill your dreams! Start a new chapter in your music journey!",
+		"about": {
+			"about_me": "About Me",
+			"profile_description": "I am a freelance music producer with 8 years of experience in music creation, offering mixing, arrangement, and songwriting services. If you are a creator full of ideas but lack production skills, I would be honored to assist you in completing your music works and showcasing them on digital platforms. As a mixing engineer for an independent music label, I have released several tracks on digital platforms. This experience has given me a deep understanding of the importance of music creation and a passion for the production process.",
+			"experience_title": "Professional Background",
+			"experience_2015": " - 2015:",
+			"experience_2015_p2": "Started music creation.",
+			"experience_2016": " - 2016:",
+			"experience_2016_p2": "Released the first song.",
+			"experience_2019": " - 2019:",
+			"experience_2019_p2": "Led a team to produce the graduation song for Xindian High School, 'Under the Tower'.",
+			"experience_2019_p2_2": "Arranged the charity song 'Love All the Way', released by the Taiwan Ankylosing Spondylitis Care Association and Taiwan Rheumatoid Arthritis Association.",
+			"experience_2021": " - 2021:",
+			"experience_2021_p2": "Served as the mixing engineer and creator of the independent label 'Jailbirds'. Collaborated with 'ChynaTown Digital' to release works on digital platforms."
+		},
+		"services": {
+			"production_content": "Purchase a beat and enjoy free professional mixing and mastering services (original price $5000 per track)! Just go to our BeatMarket platform and choose a track from YY Studio; we will provide free mixing and mastering services to ensure your work reaches the highest quality!",
+			"production_price": "USD (Beat price)",
+			"mixing_content": "We provide professional mixing services, adjusting, balancing, and adding effects to the tracks to ensure the music is clear, balanced, and dynamic. Additionally, we offer mastering services to adjust and optimize the final mix, ensuring high-quality output in various playback environments.",
+			"mixing_price": "USD$155/song",
+			"mixing_description": "Includes two free revisions, with an additional fee of $625 per revision thereafter.",
+			"arranging_content": "We arrange music based on the original demo or lyrics provided by the client. This includes selecting the appropriate sounds, instruments, and arrangement styles to create a complete musical work tailored to the client's needs.",
+			"arranging_price": "USD$155/song",
+			"arranging_description": "Includes two free revisions, with an additional fee of $625 per revision thereafter.",
+			"course_content": "Helping those interested in music to become creators. In this course, I will share composition techniques, conceptual methods, and production processes, guiding students step-by-step to complete their music works.",
+			"course_price": "USD$90/4 lessons",
+			"course_description": "One lesson per week, online teaching (in English), with customizable content according to your needs.",
+			"service_btn": "MORE"
+		},
+		"compilationcontent_mixing": "Mixing Track Compilation",
+		"compilationcontent_arranging": "Arrangement Track Compilation",
+		"compilationcontent_songwrighting": "Songwriting Track Compilation"
+	},
+	"service": {
+		"title": "Services",
+		"beat_special": "Buy Beat, Get Free Mixing (Limited Offer!)",
+		"mixing": "Mixing & Mastering",
+		"arranging": "Arrangement",
+		"demo_course": "Songwriting/Producing Tutorial"
+	},
+	"header": {
+		"home": "Back To Home",
+		"list": "Menu",
+		"work": "Compilation",
+		"service": "Services",
+		"about": "About Me",
+		"beat_market": "BeatMarket",
+		"consultation": "Online Consultation",
+		"faq": "FAQ"
+	},
+	"footer": {
+		"collaborate": "Collaborate",
+		"youtube": "Youtube Channel"
+	},
+	"arrange": {
+		"meta_title": "Arrangement | YY Studio",
+		"content": {
+			"service_title": "Services - Arrangement",
+			"service_description": "We arrange music based on the original demo or lyrics provided by the client. This includes selecting the appropriate sounds, instruments, and arrangement styles to create a complete musical work tailored to the client's needs.",
+			"price": "USD$155/song",
+			"modification": "Includes two free revisions, with an additional fee of $625 per revision thereafter.",
+			"prepare_title": "You Need to Prepare:",
+			"prepare_items": {
+				"prepare_items1": "A DEMO (preferably with vocals)",
+				"prepare_items2": "Preferred style, instrument configuration, and references (if available).",
+				"prepare_items3": "If you want to keep the original chord progression or sections, please inform us in advance."
+			},
+			"notice_title": "Notice:",
+			"notices": {
+				"notices1": "After confirming the cooperation, a 1/3 deposit will be charged first, and the remaining 2/3 balance will be collected after the final preview version is confirmed to be OK.",
+				"notices2": "If you have special file format requirements, please inform us in advance. Otherwise, the default product format is MP3 (192 kbit/s), WAV (16 bit/44.1 kHz).",
+				"notices3": "If the cooperation is terminated for reasons not attributable to the studio, the deposit will not be refunded.",
+				"notices4": "The delivery period is about 5-7 working days after receiving the materials."
+			},
+			"book_consultation": "Book a 15-minute Free Online Consultation"
+		}
+	},
+	"mixing": {
+		"meta_title": "Mixing & Mastering | YY Studio",
+		"content": {
+			"service_title": "Services - Mixing & Mastering",
+			"service_description": "We provide professional mixing services, adjusting, balancing, and adding effects to the tracks to ensure the music is clear, balanced, and dynamic. Additionally, we offer mastering services to adjust and optimize the final mix, ensuring high-quality output in various playback environments.",
+			"price": "USD$155/song",
+			"modification": "Includes two free revisions, with an additional fee of $625 per revision thereafter.",
+			"prepare_title": "You Need to Prepare:",
+			"prepare_items": {
+				"prepare_items1": "Main Vocal",
+				"prepare_items2": "Instrumental Stems",
+				"prepare_items3": "Two Harmony Vocals*",
+				"prepare_items4": "Two Double Vocals*"
+			},
+			"prepare_note": "(* means unnecessary; if not available, the vocal will be slightly thin. Recommended file format for stems: WAV 24bits 48kHz)",
+			"notice_title": "Notice:",
+			"notices": {
+				"notices1": "After confirming the cooperation, a 1/3 deposit will be charged first, and the remaining 2/3 balance will be collected after the final preview version is confirmed to be OK.",
+				"notices2": "If you have special file format requirements, please inform us in advance. Otherwise, the default product format is MP3 (192 kbit/s), WAV (16 bit/44.1 kHz).",
+				"notices3": "If the cooperation is terminated for reasons not attributable to the studio, the deposit will not be refunded.",
+				"notices4": "The above price does not include timing correction or pitch tuning. If such needs are required, please inform us in advance, and additional fees will be charged depending on the complexity ($625/H).",
+				"notices5": "The delivery period is about 5-7 working days after receiving the materials."
+			},
+			"book_consultation": "Book a 15-minute Free Online Consultation"
+		}
+	},
+	"course": {
+		"meta_title": "Songwriting/Producing Tutorial | YY Studio",
+		"content": {
+			"service_title": "Services - Songwriting/Producing Tutorial",
+			"service_description": "Helping those interested in music to become creators. In this course, I will share composition techniques, conceptual methods, and production processes, guiding students step-by-step to complete their music works.",
+			"price": "USD$90/4 lessons, book a 15-minute free online consultation first",
+			"title": "Course Outline (Content can be customized according to individual needs):",
+			"lyric_composition": "Songwriting",
+			"topic1": "Common Chord Progressions in Pop Songs",
+			"topic2": "Logic of Lyrics and Composition",
+			"topic3": "Basic Pop Music Theory",
+			"topic4": "Harmony Writing",
+			"computer_arrangement": "Arrangement With DAW",
+			"software_topic1": "DAW Software Operation",
+			"software_topic2": "Common Instrumentation Techniques in Pop Songs",
+			"software_topic3": "Using Virtual Instruments",
+			"software_topic4": "Recording External Instruments like Guitar, Bass, etc.",
+			"personal_demo": "Personal DEMO Production",
+			"demo_topic1": "Basic Vocal Processing",
+			"demo_topic2": "Creating a Sense of Space",
+			"demo_topic3": "Using Various Plugins (VST Plugins)",
+			"demo_topic4": "Basic Mixing (Advanced)",
+			"demo_topic5": "Sound Frequency and Dynamics (Advanced)",
+			"notice": {
+				"title": "Notice:",
+				"item1": "Due to space constraints, only online or offline teaching (limited to Taichung City) is currently available. It may move to the studio in the future, so stay tuned.",
+				"item2": "The DAW used in the class is Cubase Pro 12. The operation is similar to others, and you can also use your preferred software.",
+				"item3": "1 lesson/week; if you have special needs, you can adjust them accordingly."
+			},
+			"book_consultation": "Book a 15-minute Free Online Consultation"
+		}
+	},
+	"production": {
+		"meta_title": "Buy Beat, Get Free Mixing (Limited Offer!) | YY Studio",
+		"content": {
+			"service_title": "Services - Buy Beat, Get Free Mixing",
+			"service_description": "Purchase a beat and enjoy free professional mixing and mastering services (original price $5000 per track)! Just go to our BeatMarket platform and choose a track from YY Studio; we will provide free mixing and mastering services to ensure your work reaches the highest quality!",
+			"price": "USD (Beat price)",
+			"modification": "Includes two free revisions for mixing, with an additional fee of $625 per revision thereafter.",
+			"prepare_title": "You Need to Prepare:",
+			"prepare_items1": "Beat Stems Purchased from YY Studio",
+			"prepare_items2": "Main Vocal",
+			"prepare_items3": "Two Harmony Vocals*",
+			"prepare_items4": "Two Double Vocals*",
+			"prepare_note": "(* means unnecessary; if not available, the vocal will be slightly thin. Recommended file format for stems: WAV 24bits 48kHz)",
+			"notice_title": "Notice:",
+			"notices1": "After confirming the cooperation, a 1/3 deposit will be charged first, and the remaining 2/3 balance will be collected after the final preview version is confirmed to be OK.",
+			"notices2": "If you have special file format requirements, please inform us in advance. Otherwise, the default product format is MP3 (192 kbit/s), WAV (16 bit/44.1 kHz).",
+			"notices3": "If the cooperation is terminated for reasons not attributable to the studio, the deposit will not be refunded.",
+			"notices4": "The above price does not include timing correction or pitch tuning. If such needs are required, please inform us in advance, and additional fees will be charged depending on the complexity ($625/H).",
+			"notices5": "The delivery period is about 5-7 working days after receiving the materials.",
+			"book_consultation": "Go to BeatMarket to Purchase"
+		}
+	},
+	"collaborate": {
+		"meta_title": "Collaborate | YY Studio",
+		"header": {
+			"list": "Menu",
+			"home": "Home",
+			"services": "Services",
+			"faq": "FAQ",
+			"beatmarket": "BeatMarket"
+		},
+		"form": {
+			"large_title": "Collaborate",
+			"name": "Name",
+			"email": "Email",
+			"subject": "Subject",
+			"message": "Message",
+			"submit_button": "Submit"
+		},
+		"back_to_top": "TOP"
+	},
+	"faq": {
+		"meta_title": "FAQ | YY Studio",
+		"large_title": "FAQ",
+		"mixing": {
+			"title": "Mixing & Mastering",
+			"q1": "How do I upload song stems?",
+			"a1": "After filling out the online form, we will contact you and create a cloud drive folder for file transfer. You can upload your song stems directly to the folder.",
+			"q2": "Are there any file format restrictions for song stems?",
+			"a2": "Generally, any WAV file is acceptable. It is recommended that the material specifications meet or exceed the default product specifications (16 bit/44.1 kHz). If below this specification, the final product will match the material. Suggested material format is 24 bit/48 kHz.",
+			"q3": "Can I specify the product specifications?",
+			"a3": "To meet the specifications required for streaming platforms, the default product specifications are MP3 (192 kbit/s), WAV (16 bit/44.1 kHz). If higher formats (such as 24 bit/48kHz) are needed, please notify in advance, and the material must meet the specified specifications.",
+			"q4": "Why does a typical studio charge over US$1,000 per track, but you only charge US$155 per track? Are there quality concerns?",
+			"a4": "Currently, mixing entities are divided into 'recording studios' and 'music studios,' mainly differentiated by hardware equipment levels. 'Hardware equipment' and 'production quality' are not necessarily directly related. YY Studio falls under the 'music studio' category. Although we do not have the hardware quality of a recording studio, the production quality is sufficient for independent music tracks. However, if you are pursuing high hardware quality and have a sufficient budget, a recording studio would be a better choice."
+		},
+		"arranging": {
+			"title": "Arrangement",
+			"q1": "How do I upload a song demo?",
+			"a1": "After filling out the online form, we will contact you and create a cloud drive folder for file transfer. You can upload your song demo directly to the folder.",
+			"q2": "Does YY Studio specialize in any particular music genre?",
+			"a2": "R&B, Hiphop, POP.",
+			"q3": "Can the final product be used commercially?",
+			"a3": "All arrangements are original and do not use copyrighted loops, so they can be used with confidence."
+		},
+		"demo_course": {
+			"title": "Songwriting/Producing Tutorial",
+			"q1": "Can I take lessons online?",
+			"a1": "Yes, you only need a computer or phone capable of video conferencing and your preferred DAW software to take lessons online.",
+			"q2": "May I still take online courses if I don't know how to operate the software yet?",
+			"a2": "Yes, during online lessons, I will share my screen and guide you step-by-step on how to operate and set up the software.",
+			"q3": "What if I don't have music production software?",
+			"a3": "You can mention it during the 15-minute free consultation, and I will assist you.",
+			"q4": "What if something comes up before the scheduled class time?",
+			"a4": "If something comes up before the class, notifying us 24 hours in advance will not count as a lesson. If you cancel less than 24 hours in advance or miss the class without notice, it will count as a lesson."
+		}
+	},
+	"success": {
+		"meta_title": "Payment Successful! | YY Studio",
+		"success_title": "Purchase Successful",
+		"success_text": "Thank you for your purchase! The download link has been sent to your email. Please keep it safe. (If you do not receive the download link, please contact us and check the spam folder!)",
+		"return_text": "Return to Beat Market"
+	},
+	"beatmarket": {
+		"meta_title": "Beat Market | YY Studio",
+		"header": {
+			"list": "Menu",
+			"home": "Home",
+			"services": "Services",
+			"faq": "FAQ",
+			"beatmarket": "BeatMarket"
+		},
+		"large_title": "Beat Market",
+		"currency": "USD",
+		"notice": {
+			"title": "/ NOTICE",
+			"notice-text1": "Please read the purchase notice before buying. Clicking 'Checkout' means you agree to the following content.",
+			"notice-text2": "This product is a digital product; no refunds after purchase.",
+			"notice-text3": "After successful payment, an email containing the download link will be sent. If not received, please contact us (check the spam folder).",
+			"notice-text4": "Purchase this product now and get free mixing and mastering. After recording, you can leave your LINE ID on 'Online Consultation,' and we will contact you!"
+		},
+		"form": {
+			"number": "Order Number:",
+			"currency": "Currency:",
+			"amount": "Amount:",
+			"description": "Track Name:",
+			"Email": "Email:",
+			"checkout": "Checkout"
+		},
+		"FlowerInVase": {
+			"name": "FlowerInVase",
+			"file_name": "240822_FlowerInVase_Sample.mp3",
+			"price_tag": "US$100",
+			"price_value": "100",
+			"type1": "R&B/Soul",
+			"type2": "",
+			"type3": "",
+			"mood1": "Romantic",
+			"mood2": "Calm",
+			"mood3": "Bright",
+			"bpm": "68"
+		},
+		"MoonLit": {
+			"name": "MoonLit",
+			"file_name": "240823_MoonLit_Sample.mp3",
+			"price_tag": "US$100",
+			"price_value": "100",
+			"type1": "Hip-Hop",
+			"type2": "Boombap",
+			"type3": "",
+			"mood1": "Calm",
+			"mood2": "Sad",
+			"mood3": "Romantic",
+			"bpm": "75"
+		},
+		"BoogieDelight": {
+			"name": "BoogieDelight",
+			"file_name": "240824_BoogieDelight_Sample.mp3",
+			"price_tag": "US$100",
+			"price_value": "100",
+			"type1": "Funk",
+			"type2": "",
+			"type3": "",
+			"mood1": "Inspirational",
+			"mood2": "Happy",
+			"mood3": "Funky",
+			"bpm": "110"
+		},
+		"RazorRush": {
+			"name": "RazorRush",
+			"file_name": "240828_RazorRush_Sample.mp3",
+			"price_tag": "US$100",
+			"price_value": "100",
+			"type1": "Hip-Hop",
+			"type2": "Drill",
+			"type3": "",
+			"mood1": "Angry",
+			"mood2": "Dark",
+			"mood3": "Dramatic",
+			"bpm": "142"
+		}
+	}
+}

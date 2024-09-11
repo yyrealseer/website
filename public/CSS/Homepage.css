@@ -1,0 +1,409 @@
+/*--------------------基本設定--------------------*/
+
+* {
+    font-family: 'Noto Sans TC', 'Noto Serif TC', 'Noto Sans', '微軟正黑體';
+    scroll-behavior: smooth;
+    color: var(--text-color);
+    --main-color: #252937;
+    --sub-color: #ffdf65;
+    --sub-2-color: #f9eddb;
+    --text-color: #fdfdfd;
+    --text-color-sub: #222222;
+    --warn-color: #d50000;
+    --LOGO-height: 100px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--main-color);
+}
+
+h {
+    font-family: 'Noto Serif TC', 'Noto Sans TC', '微軟正黑體';
+    font-size: 40px;
+    font-weight: bolder;
+    text-align: center;
+    line-height: normal;
+}
+
+h2 {
+    font-family: 'Noto Serif TC', 'Noto Sans TC', '微軟正黑體';
+    font-size: 60px;
+}
+
+p {
+    font-family: 'Noto Sans TC', 'Noto Serif TC', '微軟正黑體';
+    font-size: 20px;
+    font-weight: 400;
+    text-align: left;
+    line-height: normal;
+}
+
+a {
+    color: var(--warn-color);
+    font-size: 20px;
+}
+
+button {
+    font-family: 'Noto Sans TC', 'Noto Serif TC', '微軟正黑體';
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+/*頁內文字*/
+
+.box-title {
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 3%;
+    font-size: 60px;
+    color: var(--sub-color);
+}
+
+.ROW_div h {
+    text-align: left;
+    font-size: 34px;
+}
+
+.ROW_div p {
+    padding: 0 24px;
+    text-align: left;
+    font-size: 18px
+}
+
+.BOX div {
+    justify-content: center;
+}
+
+/*--------------------Header--------------------*/
+
+#topheader {
+    height: var(--LOGO-height);
+    width: 100%;
+    padding: 9px 0px;
+    position: absolute;
+    z-index: 1;
+}
+
+.headroom {
+    will-change: trasform;
+    transition: transform 330ms cubic-bezier(0.78, 0.11, 0.46, 1.01);
+    transform: rotate(90deg);
+}
+
+.headroom--top {
+    transform: translateX(0%);
+}
+
+.headroom--notTop {
+    transform: translateX(0%);
+}
+
+#LOGOtop {
+    position: absolute;
+    left: calc((100vw - var(--LOGO-height)) / 2);
+}
+
+
+
+#橫向分頁 a {
+    font-size: 24px;
+    color: #ffffff;
+    padding-left: 3%;
+    margin: auto 0;
+    text-decoration: none;
+}
+
+
+
+
+
+
+/*--------------------首頁--------------------*/
+
+.BANNER {
+    background: url(/img/BANNER_1_colorgraded.png);
+    background-size: 100vw auto;
+    background-attachment: fixed;
+    background-color: #ffffff00;
+}
+
+
+#BANNER-title {
+    font-size: 130px;
+    font-family: 'Noto Serif TC', 'Noto Sans TC', '微軟正黑體';
+    text-align: center;
+    font-weight: bold;
+    color: #ffe800;
+    display: block;
+    padding: 20% 0;
+    width: 80%;
+    margin: auto
+}
+
+#BANNER2 {
+    background: url(/img/Album.gif);
+    background-size: 100vw auto;
+    background-position: center;
+}
+
+#BANNER2-content {
+    font-size: 70px;
+    font-family: 'Noto Serif TC', 'Noto Sans TC', '微軟正黑體';
+    text-align: center;
+    font-weight: bold;
+    color: var(--text-color-sub);
+}
+
+.BOX {
+    background-color: var(--main-color);
+    padding: 50px 6%;
+}
+
+.BOX-colume {
+    padding: 0 12%;
+}
+
+.ROW_2 {
+    display: flex;
+    justify-content: center;
+}
+
+.ROW_2-rev {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.ROW_3 {
+    display: flex;
+    margin: 0 12%;
+    display: flex;
+    margin: 0 12%;
+    justify-content: center;
+}
+
+.ROW_2>.ROW_div {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.ROW_2-rev>.ROW_div {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.ROW-div-content {
+    width: 75%;
+    margin: auto;
+}
+
+.ROW-container {
+    padding: 60px 0;
+}
+
+/*--------------------關於我--------------------*/
+
+#about {
+    background-color: var(--main-color);
+}
+
+#about span {
+    display: flex;
+    justify-content: center;
+    padding: 10%;
+    height: fit-content;
+}
+
+.about-container {
+    width: 70%;
+    margin: auto;
+    padding: 0 6%;
+}
+
+#profile-photo {
+    width: 30vw;
+}
+
+#about p1 {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 65px;
+    font-style: italic;
+}
+
+#about p2 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 12px;
+}
+
+#experience {
+    background: url(/img/Studio.png);
+    background-size: cover;
+    height: fit-content;
+}
+
+#experience div {
+    background-color: #ffffffa2;
+    width: 55%;
+    padding: 3% 6%;
+    border-radius: 35px;
+}
+
+#experience h,
+p1,
+p2 {
+    color: #000000;
+}
+
+#spotify {
+    border-radius: 35px;
+    position: relative;
+    width: 35%;
+    height: auto;
+    left: 5%;
+}
+
+/*--------------------服務內容--------------------*/
+#serverce {
+    background-color: var(--main-color);
+    padding: 5%;
+    height: 630px;
+}
+
+.serverce-btn {
+    background-color: var(--sub-2-color);
+    width: 200px;
+    height: 50px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 65px;
+    margin: 10px 0;
+    color: var(--text-color-sub);
+    font-weight: 700;
+}
+
+/*內文*/
+
+.serverse-box {
+    margin: auto;
+    padding: 2% 8%;
+}
+
+.serverce-content,
+.serverce-content-closed {
+    background-color: var(--sub-2-color);
+    border-radius: 35px;
+    padding: 5% 10%;
+    width: 50%;
+    transition: transform 330ms cubic-bezier(0.78, 0.11, 0.46, 1.01);
+    transform: scaleY(1);
+    position: absolute;
+    left: 15vw;
+}
+
+.serverce-content-closed {
+    transition: transform 330ms cubic-bezier(0.78, 0.11, 0.46, 1.01);
+    transform: scaleY(0);
+}
+
+.serverce-content p,
+.serverce-content-closed p {
+    color: var(--text-color-sub);
+    font-weight: 700;
+}
+
+
+
+/*--------------------作品集--------------------*/
+.swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: var(--main-color);
+    padding: 5%;
+    --swiper-navigation-color: var(--sub-color);
+    /* 单独设置按钮颜色 */
+    --swiper-theme-color: var(--sub-color);
+    --swiper-navigation-size: 160px;
+    /* 设置按钮大小 */
+    --swiper-pagination-bottom: 50px;
+    /* 设置導覽間距 */
+    --swiper-navigation-sides-offset: 21%;
+    /* 设置按鈕間距 */
+
+}
+
+#track-compilation {
+    padding: 110px 0 50px 0;
+}
+
+.compilationcontent {
+    height: 400px !important;
+}
+
+.audiomack {
+    position: absolute;
+    height: 400px;
+    width: 100%;
+    bottom: 0px;
+    z-index: -2;
+}
+
+.swiper-button-prev {
+    left: 400px
+}
+
+
+.compilationcontent-text {
+    color: var(--sub-color);
+    display: block;
+    position: relative;
+    bottom: 140px;
+    font-size: 79px;
+    text-shadow: 3px 3px 8px #00000080;
+}
+
+
+/*--------------------文章專區--------------------*/
+#blog {
+    padding: 6% 8%;
+}
+
+#blog-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#new-post {
+    margin: 10px;
+    width: 600px;
+    height: 600px;
+}
+
+#latest-post {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.blog-latest {
+    height: 80%;
+    width: 25%;
+    margin: auto;
+}
+
+.latest-post-3 {
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+}

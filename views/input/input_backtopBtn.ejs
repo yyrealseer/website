@@ -1,0 +1,26 @@
+<button id="backtop" style="font-family:'Noto sans';z-index: 100;padding: 8px 18px;">
+    TOP
+</button>
+
+<style>
+    #backtop {
+        position: fixed;
+        background-color: var(--warn-color);
+        color: aliceblue;
+        bottom: 5%;
+        right: 5%;
+        border-radius: 23px;
+        font-size: 24px;
+        border: 1px #333333;
+        box-shadow: 2px 2px 6px 0px #000000ba;
+    }
+</style>
+
+<script>
+    const backtop = document.getElementById("backtop");
+
+    // 為backtop按鈕添加點擊事件監聽器
+    backtop.addEventListener("click", function () {
+        window.scrollTo(0, 0);
+    });
+</script>

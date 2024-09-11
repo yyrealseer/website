@@ -1,0 +1,42 @@
+<select id="language-select" onchange="changeLanguage()">
+    <option value="zh" <%=(currentLocale==='zh' ) ? 'selected' : '' %>>中文</option>
+    <option value="en" <%=(currentLocale==='en' ) ? 'selected' : '' %>>English</option>
+</select>
+
+<style>
+    #language-select {
+        position: absolute;
+        top: 5%;
+        left: 2%;
+        z-index: 3;
+        color: var(--text-color);
+        background-color: #f0f8ff00;
+        font-size: 20px;
+        border-width: 1px;
+        border-color: #fffafa;
+        border-radius: 5px;
+    }
+
+    #language-select option {
+        font-size: 15px;
+        color: #333;
+        line-height: 5px;
+    }
+
+    @media (max-width: 767px) {
+        #language-select {
+            right: 2%;
+            left: auto;
+            top: 2%;
+        }
+    }
+</style>
+
+<script>
+    // 當用戶選擇語言時調用此函數
+    function changeLanguage() {
+        const selectedLanguage = document.getElementById('language-select').value;
+        // 將選擇的語言發送到伺服器
+        window.location.href = `/change-language/${selectedLanguage}`;
+    }
+</script>

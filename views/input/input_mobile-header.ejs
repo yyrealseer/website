@@ -1,0 +1,107 @@
+<style>
+    #mobile-header {
+        display: none;
+    }
+
+    @media (max-width: 767px) {
+        #topheader {
+            display: none;
+        }
+
+        #mobile-header {
+            display: block;
+            height: var(--LOGO-height);
+            width: 0;
+            padding: 9px 0px;
+            z-index: 2;
+            position: fixed;
+            top: 12%;
+        }
+
+        #header-icon {
+            position: fixed;
+            bottom: 2%;
+            z-index: 2;
+            left: 4%;
+        }
+
+        #mobile-list-closed {
+            font-size: 26px;
+            line-height: 51px;
+            width: auto;
+            position: fixed;
+            background-color: #0d0d0de0;
+            height: 100%;
+            top: 0;
+            padding: 9% 10%;
+            left: 0;
+            transform: translate(-100%, 0%);
+            transition: transform 330ms cubic-bezier(0.78, 0.11, 0.46, 1.01);
+        }
+
+        #mobile-list {
+            font-size: 26px;
+        line-height: 51px;
+        width: auto;
+        position: fixed;
+        background-color: #0d0d0de0;
+        height: 100%;
+        top: 0;
+        padding: 9% 10%;
+        left: 0;
+        transform: translate(0%, 0%);
+        transition: transform 330ms cubic-bezier(0.78, 0.11, 0.46, 1.01);
+        }
+
+        .list {
+            line-height: normal;
+            font-size: 20px;
+            color: #FFFFFF;
+            text-decoration-line: none;
+        }
+    }
+</style>
+
+<header id="mobile-header">
+    <img id="header-icon" style="height:50px;" src="/ICON/burber.png">
+    <div class="mobile-header-container" id="mobile-header-container-closed">
+        <div id="mobile-list-closed">
+            <a class="list" href="/">
+                <%= t('header.home') %>
+            </a><br>
+            <a class="list" href="/mixing">
+                <%= t('header.service') %>
+            </a><br>
+            <a class="list" href="/FAQ">
+                <%= t('header.faq') %>
+            </a><br>
+            <a class="list" href="https://forms.gle/ogop721i5NfyJHmV8">
+                <%= t('header.consultation') %>
+            </a><br>
+            <a class="list" href="/BeatMarket">
+                <%= t('header.beat_market') %>
+            </a>
+        </div>
+    </div>
+</header>
+
+<script>
+    let btn = document.getElementById('header-icon');
+    let list = document.getElementById('mobile-list-closed');
+
+    let flag = false
+    btn.onclick = function () {
+        flag = !flag;
+        if (flag) {
+            list.id = 'mobile-list';
+        }
+        else {
+            list.id = 'mobile-list-closed';
+        }
+    };
+
+    addEventListener('scroll', function () {
+        list.id = 'mobile-list-closed';
+        flag = false;
+    });
+</script>

@@ -1,0 +1,232 @@
+@media (max-width: 767px) {
+
+    /*--------------------基本設定--------------------*/
+    h {
+        font-size: 34px;
+    }
+
+    h2 {
+        font-size: 60px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    a {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+
+    #backtop {
+        bottom: 3%;
+        right: 5%;
+        font-size: 18px;
+        border: 1px #333333;
+        box-shadow: 2px 2px 6px 0px #000000ba;
+    }
+
+    /*--------------------Mobile Header--------------------*/
+
+    #topheader {
+        display: none;
+    }
+
+    #header-icon {
+        position: fixed;
+        bottom: 2%;
+        z-index: 2;
+        left: 4%;
+    }
+
+    #mobile-list-closed {
+        font-size: 26px;
+        line-height: 51px;
+        width: auto;
+        position: fixed;
+        background-color: #0d0d0de0;
+        height: 100%;
+        top: 0;
+        padding: 9% 10%;
+        left: 0;
+        transform: translateX(-165px);
+        transition: transform 330ms cubic-bezier(0.78, 0.11, 0.46, 1.01);
+    }
+
+    #mobile-list {
+        display: block;
+        font-size: 26px;
+        line-height: 51px;
+        width: auto;
+        position: fixed;
+        background-color: #0d0d0de0;
+        height: 100%;
+        top: 0;
+        padding: 9% 10%;
+        left: 0;
+        transform: translateX(0px);
+        transition: transform 330ms cubic-bezier(0.78, 0.11, 0.46, 1.01);
+    }
+
+
+
+    .list {
+        line-height: normal;
+        font-size: 20px;
+        color: #FFFFFF;
+        text-decoration-line: none;
+    }
+
+    /*--------------------首頁--------------------*/
+
+    #BANNER-title {
+        padding: 15% 0%;
+        font-size: 40px;
+        width: 60%;
+    }
+
+    .BOX {
+        padding: 0 5%;
+    }
+
+    .box-title {
+        font-size: 36px;
+    }
+
+    .ROW_2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ROW_2-rev {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ROW_2>.ROW_div {
+        width: 100%;
+    }
+
+    .ROW_2-rev>.ROW_div {
+        width: 100%;
+    }
+
+    .ROW_div {
+        padding: 15px;
+    }
+
+    .ROW-div-content {
+        width: 90%;
+    }
+
+    .ROW_div h {
+        font-size: 34px;
+    }
+
+    .ROW_div p {
+        font-size: 16px
+    }
+
+    #BANNER2-content {
+        font-size: 35px;
+    }
+
+    #profile-photo {
+        width: 30%;
+        margin: auto
+    }
+
+    #profile-photo {
+        width: 60%;
+        margin: auto
+    }
+
+    #about span {
+        flex-direction: column;
+        height: auto;
+        padding: 12% 0;
+    }
+
+    .about-container {
+        width: 80%;
+    }
+
+    #about p1 {
+        font-size: 16px;
+        line-height: 65px;
+    }
+
+    #about p2 {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 12px;
+    }
+
+    #experience div {
+        width: auto;
+        margin: 35px 0;
+        padding: 80px 40px;
+    }
+
+    #spotify {
+        border-radius: 0;
+        position: relative;
+        width: 100%;
+        height: 360px;
+        left: 0%;
+    }
+
+    #serverce {
+        padding: 12% 0;
+    }
+
+    .serverce-btn {
+        margin: 10px 3px;
+        font-weight: 600;
+        font-size: 13px;
+    }
+
+    .serverce-content p,
+    .serverce-content-closed p {
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .serverce-content a,
+    .serverce-content-closed a {
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .compilationcontent-text {
+        font-size: 45px;
+    }
+
+    .swiper {
+        --swiper-navigation-size: 80px;
+        --swiper-navigation-sides-offset: 3%;
+    }
+
+    .compilationcontent {
+        height: 400px !important;
+    }
+
+    .audiomack {
+        height: 350px;
+        width: 80%;
+        bottom: 0px;
+        margin: 10%;
+    }
+
+}
+
+@media (max-width: 480px) {}
+
+@media (min-width: 768px) and (max-width: 979px) {}
+
+@media (min-width: 980px) {}
+
+@media (min-width: 1200px) {}

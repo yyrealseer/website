@@ -1,0 +1,141 @@
+<header id="mobile-navigation">
+    <img id="navigation-icon-closed" style="height:40px;" src="/ICON/Arrow-Left.png">
+    <div class="mobile-navigation-container" id="mobile-navigation-container-closed">
+        <div class="直立分頁" id="mobile-navigation-list">
+            <button id="Go-about3">
+                <%= t('index.header.about') %>
+            </button>
+            <button id="Go-serverce3">
+                <%= t('index.header.service') %>
+            </button>
+            <button id="Go-track3">
+                <%= t('index.header.work') %>
+            </button>
+        </div>
+    </div>
+</header>
+
+<style>
+    #mobile-navigation {
+        display: none;
+    }
+
+    @media (max-width: 767px) {
+        #mobile-navigation {
+            display: block;
+            height: var(--LOGO-height);
+            width: 0%;
+            padding: 9px 0px;
+            z-index: 2;
+            position: fixed;
+        }
+
+        #mobile-navigation-container {
+            width: 100%;
+            height: 9%;
+            padding: 9px 0px;
+            position: fixed;
+            z-index: 2;
+            right: -35%;
+            transition: transform 330ms cubic-bezier(0.51, 0.16, 0.53, 0.87);
+            transform: translateX(0px) rotate(90deg);
+        }
+
+        #mobile-navigation-container-closed {
+            width: 100%;
+            height: 9%;
+            padding: 9px 0px;
+            position: fixed;
+            z-index: 2;
+            right: -35%;
+            transition: transform 330ms cubic-bezier(0.51, 0.16, 0.53, 0.87);
+            transform: translateX(50px) rotate(90deg);
+        }
+
+        #navigation-icon {
+            position: fixed;
+            right: 1%;
+            top: 36%;
+            z-index: 2;
+            transition: transform 330ms cubic-bezier(0.51, 0.16, 0.53, 0.87);
+            transform: translateX(-50px);
+        }
+
+        #navigation-icon-closed {
+            position: fixed;
+            right: 1%;
+            top: 36%;
+            z-index: 2;
+            transition: transform 330ms cubic-bezier(0.51, 0.16, 0.53, 0.87);
+            transform: translateX(0);
+        }
+
+        .直立分頁 button {
+            background-color: #faebd700;
+            font-family: 'Noto Sans TC', 'Noto Serif TC', '微軟正黑體';
+            font-size: 24px;
+            color: #ffffff;
+            border: #0d2a3b;
+            padding-left: 3%;
+            text-shadow: #000000 2px -2px 4px;
+        }
+
+        #mobile-navigation-list {
+            position: absolute;
+            top: 0;
+            width: 100vh;
+            padding-left: 35vh;
+            left: -5%;
+        }
+    }
+</style>
+
+<script>
+    const goabout3 = document.getElementById("Go-about3");
+    const goserverce3 = document.getElementById("Go-serverce3");
+    const gotrack3 = document.getElementById("Go-track3");
+
+
+
+    goabout3.addEventListener("click", function () {
+        const section = document.getElementById(`about`);
+        window.scrollTo({
+            top: section.offsetTop,
+        });
+    });
+    goserverce3.addEventListener("click", function () {
+        const section = document.getElementById(`serverce`);
+        window.scrollTo({
+            top: section.offsetTop,
+        });
+    });
+    gotrack3.addEventListener("click", function () {
+        const section = document.getElementById(`track-compilation`);
+        window.scrollTo({
+            top: section.offsetTop,
+        });
+    });
+
+    let navigationbtn = document.getElementById('navigation-icon-closed');
+    let navigationlist = document.getElementById('mobile-navigation-container-closed');
+
+    let navigationflag = false
+    navigationbtn.onclick = function () {
+        navigationflag = !navigationflag;
+        if (navigationflag) {
+            navigationlist.id = 'mobile-navigation-container';
+            navigationbtn.id = 'navigation-icon';
+        }
+        else {
+            navigationlist.id = 'mobile-navigation-container-closed';
+            navigationbtn.id = 'navigation-icon-closed';
+        }
+    };
+
+    addEventListener('scroll', function () {
+        navigationlist.id = 'mobile-navigation-container-closed';
+        navigationbtn.id = 'navigation-icon-closed';
+        navigationflag = false;
+    });
+
+</script>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="h-Hant-TW ">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KH4NPVYE4F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-KH4NPVYE4F');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= t('collaborate.meta_title') %>
+    </title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- GoogleFont -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif+TC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Page.css -->
+    <link href="/CSS/Page.css" rel="stylesheet" />
+    <link href="/CSS/Mobile-Page.css" rel="stylesheet" />
+    <!-- Animate.css v3.5.2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e86dcc2690.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="header">
+        <div class="header-container">
+            <a href="/" id="LOGO">
+                <img id="LOGO2" style="height:var(--LOGO-height);" ; src="/ICON/LOGO_White.png">
+            </a>
+        </div>
+    </header>
+    <header id="mobile-header"></header>
+    <div class="serverce-descript">
+        <div id="navigation">
+            <div id="pages">
+                <h class="pages">
+                    <%= t('collaborate.header.list') %>
+                </h>
+                <hr>
+                <a class="pages" href="/">
+                    <%= t('collaborate.header.home') %>
+                </a>
+                <a class="pages" href="/mixing">
+                    <%= t('collaborate.header.services') %>
+                </a>
+                <a class="pages" href="/FAQ">
+                    <%= t('collaborate.header.faq') %>
+                </a>
+                <a href="/BeatMarket">
+                    <%= t('collaborate.header.collaborate') %>
+                </a>
+            </div>
+        </div>
+        <div id="content">
+            <h class="large-title">
+                <%= t('collaborate.form.large_title') %>
+            </h>
+            <form class="form" enctype="text/plain" accept-charset="utf-8">
+                <!-- 寄件者姓名    -->
+                <input class="form-input" id="nameText" type="text" name="Name" value size="60"
+                    placeholder="<%= t('collaborate.form.name') %>" required>
+                <!-- required 必填欄位 ，placeholder 預設內容-->
+
+                <!-- 寄件者email -->
+                <input class="form-input" id="emailText" type="email" name="Email" value size="60"
+                    placeholder="<%= t('collaborate.form.email') %>" required>
+
+                <!-- 郵件主旨 -->
+                <input class="form-input" id="subText" type="text" name="Subject" value size="60" aria-invalid="false"
+                    placeholder="<%= t('collaborate.form.subject') %>" required>
+
+                <!-- 郵件內容 -->
+                <textarea class="form-input" id="bodyText" name="your-message" cols="40" rows="10" aria-required="true"
+                    aria-invalid="false" placeholder="<%= t('collaborate.form.message') %>" required></textarea>
+
+                <!-- 傳送按鈕 -->
+                <div>
+                    <input id="submit" type="button" value="<%= t('collaborate.form.submit_button') %>"
+                        onclick="submitHandler();">
+                    <a id="mailTo"></a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <select id="language-select" onchange="changeLanguage()">
+        <option value="zh" <%=(currentLocale==='zh' ) ? 'selected' : '' %>>中文</option>
+        <option value="en" <%=(currentLocale==='en' ) ? 'selected' : '' %>>English</option>
+    </select>
+    <button id="backtop" style="font-family: 'Noto sans';z-index: 100;padding: 8px 18px;">
+        TOP
+    </button>
+    <footer class="footer"></footer>
+
+    <style>
+        .large-title {
+            font-family: 'Noto Serif TC';
+            display: block;
+            font-size: 50px;
+            font-weight: 800;
+            color: var(--sub-color);
+            padding: 30px 0;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            padding: 5% 10%;
+        }
+
+        .form-input {
+            margin: 8px 0;
+            border-radius: 5px;
+            padding: 7px 0;
+            color: var(--text-color-sub);
+        }
+
+        #submit {
+            background-color: var(--sub-color);
+            color: var(--text-color-sub);
+            border-radius: 10px;
+            font-size: 17px;
+            padding: 6px 18px;
+        }
+
+        @media (max-width: 767px) {
+            #content {
+                padding: 0;
+            }
+        }
+    </style>
+
+    <!-------- 外部JS -------->
+    <!-- navigation.js -->
+    <script src="JS/navigation.js" lang="JavaScript"></script>
+    <!-- Jquery.js -->
+    <script type="text/javascript" src="/JS/jquery.min.js"></script>
+    <!-------- JS -------->
+    <!-- changeLanguage.js -->
+    <script src="/JS/changeLanguage.js" lang="JavaScript"></script>
+    <script>
+        //宣告預設表單內容為空 （你想要的話也可以加東西）
+        var initSubject = '', initBody = '';
+
+        //按下傳送按鈕後執行
+        function submitHandler() {
+            var to = "contact@example.com";//寫死的傳送對象 就是公司的信箱 不會顯示在網頁上
+            var name = nameText.value;//讀取ID為 nameTextuser 物件中的值
+            var email = emailText.value;
+            var tel = telText.value;
+            var subject = subText.value;
+            //把user填的資料都塞到 mail body 中
+            var body = "" + bodyText.value + '%0A%0A%0A';//%0A是換行 換了三行
+            body += "From：" + nameText.value + '%0A';
+            body += "Email：" + emailText.value + '%0A';
+            //傳送的主要程式碼
+            mailTo.href = "mailto:" + to + "?subject=" + subject + "&body=" + body;
+            mailTo.click();
+        }
+        //在body onload
+        function init() {
+            subText.value = initSubject;
+            toText.value = initTo;
+            bodyText.value = initBody;
+        }
+    </script>
+
+
+    <!-------- INPUT -------->
+    <!-- Mobil header -->
+    <script>
+        $(function () {
+            $('#mobile-header').load('./input/input_mobile-header.html');
+        });
+    </script>
+    <!-- Footer -->
+    <script>
+        $(function () {
+            $('.footer').load('./input/input_footer.html');
+        });
+    </script>
+</body>
+
+</html>

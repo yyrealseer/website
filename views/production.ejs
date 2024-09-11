@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="h-Hant-TW ">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KH4NPVYE4F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-KH4NPVYE4F');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= t('production.meta_title') %>
+    </title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- GoogleFont -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif+TC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Page.css -->
+    <link href="/CSS/Page.css" rel="stylesheet" />
+    <link href="/CSS/Mobile-Page.css" rel="stylesheet" />
+    <!-- Animate.css v3.5.2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e86dcc2690.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <%- include('input/input_mobile-service') %>
+        <%- include('input/input_mobile-header') %>
+            <header id="header">
+                <div class="header-container">
+                    <a href="/" id="LOGO">
+                        <img id="LOGO2" style="height:var(--LOGO-height);" ; src="/ICON/LOGO_White.png">
+                    </a>
+                </div>
+            </header>
+            <div class="serverce-descript">
+                <%- include('input/input_service') %>
+                    <div id="content">
+                        <h id="content-title">
+                            <%= t('production.content.service_title') %>
+                        </h>
+                        <p>&emsp;&emsp;<%= t('production.content.service_description') %>
+                        </p>
+                        <p>
+                            <%= t('production.content.price') %>
+                        </p>
+
+                        <p>
+                            <%= t('production.content.modification') %>
+                        </p>
+
+                        <p class="title">
+                            <%= t('production.content.prepare_title') %>
+                        </p>
+
+                        <ul>
+                            <li>
+                                <%= t('production.content.prepare_items1') %>
+                            </li>
+                            <li>
+                                <%= t('production.content.prepare_items2') %>
+                            </li>
+                            <li>
+                                <%= t('production.content.prepare_items3') %>
+                            </li>
+                            <li>
+                                <%= t('production.content.prepare_items4') %>
+                            </li>
+                        </ul>
+
+                        <p style="font-size: 15px;">
+                            <%= t('production.content.prepare_note') %>
+                        </p>
+
+                        <p>&nbsp;</p>
+
+                        <p style="color: var(--warn-color);">
+                            <%= t('production.content.notice_title') %>
+                        </p>
+
+                        <ul>
+                            <li>
+                                <%= t('production.content.notices1') %>
+                            </li>
+                            <li>
+                                <%= t('production.content.notices2') %>
+                            </li>
+                            <li>
+                                <%= t('production.content.notices3') %>
+                            </li>
+                            <li>
+                                <%= t('production.content.notices4') %>
+                            </li>
+                            <li>
+                                <%= t('production.content.notices5') %>
+                            </li>
+                        </ul>
+
+                        <a class="book" href="/BeatMarket">
+                            <%= t('production.content.book_consultation') %>
+                        </a>
+                        <%- include('input/input_FAQ') %>
+                    </div>
+            </div>
+            <%- include('input/input_changeLanguage') %>
+            <%- include('input/input_backtopBtn') %>
+            <%- include('input/input_footer') %>
+</body>
+
+</html>

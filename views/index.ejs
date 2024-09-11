@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="h-Hant-TW ">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KH4NPVYE4F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-KH4NPVYE4F');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="/img/Preview_1.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:title" content="<%= t('index.meta_title') %>">
+    <meta property="og:description" content="<%= t('index.meta_description') %>">
+    <title>
+        <%= t('index.meta_title') %>
+    </title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- GoogleFont -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif+TC:wght@200..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Homepage.css -->
+    <link href="/CSS/Homepage.css" rel="stylesheet" />
+    <link href="/CSS/Mobile-Homepage.css" rel="stylesheet" />
+
+    <!-- Animate.css v3.5.2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
+
+    <!-- swiper.css -->
+    <link href="/CSS/swiper-bundle.min.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e86dcc2690.js" crossorigin="anonymous"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WSXKQX94');</script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WSXKQX94" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <%- include('input/input_index-navigation') %>
+    <header id="topheader">
+        <div class="header-container">
+            <div id="LOGOtop">
+                <img id="LOGO2" style="height:var(--LOGO-height);" ; src="/ICON/LOGO_White.png">
+            </div>
+            <div class="分頁" id="橫向分頁">
+                <a href="/BeatMarket">
+                    <%= t('header.beat_market') %>
+                </a>
+                <a href="https://forms.gle/ogop721i5NfyJHmV8">
+                    <%= t('header.consultation') %>
+                </a>
+                <a href="/FAQ">
+                    <%= t('header.faq') %>
+                </a>
+                <a href="/mixing">
+                    <%= t('header.service') %>
+                </a>
+            </div>
+        </div>
+    </header>
+    <%- include('input/input_mobile-header') %>
+    <%- include('input/input_mobile-index-navigation') %>
+
+    <div class="BANNER">
+        <h id="BANNER-title">
+            <%= t('index.banner_title') %>
+        </h>
+    </div>
+    <div class="BOX">
+        <div class="ROW-container">
+            <h class="box-title">
+                <%= t('index.about_music_title') %>
+            </h>
+            <p style="text-align: center;">
+                <%= t('index.about_music_content') %>
+            </p>
+        </div>
+    </div>
+    </div>
+    <div class="BOX-colume">
+        <div class="ROW_2">
+            <div class="ROW_div">
+                <img style="width: 100%; border-radius: 45px;" src="/img/Writting song.png" alt="">
+            </div>
+            <div class="ROW_div">
+                <div class="ROW-div-content">
+                    <h>
+                        <%= t('index.steps.step1_title') %>
+                    </h>
+                    <p>
+                        <%= t('index.steps.step1_content') %>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="ROW_2-rev">
+            <div class="ROW_div">
+                <img style="width: 100%; border-radius: 45px;" src="/img/PRODUCING.png" alt="">
+            </div>
+            <div class="ROW_div">
+                <div class="ROW-div-content">
+                    <h>
+                        <%= t('index.steps.step2_title') %>
+                    </h>
+                    <p>
+                        <%= t('index.steps.step2_content') %>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="ROW_2">
+            <div class="ROW_div">
+                <img style="width: 100%; border-radius: 45px;" src="/img/SPOTIFY_1.png" alt="">
+            </div>
+            <div class="ROW_div">
+                <div class="ROW-div-content">
+                    <h>
+                        <%= t('index.steps.step3_title') %>
+                    </h>
+                    <p>
+                        <%= t('index.steps.step3_content') %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="BANNER2" style="padding: 5% 0;">
+        <div
+            style="width:70%;margin: auto;text-align: center;background-color: #f0f8ff54;padding: 17% 0;border-radius: 30px;">
+            <h id="BANNER2-content">
+                <%= t('index.banner2_content') %>
+            </h>
+        </div>
+    </div>
+    <div class="BOX">
+        <div class="ROW-container">
+            <h class="box-title">
+                <%= t('index.start_now_title') %>
+            </h>
+            <p style="text-align: center;">
+                <%= t('index.start_now_content') %></p>
+        </div>
+    </div>
+    <div id="about">
+        <span class="BOX-colume">
+            <div id="profile-photo">
+                <img style="width: 100%;"
+                    src="https://yt3.googleusercontent.com/ytc/AIdro_mN-QnUBhOFv9lhPZ91O0hIlW1tyHr9Dw-xn8t7_KMA3w=s176-c-k-c0x00ffffff-no-rj">
+                </img>
+            </div>
+            <div class="about-container">
+                <h class="box-title" style="display: block; margin: 0 auto;">
+                    <%= t('index.about.about_me') %>
+                </h>
+                <p style="text-align: left;">
+                    <%= t('index.about.profile_description') %>
+                </p>
+            </div>
+        </span>
+        <span id=experience style="padding: 2% 10%;">
+            <div>
+                <h>
+                    <%= t('index.about.experience_title') %>
+                </h><br>
+                <p1>
+                    <%= t('index.about.experience_2015') %>
+                </p1><br>
+                <p2>
+                    <%= t('index.about.experience_2015_p2') %>
+                </p2><br>
+                <p1>
+                    <%= t('index.about.experience_2016') %>
+                </p1><br>
+                <p2>
+                    <%= t('index.about.experience_2016_p2') %>
+                </p2><br>
+                <p1>
+                    <%= t('index.about.experience_2019') %>
+                </p1><br>
+                <p2>
+                    <%= t('index.about.experience_2019_p2') %><br><br>
+                        <%= t('index.about.experience_2019_p2_2') %>
+                </p2><br>
+                <p1>
+                    <%= t('index.about.experience_2021') %>
+                </p1><br>
+
+                <p2>
+                    <%= t('index.about.experience_2021_p2') %>
+                </p2><br><br>
+            </div>
+            <iframe id="spotify"
+                src="https://open.spotify.com/embed/artist/0jh8SMRgHQ1W5pkzFkLgef?utm_source=generator&theme=0"
+                width="100%" height="352" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe>
+        </span>
+
+    </div>
+    <div id="serverce">
+        <h class="box-title">
+            <%= t('index.services.service_title') %>
+        </h>
+        <div style="display: flex;justify-content: space-evenly;">
+            <button class="serverce-btn" id="production" style="background-color:#ffb28a; font-size: 15px;">
+                <%= t('index.services.production') %>
+            </button>
+            <button class="serverce-btn" id="mixing">
+                <%= t('index.services.mixing') %>
+            </button>
+            <button class="serverce-btn" id="arrange">
+                <%= t('index.services.arranging') %>
+            </button>
+            <button class="serverce-btn" id="course">
+                <%= t('index.services.course') %>
+            </button>
+        </div>
+        <div class="serverse-box">
+            <div class="serverce-content-closed" id="production-content" style="background-color:#ffb28a;">
+                <p>&emsp;&emsp;<%= t('index.services.production_content') %>
+                </p>
+                <p>
+                    <%= t('index.services.production_price') %>
+                </p>
+                <p><a href="/production" style="text-align: end;">
+                        <%= t('index.services.service_btn') %>
+                    </a></p>
+            </div>
+            <div class="serverce-content-closed" id="mixing-content">
+                <p>&emsp;&emsp;<%= t('index.services.mixing_content') %>
+                </p>
+                <p>
+                    <%= t('index.services.mixing_price') %>
+                </p>
+                <p>
+                    <%= t('index.services.mixing_description') %>
+                </p>
+                <a href="/mixing" style="text-align: end;">
+                    <%= t('index.services.service_btn') %>
+                </a>
+            </div>
+            <div class="serverce-content-closed" id="arrange-content">
+                <p>&emsp;&emsp;<%= t('index.services.arranging_content') %>
+                </p>
+                </p>
+                <p>
+                    <%= t('index.services.arranging_price') %>
+                </p>
+                <p>
+                    <%= t('index.services.arranging_description') %>
+                </p>
+                <a href="/arrange" style="text-align: end;">
+                    <%= t('index.services.service_btn') %>
+                </a>
+            </div>
+            <div class="serverce-content-closed" id="course-content">
+                <p>&emsp;&emsp;<%= t('index.services.course_content') %>
+                </p>
+                <p>
+                    <%= t('index.services.course_price') %>
+                </p>
+                <p>
+                    <%= t('index.services.course_description') %>
+                </p>
+                <a href="/arrange" style="text-align: end;">
+                    <%= t('index.services.service_btn') %>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="track-compilation" class="swiper" style="navigation">
+        <div class="swiper-wrapper" id="track-compilation">
+            <div Class="compilationcontent swiper-slide">
+                <h class="compilationcontent-text">
+                    <%= t('index.compilationcontent_mixing') %>
+                </h>
+                <iframe class="audiomack"
+                    src="https://audiomack.com/embed/xavier890930/playlist/mixing-track-compilation" scrolling="no"
+                    width="100%" height="400" frameborder="0" title="Mixing Track Compilation"></iframe>
+            </div>
+            <div Class="compilationcontent swiper-slide">
+                <h class="compilationcontent-text">
+                    <%= t('index.compilationcontent_arranging') %>
+                </h>
+                <iframe class="audiomack"
+                    src="https://audiomack.com/embed/xavier890930/playlist/arrange-track-compilation" scrolling="no"
+                    width="100%" height="400" frameborder="0" title="Arrange Track Compilation"></iframe>
+            </div>
+            <div Class="compilationcontent swiper-slide">
+                <h class="compilationcontent-text">
+                    <%= t('index.compilationcontent_songwrighting') %>
+                </h>
+                <iframe class="audiomack"
+                    src="https://audiomack.com/embed/xavier890930/playlist/arrange-track-compilation" scrolling="no"
+                    width="100%" height="400" frameborder="0" title="Arrange Track Compilation"></iframe>
+            </div>
+        </div>
+        <div class="track-compilation-btn swiper-pagination"></div>
+        <div class="track-compilation-btn swiper-button-prev"></div>
+        <div class="track-compilation-btn swiper-button-next"></div>
+    </div>
+    <%- include('input/input_changeLanguage') %>
+    <%- include('input/input_backtopBtn') %>
+    <%- include('input/input_footer') %>
+
+    <!-------- 外部JS -------->
+    <!-- swiper -->
+    <script src="/JS/swiper-bundle.min.js"></script>
+
+    <!-------- JS -------->
+
+    <!-- serverce.js -->
+    <script src="/JS/severce.js" lang="JavaScript"></script>
+    <!-- trackcompilatoin.js -->
+    <script src="/JS/trackcompilation.js" lang="JavaScript"></script>
+
+
+
+</body>
+
+
+</html>

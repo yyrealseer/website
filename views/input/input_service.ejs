@@ -1,0 +1,32 @@
+<div id="navigation">
+    <div id="pages">
+        <h class="pages">
+            <%= t('service.title') %>
+        </h>
+        <hr>
+        <a href="production">
+            <%= t('service.beat_special') %>
+        </a>
+        <a class="pages" href="mixing">
+            <%= t('service.mixing') %>
+        </a>
+        <a class="pages" href="arrange">
+            <%= t('service.arranging') %>
+        </a>
+        <a class="pages" href="course">
+            <%= t('service.demo_course') %>
+        </a>
+    </div>
+</div>
+
+<style>
+    #navigation {
+        width: 30%;
+    }
+
+    @media (max-width: 767px) {
+        #navigation {
+            display: none;
+        }
+    }
+</style>

@@ -1,0 +1,145 @@
+<div id="FAQ">
+    <h class="large-title"><%= t('faq.large_title') %></h>
+    <div class="FAQ-categories">
+        <h class="categories-title">
+            <%= t('faq.mixing.title') %>
+        </h>
+        <details class="question">
+            <summary>
+                <%= t('faq.mixing.q1') %>
+            </summary>
+            <%= t('faq.mixing.a1') %>
+        </details>
+        <details class="question">
+            <summary>
+                <%= t('faq.mixing.q2') %>
+            </summary>
+            <%= t('faq.mixing.a2') %>
+        </details>
+        <details class="question">
+            <summary>
+                <%= t('faq.mixing.q3') %>
+            </summary>
+            <%= t('faq.mixing.a3') %>
+        </details>
+        <details class="question">
+            <summary>
+                <%= t('faq.mixing.q4') %>
+            </summary>
+            <%= t('faq.mixing.a4') %>
+        </details>
+    </div>
+    <div class="FAQ-categories">
+        <h class="categories-title">
+            <%= t('faq.arranging.title') %>
+        </h>
+        <details class="question">
+            <summary>
+                <%= t('faq.arranging.q1') %>
+            </summary>
+            <%= t('faq.arranging.a1') %>
+        </details>
+        <details class="question">
+            <summary>
+                <%= t('faq.arranging.q2') %>
+            </summary>
+            <%= t('faq.arranging.a2') %>
+        </details>
+        <details class="question">
+            <summary>
+                <%= t('faq.arranging.q3') %>
+            </summary>
+            <%= t('faq.arranging.a3') %>
+        </details>
+    </div>
+    <div class="FAQ-categories">
+        <h class="categories-title">
+            <%= t('faq.demo_course.title') %>
+        </h>
+        <details class="question">
+            <summary>
+                <%= t('faq.demo_course.q1') %>
+            </summary>
+            <%= t('faq.demo_course.a1') %>
+        </details>
+        <details class="question">
+            <summary>
+                <%= t('faq.demo_course.q2') %>
+            </summary>
+            <%= t('faq.demo_course.a2') %>
+        </details>
+        <details class="question">
+            <summary>
+                <%= t('faq.demo_course.q3') %>
+            </summary>
+            <%= t('faq.demo_course.a3') %>
+        </details>
+        <details class="question">
+            <summary>
+                <%= t('faq.demo_course.q4') %>
+            </summary>
+            <%= t('faq.demo_course.a4') %>
+        </details>
+    </div>
+
+</div>
+
+<style>
+    .large-title {
+        font-family: 'Noto Serif TC';
+        display: block;
+        font-size: 50px;
+        font-weight: 800;
+        color: var(--sub-color);
+        padding: 30px 0;
+    }
+
+    .FAQ-categories {
+        padding: 18px 0;
+    }
+
+    .categories-title {
+        font-size: 28px;
+        line-height: 40px;
+    }
+
+    details {
+        font-size: 16px;
+        font-weight: 400;
+        border: 1px solid;
+        padding: 0.5em 0.5em;
+        line-height: 32px;
+        border-radius: 10px;
+        margin: 20px 0;
+    }
+
+    details[open] {
+        padding: 0.5em;
+    }
+
+    details[open] summary {
+        border-bottom: 1px solid #aaa;
+        margin-bottom: 0.5em;
+    }
+
+    summary {
+        font-size: 18px;
+        font-weight: 400;
+        padding: 0.5em;
+        margin: -0.5em -0.5em 0;
+    }
+
+    @media (max-width: 767px) {
+
+        .large-title {
+            font-size: 40px;
+        }
+
+        summary {
+            font-size: 16px;
+        }
+
+
+
+    }
+</style>

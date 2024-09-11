@@ -1,0 +1,72 @@
+@media (max-width: 767px) {
+    h {}
+
+    a {}
+
+    p {
+        font-size: 17px;
+    }
+
+    .title {
+        font-size: 21px;
+    }
+
+    #header-icon {
+        position: fixed;
+        bottom: 1%;
+        z-index: 2;
+        left: 1%;
+    }
+
+    .pages {
+        line-height: normal;
+        font-size: 20px;
+    }
+
+    #header-icon {
+        position: fixed;
+        bottom: 2%;
+        z-index: 2;
+        left: 4%;
+    }
+
+    #mobile-pages-closed {
+        font-size: 26px;
+        line-height: 51px;
+        width: auto;
+        position: fixed;
+        background-color: #0d0d0de0;
+        height: 100%;
+        top: 0;
+        padding: 9% 10%;
+        left: 0;
+        transform: translateX(-246px);
+        transition: transform 330ms cubic-bezier(0.78, 0.11, 0.46, 1.01);
+    }
+
+    #mobile-pages {
+        font-size: 26px;
+        line-height: 51px;
+        width: auto;
+        position: fixed;
+        background-color: #0d0d0de0;
+        height: 100%;
+        top: 0;
+        padding: 9% 10%;
+        left: 0;
+        transform: translateX(0px);
+        transition: transform 330ms cubic-bezier(0.78, 0.11, 0.46, 1.01);
+    }
+    
+    #content-title {
+        font-size: 40px;
+        line-height: 50px;
+        padding: 27% 0;
+    }
+
+    .book {
+        font-size: 18px;
+        padding: 30px 0;
+        margin: 45px 0;
+    }
+}

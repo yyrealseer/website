@@ -1,0 +1,31 @@
+<div id="navigation">
+    <div id="pages">
+        <h class="pages">
+            <%= t('header.list') %>
+        </h>
+        <hr>
+        <a class="pages" href="/">
+            <%= t('header.home') %>
+        </a>
+        <a class="pages" href="/mixing">
+            <%= t('header.service') %>
+        </a>
+        <a class="pages" href="/FAQ">
+            <%= t('header.faq') %>
+        </a>
+        <a href="/BeatMarket">
+            <%= t('header.beat_market') %>
+        </a>
+    </div>
+</div>
+
+<style>
+        #navigation {
+        width: 30%;
+    }
+    @media (max-width: 767px) {
+        #navigation {
+            display: none;
+        }
+    }
+</style>
