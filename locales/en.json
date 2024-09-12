@@ -66,8 +66,12 @@
 		"faq": "FAQ"
 	},
 	"footer": {
-		"collaborate": "Collaborate",
-		"youtube": "Youtube Channel"
+		"collaborate": "collaboration",
+		"site": "YY Studio",
+		"youtube": "Youtube channel",
+		"contact": "Contact us：",
+		"phone": "+886 983565003",
+		"email": "xavier890930@gmail.com"
 	},
 	"arrange": {
 		"meta_title": "Arrangement | YY Studio",
