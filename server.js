@@ -129,7 +129,7 @@ app.get('/success', (req, res) => {
 });
 
 // PayPal SDK 配置
-const environment = new paypal.core.LiveEnvironment(process.env.PAYPAL_CLIENT_ID, process.env.PAYPAL_CLIENT_SECRET); // 使用沙盒環境
+const environment = new paypal.core.LiveEnvironment(process.env.PAYPAL_CLIENT_ID, process.env.PAYPAL_CLIENT_SECRET); // 使用沙盒/正式環境
 const client = new paypal.core.PayPalHttpClient(environment);
 
 // 設置 nodemailer 的傳輸器
@@ -248,7 +248,7 @@ function handlePaymentCancel(req, res) {
 // #endregion
 
 // #region 路由定義
-app.post('/pay', handlePaymentRequest);
+app.post('/paypal-pay', handlePaymentRequest);
 app.get('/payment-success', handlePaymentSuccess);
 app.get('/payment-cancel', handlePaymentCancel);
 // #endregion

@@ -247,6 +247,7 @@
 		},
 		"large_title": "Beat Market",
 		"currency": "USD",
+		"payment": "paypal",
 		"notice": {
 			"title": "/ NOTICE",
 			"notice-text1": "Please read the purchase notice before buying. Clicking 'Checkout' means you agree to the following content.",

@@ -247,6 +247,7 @@
 		},
 		"large_title": "Beat Market",
 		"currency": "TWD",
+		"payment": "paypal",
 		"notice": {
 			"title": "購買須知 / NOTICE",
 			"notice-text1": "購買前請先閱讀購物須知，點擊\"去結帳\"即同意以下內容。",
