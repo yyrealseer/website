@@ -23,7 +23,7 @@ const transporter = nodemailer.createTransport({
 
 // 初始化
 const options = {
-  OperationMode: 'Test', // Test or Production
+  OperationMode: 'Production', // Test or Production
   MercProfile: {
     MerchantID: process.env.ECPAY_MERCHANT_ID,
     HashKey: process.env.ECPAY_HASH_KEY,
