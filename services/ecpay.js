@@ -49,7 +49,8 @@ router.post('/ecpay-pay', (req, res) => {
     TotalAmount: parseInt(req.body.amount, 10).toString(), // 確保金額是整數且為字串格式
     TradeDesc: encodeURIComponent(req.body.description.trim()), // URL編碼
     ItemName: encodeURIComponent(req.body.description.trim()), // URL編碼
-    CustomField1: encodeURIComponent(req.body.Email.trim()), // URL編碼
+    CustomField1: encodeURIComponent(req.body.Email.trim()),
+    CustomField2: encodeURIComponent(req.body.description.trim()),// URL編碼
     MerchantTradeDate: MerchantTradeDate,
     PaymentType: 'aio',
     ReturnURL: `https://${req.get('host')}/ecpay-return`,
@@ -82,7 +83,7 @@ router.post('/ecpay-return', async (req, res) => {
     if (CheckMacValue === checkValue) {
       console.log('交易成功，驗證通過：', data);
       const Email = decodeURIComponent(data.CustomField1); // 解碼 Email
-      const reference_id = data.ItemName;
+      const reference_id = data.CustomField2;
       const downloadLink = process.env[`${reference_id}_LINK`] || process.env.DEFAULT_LINK;
 
       const mailOptions = {
