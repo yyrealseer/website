@@ -230,6 +230,10 @@
 			"a4": "如果上課前臨時有事，24HR以前提前請假可不算堂數，若在24HR以內臨時請假或曠課的話則算一堂課。"
 		}
 	},
+	"success_email": {
+        "title": "YY Studio | 您的訂單已成功付款",
+        "content": "感謝您的購買！您可以通過以下鏈接下載您購買的音樂分軌："
+    },
 	"success": {
 		"meta_title": "付款成功！ | YY Studio",
 		"success_title": "購買成功",
@@ -247,7 +251,7 @@
 		},
 		"large_title": "Beat Market",
 		"currency": "TWD",
-		"payment": "paypal",
+		"payment": "ecpay",
 		"notice": {
 			"title": "購買須知 / NOTICE",
 			"notice-text1": "購買前請先閱讀購物須知，點擊\"去結帳\"即同意以下內容。",

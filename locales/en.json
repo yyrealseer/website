@@ -230,6 +230,10 @@
 			"a4": "If something comes up before the class, notifying us 24 hours in advance will not count as a lesson. If you cancel less than 24 hours in advance or miss the class without notice, it will count as a lesson."
 		}
 	},
+	"success_email": {
+        "title": "YY Studio | Your order has been successfully paid",
+        "content": "Thank you for your purchase! You can download the purchased music tracks via the following link:"
+    },
 	"success": {
 		"meta_title": "Payment Successful! | YY Studio",
 		"success_title": "Purchase Successful",

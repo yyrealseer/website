@@ -23,10 +23,8 @@
             <%= t('success.return_text') %>
         </a>
     </div>
-    <select id="language-select" onchange="changeLanguage()">
-        <option value="zh" <%=(currentLocale==='zh' ) ? 'selected' : '' %>>中文</option>
-        <option value="en" <%=(currentLocale==='en' ) ? 'selected' : '' %>>English</option>
-    </select>
+    <%- include('input/input_changeLanguage') %>
+    <%- include('input/input_footer') %>
     <style>
         .successmsg {
             width: 100vw;

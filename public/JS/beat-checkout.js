@@ -2,7 +2,7 @@
 function showPopup(description, amount) {
     // 動態設置表單的值
     document.getElementById('description').value = description;
-    document.getElementById('amount').value = parseFloat(amount).toFixed(2);
+    document.getElementById('amount').value = amount;
     document.getElementById('invoiceId').value = generateMerchantOrderNo();
     document.getElementById('popupForm').style.display = 'flex';
     
