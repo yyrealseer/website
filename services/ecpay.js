@@ -52,8 +52,8 @@ router.post('/ecpay-pay', (req, res) => {
     CustomField1: encodeURIComponent(req.body.Email.trim()), // URL編碼
     MerchantTradeDate: MerchantTradeDate,
     PaymentType: 'aio',
-    ReturnURL: `${req.protocol}://${req.get('host')}/ecpay-return`,
-    ClientBackURL: `${req.protocol}://${req.get('host')}/success`,
+    ReturnURL: `https://${req.get('host')}/ecpay-return`,
+    ClientBackURL: `https://${req.get('host')}/success`,
     ChoosePayment: 'ALL',
     EncryptType: 1,
   };
