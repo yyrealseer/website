@@ -5,16 +5,28 @@
                 <img id="LOGO3" src="./ICON/LOGO_White.png" style="width: 100px;"></a>
         </div>
         <div class="footer-colume">
-            <a href="mixing"><%= t('header.service') %></a>
-            <a href="FAQ"><%= t('header.faq') %></a>
-            <a href="https://forms.gle/ogop721i5NfyJHmV8"><%= t('header.consultation') %></a>
+            <a href="mixing">
+                <%= t('header.service') %>
+            </a>
+            <a href="FAQ">
+                <%= t('header.faq') %>
+            </a>
+            <a href="https://forms.gle/ogop721i5NfyJHmV8">
+                <%= t('header.consultation') %>
+            </a>
         </div>
         <div class="footer-colume">
-            <a href="https://www.youtube.com/channel/UCQlo_Jhps7iB7N-3UmZVfDg"><%= t('footer.youtube') %></a>
-            <a href="collaborate"><%= t('footer.collaborate') %></a>
+            <a href="https://www.youtube.com/channel/UCQlo_Jhps7iB7N-3UmZVfDg">
+                <%= t('footer.youtube') %>
+            </a>
+            <a href="collaborate">
+                <%= t('footer.collaborate') %>
+            </a>
         </div>
-        <div class="footer-colume">
-            <a><%= t('footer.contact') %></a>
+        <div class="footer-colume" id="contact-us">
+            <a>
+                <%= t('footer.contact') %>
+            </a>
             <a><i class="fa-solid fa-house"></i>　<%= t('footer.site') %></a>
             <a><i class="fa-regular fa-envelope"></i>　<%= t('footer.email') %></a>
             <a><i class="fa-solid fa-phone"></i>　<%= t('footer.phone') %></a>
@@ -97,10 +109,11 @@
 
         .footer-container {
             padding: 0 !important;
+            flex-wrap: wrap;
         }
 
         .footer-colume {
-            width: 100%;
+            width: 33%;
             display: flex;
             flex-direction: column;
             padding: 13px 0px !important;
@@ -111,6 +124,11 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+        }
+
+        #contact-us {
+            flex-grow: 3;
+            padding: 7% 10% !important;
         }
 
     }

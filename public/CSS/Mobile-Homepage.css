@@ -181,12 +181,18 @@
 
     #serverce {
         padding: 12% 0;
+        height: 830px;
+    }
+
+    #service-btn-container{
+        flex-direction: column;
     }
 
     .serverce-btn {
-        margin: 10px 3px;
+        margin: 10px auto;
         font-weight: 600;
-        font-size: 13px;
+        font-size: 15px;
+        width: 90%;
     }
 
     .serverce-content p,
