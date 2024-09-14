@@ -82,7 +82,7 @@ router.post('/ecpay-return', async (req, res) => {
     if (CheckMacValue === checkValue) {
       console.log('交易成功，驗證通過：', data);
       const Email = decodeURIComponent(data.CustomField1); // 解碼 Email
-      const reference_id = data.MerchantTradeNo;
+      const reference_id = data.ItemName;
       const downloadLink = process.env[`${reference_id}_LINK`] || process.env.DEFAULT_LINK;
 
       const mailOptions = {
