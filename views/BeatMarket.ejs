@@ -29,7 +29,6 @@
                                 onclick="AudioPlayer.changeAudio('./BEAT/track/<%= beat.file_name %>', '<%= beat.name %>')"></button>
                         <h class="beat-name"><%= beat.name %></h>
                         <div class="produc-info">
-                            <!-- 使用條件判斷語言環境顯示不同的 price_tag -->
                             <% if (currentLocale === 'zh') { %>
                                 <p class="Price-tag"><%= beat.NT_price_tag %></p>
                                 <button class="checkout-btn" onclick="showPopup('<%= beat.name %>', <%= beat.NT_price_value %>)">

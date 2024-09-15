@@ -189,6 +189,7 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    width: 50%;
 }
 
 .ROW_2-rev>.ROW_div {
