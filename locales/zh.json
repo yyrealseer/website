@@ -266,58 +266,6 @@
 			"description": "曲名:",
 			"Email": "電子郵件:",
 			"checkout": "去結帳"
-		},
-		"FlowerInVase": {
-			"name": "FlowerInVase",
-			"file_name": "240822_FlowerInVase_Sample.mp3",
-			"price_tag": "NT$3000",
-			"price_value": "3000",
-			"type1": "R&B/Soul",
-			"type2": "",
-			"type3": "",
-			"mood1": "Romantic",
-			"mood2": "Calm",
-			"mood3": "Bright",
-			"bpm": "68"
-		},
-		"MoonLit": {
-			"name": "MoonLit",
-			"file_name": "240823_MoonLit_Sample.mp3",
-			"price_tag": "NT$3000",
-			"price_value": "3000",
-			"type1": "Hip-Hop",
-			"type2": "Boombap",
-			"type3": "",
-			"mood1": "Calm",
-			"mood2": "Sad",
-			"mood3": "Romantic",
-			"bpm": "75"
-		},
-		"BoogieDelight": {
-			"name": "BoogieDelight",
-			"file_name": "240824_BoogieDelight_Sample.mp3",
-			"price_tag": "NT$3000",
-			"price_value": "3000",
-			"type1": "Funk",
-			"type2": "",
-			"type3": "",
-			"mood1": "Inspirational",
-			"mood2": "Happy",
-			"mood3": "Funky",
-			"bpm": "110"
-		},
-		"RazorRush": {
-			"name": "RazorRush",
-			"file_name": "240828_RazorRush_Sample.mp3",
-			"price_tag": "NT$3000",
-			"price_value": "3000",
-			"type1": "Hip-Hop",
-			"type2": "Drill",
-			"type3": "",
-			"mood1": "Angry",
-			"mood2": "Dark",
-			"mood3": "Dramatic",
-			"bpm": "142"
 		}
 	}
 }

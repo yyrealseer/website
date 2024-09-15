@@ -2,12 +2,10 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const i18n = require('i18n');
 const { handlePayPalPaymentRequest, handlePayPalPaymentSuccess, handlePaymentCancel } = require('./services/paypal');
-
-// 引入 ecpay.js 文件中的路由模組
 const ecpayRouter = require('./services/ecpay');
-
 const dotenv = require('dotenv');
 const path = require('path'); 
+const fs = require('fs'); // 引入 fs 模組
 
 // 創建 Express 應用程序
 const app = express();
@@ -60,15 +58,8 @@ app.get('/change-language/:lang', (req, res) => {
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
-// 路由定義
-app.get('/', (req, res) => {
-    res.render('index', {
-        title: i18n.__('index.meta_title'),
-        description: i18n.__('index.meta_description'),
-        t: i18n.__,
-        currentLocale: res.getLocale()
-    });
-});
+// 加載 JSON 文件
+const beatsData = Object.values(JSON.parse(fs.readFileSync('./data/BeatsHouseware.json', 'utf-8'))).reverse();
 
 // 路由定義
 app.get('/', (req, res) => {
@@ -79,6 +70,7 @@ app.get('/', (req, res) => {
         currentLocale: res.getLocale()
     });
 });
+
 app.get('/arrange', (req, res) => {
     res.render('arrange', {
         title: i18n.__('arrange.meta_title'),
@@ -87,14 +79,17 @@ app.get('/arrange', (req, res) => {
         currentLocale: res.getLocale()
     });
 });
+
 app.get('/BeatMarket', (req, res) => {
     res.render('BeatMarket', {
         title: i18n.__('BeatMarket.meta_title'),
         description: i18n.__('BeatMarket.meta_description'),
         t: i18n.__,
-        currentLocale: res.getLocale()
+        currentLocale: res.getLocale(),
+        beatsData: beatsData // 將 beatsData 傳遞給模板
     });
 });
+
 app.get('/collaborate', (req, res) => {
     res.render('collaborate', {
         title: i18n.__('collaborate.meta_title'),
@@ -103,6 +98,7 @@ app.get('/collaborate', (req, res) => {
         currentLocale: res.getLocale()
     });
 });
+
 app.get('/course', (req, res) => {
     res.render('course', {
         title: i18n.__('course.meta_title'),
@@ -111,6 +107,7 @@ app.get('/course', (req, res) => {
         currentLocale: res.getLocale()
     });
 });
+
 app.get('/production', (req, res) => {
     res.render('production', {
         title: i18n.__('production.meta_title'),
@@ -119,6 +116,7 @@ app.get('/production', (req, res) => {
         currentLocale: res.getLocale()
     });
 });
+
 app.get('/FAQ', (req, res) => {
     res.render('FAQ', {
         title: i18n.__('FAQ.meta_title'),
@@ -127,6 +125,7 @@ app.get('/FAQ', (req, res) => {
         currentLocale: res.getLocale()
     });
 });
+
 app.get('/mixing', (req, res) => {
     res.render('mixing', {
         title: i18n.__('mixing.meta_title'),
@@ -135,6 +134,7 @@ app.get('/mixing', (req, res) => {
         currentLocale: res.getLocale()
     });
 });
+
 app.get('/success', (req, res) => {
     res.render('success', {
         title: i18n.__('success.meta_title'),
@@ -143,7 +143,6 @@ app.get('/success', (req, res) => {
         currentLocale: res.getLocale()
     });
 });
-
 
 // #region 路由定義
 app.post('/paypal-pay', handlePayPalPaymentRequest);

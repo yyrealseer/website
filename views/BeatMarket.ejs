@@ -23,83 +23,34 @@
             <h class="large-title"><%= t('beatmarket.large_title') %></h>
 
             <div class=" beat-container">
-                <div class="track">
-                    <button class="thumbnail" style="background-image: url('/BEAT/img/<%= t('beatmarket.RazorRush.name') %>.jpg');"
-                        onclick="AudioPlayer.changeAudio('./BEAT/track/<%= t('beatmarket.RazorRush.file_name') %>', '<%= t('beatmarket.RazorRush.name') %>')"></button>
-                    <h class="beat-name"><%= t('beatmarket.RazorRush.name') %></h>
-                    <div class="produc-info">
-                        <p class="Price-tag"><%= t('beatmarket.RazorRush.price_tag') %></p>
-                        <button class="checkout-btn" onclick="showPopup('<%= t('beatmarket.RazorRush.name') %>', <%= t('beatmarket.RazorRush.price_value') %>)">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </button>
+                <% Object.values(beatsData).forEach(function(beat) { %>
+                    <div class="track">
+                        <button class="thumbnail" style="background-image: url('/BEAT/img/<%= beat.name %>.jpg');"
+                                onclick="AudioPlayer.changeAudio('./BEAT/track/<%= beat.file_name %>', '<%= beat.name %>')"></button>
+                        <h class="beat-name"><%= beat.name %></h>
+                        <div class="produc-info">
+                            <!-- 使用條件判斷語言環境顯示不同的 price_tag -->
+                            <% if (currentLocale === 'zh') { %>
+                                <p class="Price-tag"><%= beat.NT_price_tag %></p>
+                                <button class="checkout-btn" onclick="showPopup('<%= beat.name %>', <%= beat.NT_price_value %>)">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </button>
+                            <% } else { %>
+                                <p class="Price-tag"><%= beat.US_price_tag %></p>
+                                <button class="checkout-btn" onclick="showPopup('<%= beat.name %>', <%= beat.US_price_value %>)">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </button>
+                            <% } %>
+                        </div>
+                        <div class="tag-container">
+                            <p class="tag type"><%= beat.type1 %></p>
+                            <p class="tag type"><%= beat.bpm %> BPM</p>
+                            <p class="tag mood"><%= beat.mood1 %></p>
+                            <p class="tag mood"><%= beat.mood2 %></p>
+                            <p class="tag mood"><%= beat.mood3 %></p>
+                        </div>
                     </div>
-                    <div class="tag-container">
-                        <p class="tag type"><%= t('beatmarket.RazorRush.type1') %></p>
-                        <p class="tag type"><%= t('beatmarket.RazorRush.type2') %></p>
-                        <p class="tag type"><%= t('beatmarket.RazorRush.bpm') %> BPM</p>
-                        <p class="tag mood"><%= t('beatmarket.RazorRush.mood1') %></p>
-                        <p class="tag mood"><%= t('beatmarket.RazorRush.mood2') %></p>
-                        <p class="tag mood"><%= t('beatmarket.RazorRush.mood3') %></p>
-                    </div>
-                </div>
-
-                <div class="track">
-                    <button class="thumbnail" style="background-image: url('/BEAT/img/<%= t('beatmarket.BoogieDelight.name') %>.jpg');"
-                        onclick="AudioPlayer.changeAudio('./BEAT/track/<%= t('beatmarket.BoogieDelight.file_name') %>', '<%= t('beatmarket.BoogieDelight.name') %>')"></button>
-                    <h class="beat-name"><%= t('beatmarket.BoogieDelight.name') %></h>
-                    <div class="produc-info">
-                        <p class="Price-tag"><%= t('beatmarket.BoogieDelight.price_tag') %></p>
-                        <button class="checkout-btn" onclick="showPopup('<%= t('beatmarket.BoogieDelight.name') %>', <%= t('beatmarket.BoogieDelight.price_value') %>)">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </button>
-                    </div>
-                    <div class="tag-container">
-                        <p class="tag type"><%= t('beatmarket.BoogieDelight.type1') %></p>
-                        <p class="tag type"><%= t('beatmarket.BoogieDelight.bpm') %> BPM</p>
-                        <p class="tag mood"><%= t('beatmarket.BoogieDelight.mood1') %></p>
-                        <p class="tag mood"><%= t('beatmarket.BoogieDelight.mood2') %></p>
-                        <p class="tag mood"><%= t('beatmarket.BoogieDelight.mood3') %></p>
-                    </div>
-                </div>
-
-                <div class="track">
-                    <button class="thumbnail" style="background-image: url('/BEAT/img/<%= t('beatmarket.MoonLit.name') %>.jpg');"
-                        onclick="AudioPlayer.changeAudio('./BEAT/track/<%= t('beatmarket.MoonLit.file_name') %>', '<%= t('beatmarket.MoonLit.name') %>')"></button>
-                    <h class="beat-name"><%= t('beatmarket.MoonLit.name') %></h>
-                    <div class="produc-info">
-                        <p class="Price-tag"><%= t('beatmarket.MoonLit.price_tag') %></p>
-                        <button class="checkout-btn" onclick="showPopup('<%= t('beatmarket.MoonLit.name') %>', <%= t('beatmarket.MoonLit.price_value') %>)">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </button>
-                    </div>
-                    <div class="tag-container">
-                        <p class="tag type"><%= t('beatmarket.MoonLit.type1') %></p>
-                        <p class="tag type"><%= t('beatmarket.MoonLit.type2') %></p>
-                        <p class="tag type"><%= t('beatmarket.MoonLit.bpm') %> BPM</p>
-                        <p class="tag mood"><%= t('beatmarket.MoonLit.mood1') %></p>
-                        <p class="tag mood"><%= t('beatmarket.MoonLit.mood2') %></p>
-                        <p class="tag mood"><%= t('beatmarket.MoonLit.mood3') %></p>
-                    </div>
-                </div>
-
-                <div class="track">
-                    <button class="thumbnail" style="background-image: url('/BEAT/img/<%= t('beatmarket.FlowerInVase.name') %>.jpg');"
-                        onclick="AudioPlayer.changeAudio('./BEAT/track/<%= t('beatmarket.FlowerInVase.file_name') %>', '<%= t('beatmarket.FlowerInVase.name') %>')"></button>
-                    <h class="beat-name"><%= t('beatmarket.FlowerInVase.name') %></h>
-                    <div class="produc-info">
-                        <p class="Price-tag"><%= t('beatmarket.FlowerInVase.price_tag') %></p>
-                        <button class="checkout-btn" onclick="showPopup('<%= t('beatmarket.FlowerInVase.name') %>', <%= t('beatmarket.FlowerInVase.price_value') %>)">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </button>
-                    </div>
-                    <div class="tag-container">
-                        <p class="tag type"><%= t('beatmarket.FlowerInVase.type1') %></p>
-                        <p class="tag type"><%= t('beatmarket.FlowerInVase.bpm') %> BPM</p>
-                        <p class="tag mood"><%= t('beatmarket.FlowerInVase.mood1') %></p>
-                        <p class="tag mood"><%= t('beatmarket.FlowerInVase.mood2') %></p>
-                        <p class="tag mood"><%= t('beatmarket.FlowerInVase.mood3') %></p>
-                    </div>
-                </div>
+                <% }); %>
 
             </div>
         </div>
