@@ -58,5 +58,20 @@
         "mood2": "Dark",
         "mood3": "Dramatic",
         "bpm": "142"
+    },
+    "SkyBound": {
+        "name": "SkyBound",
+        "file_name": "240919_SkyBound_Sample.mp3",
+        "NT_price_tag": "NT$3000",
+        "NT_price_value": "3000",
+        "US_price_tag": "US$100",
+        "US_price_value": "100",
+        "type1": "Pop",
+        "type2": "",
+        "type3": "",
+        "mood1": "Happy",
+        "mood2": "Bright",
+        "mood3": "Inspirational",
+        "bpm": "115"
     }
 }
