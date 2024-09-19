@@ -71,6 +71,11 @@ app.get('/', (req, res) => {
     });
 });
 
+// 提供 sitemap.xml 路由
+app.get('/sitemap.xml', (req, res) => {
+    res.sendFile(path.join(__dirname, 'sitemap.xml'));
+  });
+
 app.get('/arrange', (req, res) => {
     res.render('arrange', {
         title: i18n.__('arrange.meta_title'),
