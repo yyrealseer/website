@@ -72,7 +72,15 @@
                                 <%= t('mixing.content.notices.notices5') %>
                             </li>
                         </ul>
-                        <a class="book" href="https://forms.gle/ogop721i5NfyJHmV8">
+                        <a href="javascript:void(0);" class="book" 
+                        onclick="gtag('event', '前往預約表單', {
+                            'event_category': 'button',
+                            'event_label': '前往預約表單_混音',
+                            'value': 1
+                          });
+                          setTimeout(function(){
+                          window.location.href='https://forms.gle/ogop721i5NfyJHmV8';
+                          }, 300);">
                             <%= t('mixing.content.book_consultation') %>
                         </a>
                         <%- include('input/input_FAQ') %>

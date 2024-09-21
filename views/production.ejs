@@ -76,7 +76,14 @@
                             </li>
                         </ul>
 
-                        <a class="book" href="/BeatMarket">
+                        <a href="javascript:void(0);" class="book" onclick="gtag('event', '前往商店', {
+                            'event_category': 'button',
+                            'event_label': '前往商店_專案頁面',
+                            'value': 1
+                          });
+                          setTimeout(function(){
+                          window.location.href='/BeatMarket';
+                          }, 300);">
                             <%= t('production.content.book_consultation') %>
                         </a>
                         <%- include('input/input_FAQ') %>

@@ -1,7 +1,5 @@
-<%- include('input/input_layout',
- { metaTitle: t('index.meta_title'), 
- metaDescription: t('index.meta_description'), 
- ogTitle:t('index.meta_title'), ogDescription: t('index.meta_description') }) %>
+<%- include('input/input_layout', { metaTitle: t('index.meta_title'), metaDescription: t('index.meta_description'),
+    ogTitle:t('index.meta_title'), ogDescription: t('index.meta_description') }) %>
 
     <body>
         <!-- Google Tag Manager (noscript) -->
@@ -15,16 +13,37 @@
                         <img id="LOGO2" style="height:var(--LOGO-height);" ; src="/ICON/LOGO_White.png">
                     </div>
                     <div class="分頁" id="橫向分頁">
-                        <a href="/BeatMarket">
+                        <a href="javascript:void(0);" onclick="gtag('event', '前往商店', {
+                            'event_category': 'button',
+                            'event_label': '前往商店_頁首',
+                            'value': 1
+                          });
+                          setTimeout(function(){
+                            window.location.href='/BeatMarket';
+                          }, 300);">
                             <%= t('header.beat_market') %>
                         </a>
-                        <a href="https://forms.gle/ogop721i5NfyJHmV8">
+                        <a href="javascript:void(0);" onclick="gtag('event', '前往預約表單', {
+                            'event_category': 'button',
+                            'event_label': '前往預約表單_頁首',
+                            'value': 1
+                          });
+                          setTimeout(function(){
+                            window.location.href='https://forms.gle/ogop721i5NfyJHmV8';
+                          }, 300);">
                             <%= t('header.consultation') %>
                         </a>
                         <a href="/FAQ">
                             <%= t('header.faq') %>
                         </a>
-                        <a href="/mixing">
+                        <a  href="javascript:void(0);" onclick="gtag('event', '了解更多', {
+                            'event_category': 'button',
+                            'event_label': '了解更多_頁首',
+                            'value': 1
+                          });
+                          setTimeout(function(){
+                            window.location.href='/mixing';
+                          }, 300);">
                             <%= t('header.service') %>
                         </a>
                     </div>
@@ -197,7 +216,14 @@
                                 <p>
                                     <%= t('index.services.production_price') %>
                                 </p>
-                                <p><a href="/production" style="text-align: end; color: var(--warn-color);">
+                                <p><a href="javascript:void(0);" style="text-align: end; color: var(--warn-color);" onclick="gtag('event', '了解更多', {
+                                        'event_category': 'button',
+                                        'event_label': '了解更多_買Beats送混音',
+                                        'value': 1
+                                      });
+                                      setTimeout(function(){
+                                      window.location.href='/production';
+                                      }, 300);">
                                         <%= t('index.services.service_btn') %>
                                     </a></p>
                             </div>
@@ -210,7 +236,14 @@
                                 <p>
                                     <%= t('index.services.mixing_description') %>
                                 </p>
-                                <a href="/mixing" style="text-align: end; color: var(--warn-color);">
+                                <a href="javascript:void(0);" style="text-align: end; color: var(--warn-color);" onclick="gtag('event', '了解更多', {
+                                    'event_category': 'button',
+                                    'event_label': '了解更多_混音',
+                                    'value': 1
+                                  });
+                                      setTimeout(function(){
+                                      window.location.href='/mixing';
+                                      }, 300);">
                                     <%= t('index.services.service_btn') %>
                                 </a>
                             </div>
@@ -224,7 +257,14 @@
                                 <p>
                                     <%= t('index.services.arranging_description') %>
                                 </p>
-                                <a href="/arrange" style="text-align: end; color: var(--warn-color);">
+                                <a href="javascript:void(0);" style="text-align: end; color: var(--warn-color);" onclick="gtag('event', '了解更多', {
+                                    'event_category': 'button',
+                                    'event_label': '了解更多_編曲',
+                                    'value': 1
+                                  });
+                                      setTimeout(function(){
+                                      window.location.href='/arrange';
+                                      }, 300);">
                                     <%= t('index.services.service_btn') %>
                                 </a>
                             </div>
@@ -237,7 +277,14 @@
                                 <p>
                                     <%= t('index.services.course_description') %>
                                 </p>
-                                <a href="/course" style="text-align: end; color: var(--warn-color);">
+                                <a href="javascript:void(0);" style="text-align: end; color: var(--warn-color);" onclick="gtag('event', '了解更多', {
+                                   'event_category': 'button',
+                                   'event_label': '了解更多_課程',
+                                   'value': 1
+                                 });
+                                      setTimeout(function(){
+                                      window.location.href='/course';
+                                      }, 300);">
                                     <%= t('index.services.service_btn') %>
                                 </a>
                             </div>

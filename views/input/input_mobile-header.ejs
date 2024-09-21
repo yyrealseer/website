@@ -70,16 +70,37 @@
             <a class="list" href="/">
                 <%= t('header.home') %>
             </a><br>
-            <a class="list" href="/mixing">
+            <a href="javascript:void(0);" onclick="gtag('event', '了解更多', {
+                'event_category': 'button',
+                'event_label': '了解更多_行動選單',
+                'value': 1
+              });
+              setTimeout(function(){
+                window.location.href='/mixing';
+              }, 300);">
                 <%= t('header.service') %>
             </a><br>
             <a class="list" href="/FAQ">
                 <%= t('header.faq') %>
             </a><br>
-            <a class="list" href="https://forms.gle/ogop721i5NfyJHmV8">
+            <a href="javascript:void(0);" class="list" onclick="gtag('event', '前往預約表單', {
+                'event_category': 'button',
+                'event_label': '前往預約表單_行動選單',
+                'value': 1
+              });
+              setTimeout(function(){
+              window.location.href='https://forms.gle/ogop721i5NfyJHmV8';
+              }, 300);">
                 <%= t('header.consultation') %>
             </a><br>
-            <a class="list" href="/BeatMarket">
+            <a href="javascript:void(0);" onclick="gtag('event', '前往商店', {
+                'event_category': 'button',
+                'event_label': '前往商店_行動選單',
+                'value': 1
+              });
+              setTimeout(function(){
+                window.location.href='/BeatMarket';
+              }, 300);">
                 <%= t('header.beat_market') %>
             </a>
         </div>

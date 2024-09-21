@@ -115,7 +115,15 @@
                                 <%= t('course.content.notice.item3') %>
                             </li>
                         </ul>
-                        <a class="book" href="https://forms.gle/ogop721i5NfyJHmV8">
+                        <a href="javascript:void(0);" class="book"
+                        onclick="gtag('event', '前往預約表單', {
+                            'event_category': 'button',
+                            'event_label': '前往預約表單_課程',
+                            'value': 1
+                          });
+                          setTimeout(function(){
+                          window.location.href='https://forms.gle/ogop721i5NfyJHmV8';
+                          }, 300);">
                             <%= t('course.content.book_consultation') %>
                         </a>
                         <%- include('input/input_FAQ') %>
