@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios');
 const router = express.Router();
 const crypto = require('crypto');
 const nodemailer = require('nodemailer'); // 引入 nodemailer
@@ -68,6 +69,7 @@ router.post('/ecpay-pay', (req, res) => {
   res.send(html);
 });
 
+
 // 處理支付成功回調
 router.post('/ecpay-return', async (req, res) => {
   console.log('req.body:', req.body);
@@ -86,22 +88,61 @@ router.post('/ecpay-return', async (req, res) => {
       const reference_id = data.CustomField2;
       const downloadLink = process.env[`${reference_id}_LINK`] || process.env.DEFAULT_LINK;
 
+      // 確保 i18n 已初始化
+      const emailTitle = req.__('success_email.title') || 'Success!';
+      const emailContent = req.__('success_email.content') || 'Your payment was successful.';
+
+      // 發送確認郵件
       const mailOptions = {
         from: process.env.EMAIL_USER,
         to: Email,
-        subject: req.__('success_email.title'),
-        text: `${req.__('success_email.content')} ${downloadLink}`,
+        subject: emailTitle,
+        text: `${emailContent} ${downloadLink}`,
       };
 
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.error('發送郵件時發生錯誤：', error);
-          return res.status(500).send('支付成功，但發送郵件時出錯');
-        } else {
-          console.log('確認郵件已發送：' + info.response);
-          return res.send('1|OK'); // 確保只返回一次
-        }
-      });
+      try {
+        await transporter.sendMail(mailOptions);  // 使用 await 發送郵件
+        console.log('確認郵件已發送');
+
+        // 在這裡將事件發送到 GA4
+        const measurementId = process.env.GA4_measurementId;  // 你的 GA4 測量ID
+        const apiSecret = process.env.GA4_Secret;  // GA4 的 API 密鑰
+        const clientId = crypto.randomUUID();  // 生成唯一 client_id，替代硬編碼
+        const transactionId = data.MerchantTradeNo;
+        const totalValue = parseFloat(data.TradeAmt);  // 訂單金額
+
+        const ga4Payload = {
+          client_id: clientId,
+          events: [
+            {
+              name: 'purchase',
+              params: {
+                transaction_id: transactionId,
+                affiliation: 'Online Store',
+                value: totalValue,
+                currency: 'TWD',
+                items: [
+                  {
+                    item_name: reference_id,
+                    item_id: reference_id,
+                    price: totalValue,
+                    quantity: 1
+                  }
+                ]
+              }
+            }
+          ]
+        };
+
+        await axios.post(`https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${apiSecret}`, ga4Payload);
+        console.log('GA4 購買事件已發送');
+        return res.send('1|OK'); // 確保只返回一次
+
+      } catch (error) {
+        console.error('發送郵件或 GA4 購買事件時發生錯誤：', error);
+        return res.status(500).send('支付成功，但處理時發生錯誤');
+      }
+
     } else {
       console.error('支付驗證失敗');
       res.status(400).send('支付驗證失敗');
