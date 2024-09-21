@@ -75,6 +75,7 @@
 	},
 	"arrange": {
 		"meta_title": "Arrangement | YY Studio",
+		"meta_description":"Get your custom arrangement based on your DEMO or song. We craft the perfect sounds, instruments, and style to create a fully tailored music production that fits your vision. Order your personalized music now!",
 		"content": {
 			"service_title": "Services - Arrangement",
 			"service_description": "We arrange music based on the original demo or lyrics provided by the client. This includes selecting the appropriate sounds, instruments, and arrangement styles to create a complete musical work tailored to the client's needs.",
@@ -98,6 +99,7 @@
 	},
 	"mixing": {
 		"meta_title": "Mixing & Mastering | YY Studio",
+		"meta_description": "Professional mixing and mastering services to balance and enhance your tracks, ensuring clear, dynamic sound that adapts to any playback environment. Achieve superior audio quality. Order your custom mixing package today!",
 		"content": {
 			"service_title": "Services - Mixing & Mastering",
 			"service_description": "We provide professional mixing services, adjusting, balancing, and adding effects to the tracks to ensure the music is clear, balanced, and dynamic. Additionally, we offer mastering services to adjust and optimize the final mix, ensuring high-quality output in various playback environments.",
@@ -124,6 +126,7 @@
 	},
 	"course": {
 		"meta_title": "Songwriting/Producing Tutorial | YY Studio",
+		"meta_description":"Music creation lessons for enthusiasts, teaching composition techniques, creative strategies, and production processes. Start from scratch and complete your own DEMO. Begin your music journey now!",
 		"content": {
 			"service_title": "Services - Songwriting/Producing Tutorial",
 			"service_description": "Helping those interested in music to become creators. In this course, I will share composition techniques, conceptual methods, and production processes, guiding students step-by-step to complete their music works.",
@@ -156,6 +159,7 @@
 	},
 	"production": {
 		"meta_title": "Buy Beat, Get Free Mixing (Limited Offer!) | YY Studio",
+		"meta_description": "Buy a Beat and get free mixing and mastering! Choose from YY Studio's Beat stems and receive professional mixing and post-production for perfect sound quality. Visit BeatMarket now to shop!",
 		"content": {
 			"service_title": "Services - Buy Beat, Get Free Mixing",
 			"service_description": "Purchase a beat and enjoy free professional mixing and mastering services (original price $5000 per track)! Just go to our BeatMarket platform and choose a track from YY Studio; we will provide free mixing and mastering services to ensure your work reaches the highest quality!",
@@ -178,6 +182,7 @@
 	},
 	"collaborate": {
 		"meta_title": "Collaborate | YY Studio",
+		"meta_description": "collaborate",
 		"header": {
 			"list": "Menu",
 			"home": "Home",
@@ -197,6 +202,7 @@
 	},
 	"faq": {
 		"meta_title": "FAQ | YY Studio",
+		"meta_description": "May I still take online courses if I don't know how to operate the software yet? Yes, during online lessons, I will share my screen and guide you step-by-step on how to operate and set up the software.",
 		"large_title": "FAQ",
 		"mixing": {
 			"title": "Mixing & Mastering",

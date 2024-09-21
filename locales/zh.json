@@ -75,6 +75,7 @@
 	},
 	"arrange": {
 		"meta_title": "混音與母帶製作 | YY Studio",
+		"meta_description":"根據你的 DEMO 或詞曲進行專業編曲，量身打造合適的音色、樂器和風格，創作出符合需求的完整音樂作品。立即訂製你的專屬音樂！",
 		"content": {
 			"service_title": "服務項目-編曲",
 			"service_description": "根據客戶提供的原始音樂DEMO或詞曲，進行編曲工作。這包括選擇合適的音色、樂器和編曲風格，並將它們組合成一個完整的音樂作品，根據客戶的需求進行量身定制。",
@@ -98,6 +99,7 @@
 	},
 	"mixing": {
 		"meta_title": "混音與母帶製作 | YY Studio",
+		"meta_description": "提供專業混音與母帶製作服務，調整音軌的平衡和效果，確保音樂聲音清晰、動感，並適應各種播放環境，保持卓越音質。立即訂製你的專屬混音方案！",
 		"content": {
 			"service_title": "服務項目-混音與母帶製作",
 			"service_description": "提供專業的混音服務，將音軌進行調音、平衡和效果處理，確保音樂作品的聲音清晰、平衡且具有動感。同時，也提供母帶製作服務，將最終混音結果進行調整和優化，確保作品在不同播放環境下都能保持高品質。",
@@ -124,6 +126,7 @@
 	},
 	"course": {
 		"meta_title": "創作/製作課程 | YY Studio",
+		"meta_description":"專為音樂愛好者設計的創作教學，分享作曲技巧、構思策略和製作流程，帶領學生從零開始完成屬於自己的 DEMO。立即開始你的音樂創作之旅！",
 		"content": {
 			"service_title": "服務項目-DEMO創作課程",
 			"service_description": "幫助對音樂有興趣的人成為一位音樂創作者。在課程中，我將分享創作技巧、構思方法和製作流程，並指導學生逐步完成自己的音樂作品。",
@@ -156,6 +159,7 @@
 	},
 	"production": {
 		"meta_title": "買Beat送混音(限時專案！) | YY Studio",
+		"meta_description": "購買 Beat 即享免費混音和母帶製作！選購 YY Studio Beat 分軌，免費獲得專業混音與後製，讓您的作品達到完美音質。立即到 BeatMarket 選購！",
 		"content": {
 			"service_title": "服務項目-買Beat送混音",
 			"service_description": "購買Beat即可享受免費的專業混音和母帶製作服務（原價$5000/首）！只需到我們的BeatMarket平台選購YY Studio的Beat分軌，我們將免費為您進行混音及母帶後製處理，讓您的作品達到最佳品質！",
@@ -178,6 +182,7 @@
 	},
 	"collaborate": {
 		"meta_title": "合作專區 | YY Studio",
+		"meta_description": "合作專區",
 		"header": {
 			"list": "選單",
 			"home": "首頁",
@@ -197,6 +202,7 @@
 	},
 	"faq": {
 		"meta_title": "常見問題FAQ | YY Studio",
+		"meta_description": "我還不會操作軟體，可以上線上課程嗎？可以，線上上課時我會同時分享我的螢幕畫面，並一步一步教你如何操作軟體及軟體設定。",
 		"large_title": "常見問題FAQ",
 		"mixing": {
 			"title": "混音與母帶製作",
@@ -242,6 +248,7 @@
 	},
 	"beatmarket": {
 		"meta_title": "Beat Market | YY Studio",
+		"meta_description": "立即購買專業製作的高品質Beats，涵蓋多種音樂風格，適合 Hip-Hop、Trap、Pop、Boombap 等，我們都有合適的選擇，輕鬆下載你的下一首熱曲！，",
 		"header": {
 			"list": "選單",
 			"home": "首頁",
