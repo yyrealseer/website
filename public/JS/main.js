@@ -15,16 +15,6 @@ loadScript('/JS/header.js', function() {
     // 這裡可以初始化 header.js 中的功能
 });
 
-loadScript('/JS/mobile-header.js', function() {
-    console.log('mobile-header.js 已加載');
-    // 初始化 mobile-header.js 的功能
-});
-
-loadScript('/JS/mobile-navigation.js', function() {
-    console.log('mobile-navigation.js 已加載');
-    // 初始化 mobile-navigation.js 的功能
-});
-
 loadScript('/JS/severce.js', function() {
     console.log('severce.js 已加載');
     // 初始化 severce.js 的功能
