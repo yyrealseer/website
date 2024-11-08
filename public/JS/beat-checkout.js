@@ -11,9 +11,9 @@ function showPopup(description, amount) {
         document.getElementById('popupForm').style.flexDirection = 'column'; // 手機板樣式
     } else {
         document.getElementById('popupForm').style.flexDirection = 'row'; // 桌面版樣式
-    };
-document.getElementById('overlay').style.display = 'block';
-        }
+    }
+    document.getElementById('overlay').style.display = 'block';
+}
 
 // 隱藏彈出表單
 function hidePopup() {
@@ -31,4 +31,33 @@ function generateMerchantOrderNo() {
     const mi = String(date.getMinutes()).padStart(2, '0');
     const ss = String(date.getSeconds()).padStart(2, '0');
     return `${yy}${mm}${dd}${hh}${mi}${ss}`;
+}
+
+// 檢查用戶是否登入
+const isLoggedIn = !!sessionStorage.getItem('userToken');
+
+// 監聽表單提交事件
+document.getElementById('popupForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // 阻止默認的表單提交
+    checkLoginAndSubmit(); // 檢查登入狀態並提交表單
+});
+
+// 檢查 Discord 登入並提交表單
+function checkLoginAndSubmit() {
+    // 向後端發送請求檢查是否登入 Discord
+    fetch('/check-discord-login')
+        .then(response => response.json())
+        .then(data => {
+            if (data.isLoggedIn) {
+                // 用戶已登入，提交表單
+                document.getElementById('popupForm').submit();
+            } else {
+                // 未登入，顯示提示訊息或跳轉到登入頁面
+                alert('請先登入您的 Discord 帳戶!');
+                window.location.href = '/login';  // 重定向到登入頁面
+            }
+        })
+        .catch(error => {
+            console.error('檢查登入狀態時出錯:', error);
+        });
 }
