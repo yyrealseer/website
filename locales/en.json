@@ -273,5 +273,9 @@
 			"Email": "Email:",
 			"checkout": "Checkout"
 		}
+	},
+	"articles": {
+		"meta_title":"文章專區 | YY Studio",
+		"meta_description": "這裡收錄了很多文章"
 	}
 }

@@ -1,0 +1,85 @@
+<header id="topheader">
+  <div class="header-container">
+    <a href="/" id="LOGOtop">
+      <img id="LOGO2" style="height:var(--LOGO-height);" ; src="/ICON/LOGO_White.png">
+    </a>
+    <div class="分頁" id="橫向分頁">
+      <a href="javascript:void(0);" onclick="gtag('event', '前往商店', {
+                'event_category': 'button',
+                'event_label': '前往商店_頁首',
+                'value': 1
+              });
+              setTimeout(function(){
+                window.location.href='/BeatMarket';
+              }, 300);">
+        <%= t('header.beat_market') %>
+      </a>
+      <a href="javascript:void(0);" onclick="gtag('event', '前往預約表單', {
+                'event_category': 'button',
+                'event_label': '前往預約表單_頁首',
+                'value': 1
+              });
+              setTimeout(function(){
+                window.location.href='https://forms.gle/ogop721i5NfyJHmV8';
+              }, 300);">
+        <%= t('header.consultation') %>
+      </a>
+      <a href="/FAQ">
+        <%= t('header.faq') %>
+      </a>
+      <a href="javascript:void(0);" onclick="gtag('event', '了解更多', {
+                'event_category': 'button',
+                'event_label': '了解更多_頁首',
+                'value': 1
+              });
+              setTimeout(function(){
+                window.location.href='/mixing';
+              }, 300);">
+        <%= t('header.service') %>
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  #topheader {
+    height: var(--LOGO-height);
+    width: 100%;
+    padding: 9px 0px;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .header-container {
+    display: flex;
+    height: 100%;
+    border: 1px solid;
+    border-color: #ffffff00;
+    max-width: 100%;
+  }
+
+  .分頁 {
+    width: 100vw;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  #橫向分頁 a {
+    font-size: 24px;
+    color: #ffffff;
+    padding-left: 3%;
+    margin: auto 0;
+    text-decoration: none;
+  }
+
+  #LOGOtop {
+    position: absolute;
+    left: calc((100vw - var(--LOGO-height)) / 2);
+  }
+
+  @media (max-width: 767px) {
+    #header {
+      display: none;
+    }
+  }
+</style>

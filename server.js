@@ -58,6 +58,18 @@ app.get('/change-language/:lang', (req, res) => {
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
+// 讀取文章數據
+const getArticles = () => {
+    const data = fs.readFileSync(path.join(__dirname, './data/articles.json'), 'utf-8');
+    return JSON.parse(data);
+};
+
+// 根據 id 查詢文章
+const getArticleById = (id) => {
+    const articles = getArticles();
+    return articles.find(article => article.id === id);
+};
+
 // 加載 JSON 文件
 const beatsData = Object.values(JSON.parse(fs.readFileSync('./data/BeatsHouseware.json', 'utf-8'))).reverse();
 
@@ -147,6 +159,40 @@ app.get('/success', (req, res) => {
         t: i18n.__,
         currentLocale: res.getLocale()
     });
+});
+
+app.get('/articles', (req, res) => {
+    let articles = getArticles(); // 從 JSON 文件讀取所有文章
+
+    // 根據日期排序（新到舊）
+    articles = articles.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+    // 過濾分類（如果有傳入 category 參數）
+    if (req.query.category) {
+        articles = articles.filter(article => article.category === req.query.category);
+    }
+
+    // 渲染模板，並傳遞翻譯函數和文章數據
+    res.render('articlesIndex', {
+        articles: articles,
+        t: i18n.__, // 正確傳遞 i18n.__ 作為翻譯函數
+        currentLocale: res.getLocale()
+    });
+});
+
+app.get('/articles/:id', (req, res) => {
+    const articleId = req.params.id;
+    const article = getArticleById(articleId);
+
+    if (!article) {
+        return res.status(404).send('文章未找到');
+    }
+
+    res.render('article', {
+        article: article,
+        t: i18n.__, // 正確傳遞 i18n.__ 作為翻譯函數
+        currentLocale: res.getLocale()
+     });
 });
 
 // #region 路由定義

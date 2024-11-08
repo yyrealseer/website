@@ -1,0 +1,135 @@
+<%- include('input/input_layout', { metaTitle: t('articles.meta_title'), metaDescription:
+    t('articles.meta_description'), ogTitle:t('articles.meta_title'), ogDescription: t('articles.meta_description') })
+    %>
+
+    <body>
+        <%- include('input/input_index-topHeader') %>
+            <%- include('input/input_mobile-header') %>
+                <div class="desktop-blank"></div>
+                <div class="serverce-descript">
+                    <%- include('input/input_pages-navigation') %>
+                        <div id="content">
+                            <h id="content-title">
+                                <%= t('articles.content_title') %>
+                            </h>
+                            <!-- 顯示分類篩選 -->
+                            <form method="get" action="/articles">
+                                <label for="category">篩選分類：</label>
+                                <select name="category" id="category">
+                                    <option value="">全部分類</option>
+                                    <% 
+                                    const categories = [];
+                                    articles.forEach(function(article) {
+                                        if (!categories.includes(article.category)) {
+                                            categories.push(article.category);
+                                        }
+                                    });
+                                    categories.forEach(function(category) {
+                                    %>
+                                        <option value="<%= category %>"><%= category %></option>
+                                    <% }); %>
+                                </select>
+                                <button type="submit" class="category-btn">篩選</button>
+                            </form>
+                            <div class="articles-content">
+                                <% articles.forEach(function(article) { %>
+                                    <div class="articles">
+                                        <img class="thumbnail" src="/ARTICLE/thumbnails/<%= article.id %>.jpg"
+                                            style="object-fit: contain;">
+                                        <a class="articles-text" href="/articles/<%= article.id %>">
+                                            <p class="articles-info">作者: <%= article.author %> | 發佈日期: <%=
+                                                        article.createdAt %> | 分類: <%= article.category %>
+                                            </p>
+                                            <h2 class="articles-title">
+                                                <%= article.title %>
+                                            </h2>
+                                            <p class="articles-description">
+                                                <%= article.meta_description %>
+                                            </p>
+                                        </a>
+                                    </div>
+                                    <% }); %>
+                            </div>
+                        </div>
+                </div>
+                <%- include('input/input_changeLanguage') %>
+                    <%- include('input/input_backtopBtn') %>
+                        <%- include('input/input_footer') %>
+    </body>
+    <style>
+        * {
+            --thumbnailsize: 250px;
+        }
+
+        option {
+            color: var(--main-color);
+        }
+
+        select {
+            color: var(--main-color);
+        }
+
+        .category-btn {
+            color: var(--main-color);
+            margin: 0 15px;
+            background-color: #e2e2e2;
+        }
+
+        .articles-content {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            padding: 10% 0;
+            flex-direction: column;
+        }
+
+        .articles {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            margin: 30px 0;
+        }
+
+        .thumbnail {
+            width: var(--thumbnailsize);
+            border: none;
+            box-shadow: 2px 0px 6px 0px #000000;
+            background-size: contain;
+        }
+
+        .articles-text {
+            display: block;
+            margin: 0 30px;
+            max-width: 100%;
+            text-decoration: none;
+        }
+
+        .articles-title {
+            margin: 20px 0;
+            font-size: 30px;
+            color: var(--sub-color);
+        }
+
+        .articles-description {
+            font-size: 16px;
+        }
+
+        .articles-info {
+            font-size: 14px;
+            color: #e2e2e2;
+        }
+        @media (max-width: 767px) {
+
+            .articles{
+                flex-direction: column;
+            }
+            
+            .articles-info {
+                font-size: 12px;
+            }
+
+            .articles-title {
+                margin: 10px 0;
+            }
+        }
+    </style>

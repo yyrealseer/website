@@ -7,48 +7,7 @@
                 style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
         <%- include('input/input_index-navigation') %>
-            <header id="topheader">
-                <div class="header-container">
-                    <div id="LOGOtop">
-                        <img id="LOGO2" style="height:var(--LOGO-height);" ; src="/ICON/LOGO_White.png">
-                    </div>
-                    <div class="分頁" id="橫向分頁">
-                        <a href="javascript:void(0);" onclick="gtag('event', '前往商店', {
-                            'event_category': 'button',
-                            'event_label': '前往商店_頁首',
-                            'value': 1
-                          });
-                          setTimeout(function(){
-                            window.location.href='/BeatMarket';
-                          }, 300);">
-                            <%= t('header.beat_market') %>
-                        </a>
-                        <a href="javascript:void(0);" onclick="gtag('event', '前往預約表單', {
-                            'event_category': 'button',
-                            'event_label': '前往預約表單_頁首',
-                            'value': 1
-                          });
-                          setTimeout(function(){
-                            window.location.href='https://forms.gle/ogop721i5NfyJHmV8';
-                          }, 300);">
-                            <%= t('header.consultation') %>
-                        </a>
-                        <a href="/FAQ">
-                            <%= t('header.faq') %>
-                        </a>
-                        <a  href="javascript:void(0);" onclick="gtag('event', '了解更多', {
-                            'event_category': 'button',
-                            'event_label': '了解更多_頁首',
-                            'value': 1
-                          });
-                          setTimeout(function(){
-                            window.location.href='/mixing';
-                          }, 300);">
-                            <%= t('header.service') %>
-                        </a>
-                    </div>
-                </div>
-            </header>
+        <%- include('input/input_index-topHeader') %>
             <%- include('input/input_mobile-header') %>
                 <%- include('input/input_mobile-index-navigation') %>
 

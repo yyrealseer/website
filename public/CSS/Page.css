@@ -78,6 +78,10 @@ button {
 
 /*--------------------內文--------------------*/
 
+.desktop-blank {
+    height: 150px;
+}
+
 .serverce-descript {
     display: flex;
     width: 80vw;

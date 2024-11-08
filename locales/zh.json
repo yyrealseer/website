@@ -274,5 +274,10 @@
 			"Email": "電子郵件:",
 			"checkout": "去結帳"
 		}
+	},
+	"articles": {
+		"meta_title":"文章專區 | YY Studio",
+		"meta_description": "這裡收錄了很多文章",
+		"content_title": "文章專區"
 	}
 }

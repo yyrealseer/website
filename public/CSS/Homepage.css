@@ -79,14 +79,6 @@ button {
 
 /*--------------------Header--------------------*/
 
-#topheader {
-    height: var(--LOGO-height);
-    width: 100%;
-    padding: 9px 0px;
-    position: absolute;
-    z-index: 1;
-}
-
 .headroom {
     will-change: trasform;
     transition: transform 330ms cubic-bezier(0.78, 0.11, 0.46, 1.01);
@@ -100,23 +92,6 @@ button {
 .headroom--notTop {
     transform: translateX(0%);
 }
-
-#LOGOtop {
-    position: absolute;
-    left: calc((100vw - var(--LOGO-height)) / 2);
-}
-
-
-
-#橫向分頁 a {
-    font-size: 24px;
-    color: #ffffff;
-    padding-left: 3%;
-    margin: auto 0;
-    text-decoration: none;
-}
-
-
 
 
 

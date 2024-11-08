@@ -1,0 +1,107 @@
+<%- include('input/input_layout', { 
+    metaTitle: article.meta_title, 
+    metaDescription: article.meta_description, 
+    ogTitle: article.meta_title, 
+    ogDescription: article.meta_description 
+}) %>
+
+    <body>
+        <%- include('input/input_index-topHeader') %>
+            <%- include('input/input_mobile-header') %>
+                <div class="desktop-blank"></div>
+                <div class="serverce-descript">
+                    <%- include('input/input_pages-navigation') %>
+                        <div id="content">
+                            <img class="thumbnail" src="/ARTICLE/thumbnails/<%= article.id %>.jpg">
+                            <h1 class="articles-title">
+                                <%= article.title %>
+                            </h1>
+                            <p class="articles-info">作者: <%= article.author %> | 發佈日期: <%= article.createdAt %> | 分類:
+                                        <%= article.category %>
+                            </p>
+                            <div><%- article.content %></div>
+                        </div>
+                </div>
+                <%- include('input/input_changeLanguage') %>
+                    <%- include('input/input_backtopBtn') %>
+                        <%- include('input/input_footer') %>
+    </body>
+    <style>
+        * {
+            --thumbnailsize: 250px;
+        }
+
+        option {
+            color: var(--main-color);
+        }
+
+        select {
+            color: var(--main-color);
+        }
+
+        .category-btn {
+            color: var(--main-color);
+            margin: 0 15px;
+            background-color: #e2e2e2;
+        }
+
+        .articles-content {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            padding: 10% 0;
+            flex-direction: column;
+        }
+
+        .articles {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            margin: 30px 0;
+        }
+
+        .thumbnail {
+            width: 100%;
+            border: none;
+            box-shadow: 2px 0px 6px 0px #000000;
+            background-size: contain;
+        }
+
+        .articles-text {
+            display: block;
+            margin: 0 30px;
+            max-width: 100%;
+            text-decoration: none;
+        }
+
+        .articles-title {
+            margin: 40px 0;
+            font-size: 30px;
+            color: var(--sub-color);
+        }
+
+        .articles-description {
+            font-size: 16px;
+        }
+
+        .articles-info {
+            font-size: 14px;
+            color: #e2e2e2;
+            text-align: end;
+        }
+
+        @media (max-width: 767px) {
+
+            .articles {
+                flex-direction: column;
+            }
+
+            .articles-info {
+                font-size: 12px;
+            }
+
+            .articles-title {
+                margin: 10px 0;
+            }
+        }
+    </style>

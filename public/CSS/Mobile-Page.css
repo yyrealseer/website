@@ -62,4 +62,9 @@
         padding: 30px 0;
         margin: 45px 0;
     }
+
+    .desktop-blank {
+       display: none;
+    }
+    
 }
