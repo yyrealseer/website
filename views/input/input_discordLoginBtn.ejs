@@ -1,11 +1,34 @@
-<button id="loginBtn" onclick="redirectToLogin()">用 Discord 登入</button>
+<button id="loginBtn" onclick="toggleMenu()">用 Discord 登入</button>
+
+<div id="userMenu" style="display: none;">
+    <div id="logout" onclick="logout()">登出</div>
+    <div id="joinServer" onclick="joinServer()">加入Discord群！</div> 
+</div>
 
 <script>
+    function toggleMenu() {
+        const userData = localStorage.getItem('userData');
+        const menu = document.getElementById('userMenu');
+
+        if (userData) {
+            // 如果已登入，切換選單顯示/隱藏
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        } else {
+            // 如果未登入，執行登入流程
+            redirectToLogin();
+        }
+    }
+
     function redirectToLogin() {
         window.location.href = 'http://localhost:3000/login';
     }
 
-    // 確認是否有用戶資料在 URL 中，並儲存至 localStorage
+    function logout() {
+        // 移除用戶資料並重新載入頁面
+        localStorage.removeItem('userData');
+        location.reload();  // 重新載入頁面以更新按鈕顯示
+    }
+
     window.onload = function () {
         const urlParams = new URLSearchParams(window.location.search);
         const user = urlParams.get('user');
@@ -13,13 +36,92 @@
             localStorage.setItem('userData', user);
             console.log("User Data:", JSON.parse(user));  // 顯示用戶資料
         }
+
+        // 檢查是否已經有用戶資料，更新按鈕顯示
+        updateButton();
     };
+
+    function updateButton() {
+        const userData = localStorage.getItem('userData');
+        const loginBtn = document.getElementById('loginBtn');
+        if (userData) {
+            const user = JSON.parse(userData);
+            loginBtn.textContent = `${user.global_name}，你好！`;  // 顯示用戶名和問候語
+            document.getElementById('userName').textContent = `${user.global_name}，你好！`;
+        } else {
+            loginBtn.textContent = '用 Discord 登入';  // 顯示登入按鈕
+        }
+    }
+
+    function joinServer() {
+        // 這裡放入你的 Discord 伺服器邀請鏈接
+        const inviteLink = "https://discord.gg/V6B4nMhf";  // 替換成你的伺服器邀請鏈接
+        window.open(inviteLink, "_blank");  // 開啟新標籤頁
+    }
+
 </script>
 
 <style>
     #loginBtn {
         position: fixed;
-        left: 2%;
-        bottom: 7%;
+        right: 2%;
+        top: 7%;
+        background-color: #5865F2;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        z-index: 2;
+    }
+
+    #loginBtn:hover {
+        background-color: #4752C4;
+        /* 當滑鼠懸停時的顏色 */
+        transform: scale(1.05);
+    }
+
+    #loginBtn:active {
+        transform: scale(1);
+    }
+
+    #userMenu {
+        position: fixed;
+        right: 2%;
+        top: 17%;
+        background-color: #2C2F38;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        display: none;
+        padding: 10px;
+        width: 180px;
+        color: white;
+        font-size: 14px;
+        z-index: 2;
+    }
+
+    #userMenu div {
+        margin: 8px 0;
+        cursor: pointer;
+        padding: 8px;
+        transition: background-color 0.3s ease;
+    }
+
+    #userMenu div:hover {
+        background-color: #4752C4;
+        /* 懸停顏色 */
+    }
+
+    #userMenu div:active {
+        transform: scale(0.98);
+        /* 按下時的縮放效果 */
+    }
+
+    #userMenu div:focus {
+        outline: none;
     }
 </style>
