@@ -50,7 +50,7 @@ function checkLoginAndSubmit() {
         .then(data => {
             if (data.isLoggedIn) {
                 // 用戶已登入，提交表單
-                document.getElementById('popupForm').submit();
+                document.getElementById('checkout-form').submit();
             } else {
                 // 未登入，顯示提示訊息或跳轉到登入頁面
                 alert('請先登入您的 Discord 帳戶!');

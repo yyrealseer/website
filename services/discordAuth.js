@@ -7,7 +7,7 @@ dotenv.config();
 // Discord OAuth2 參數設定
 const CLIENT_ID = process.env.DISCORD_CLIENT_ID;
 const CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
-const REDIRECT_URI = 'https://yyrealseer.com/callback'; // 確保此處的 URI 與 Discord 開發者平台設置一致
+const REDIRECT_URI = 'http://localhost:3000/callback'; // 確保此處的 URI 與 Discord 開發者平台設置一致
 const SCOPE = 'identify';
 
 // 生成 Discord 登入連結的函式
