@@ -1,10 +1,11 @@
 // #region 引入模組
 const express = require('express');
 const session = require('express-session');
-const discordAuth = require('./services/discordAuth');  // 引入 Discord OAuth 模組
 const cookieParser = require('cookie-parser');
 const i18n = require('i18n');
 const { handlePayPalPaymentRequest, handlePayPalPaymentSuccess, handlePaymentCancel } = require('./services/paypal');
+
+const discordAuth = require('./services/discordAuth');
 const ecpayRouter = require('./services/ecpay');
 const dotenv = require('dotenv');
 const path = require('path');
@@ -85,24 +86,19 @@ app.get('/login', (req, res) => {
 });
 
 // OAuth2 回調路徑，用於處理 Discord 授權返回
-app.get('/callback', (req, res) => {
-    const { code } = req.query;
-
-    if (!code) {
-        return res.status(400).json({ success: false, message: '缺少授權碼' });
+app.get('/callback', async (req, res) => {
+    const code = req.query.code;
+    if (code) {
+        try {
+            // 使用 discordAuth 物件來調用 getAccessToken 函數
+            const userData = await discordAuth.getAccessToken(code);
+            res.json({ success: true, userData, redirectUrl: 'http://localhost:3000/BeatMarket' });
+        } catch (error) {
+            res.json({ success: false, message: error.message });
+        }
+    } else {
+        res.json({ success: false, message: 'Code is missing' });
     }
-
-    getAccessToken(code)
-        .then(userData => {
-            res.json({
-                success: true,
-                userData: userData,
-                redirectUrl: 'http://localhost:3000/BeatMarket'
-            });
-        })
-        .catch(error => {
-            res.status(500).json({ success: false, message: error.message });
-        });
 });
 
 
