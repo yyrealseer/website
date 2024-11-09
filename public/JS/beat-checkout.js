@@ -44,20 +44,12 @@ document.getElementById('popupForm').addEventListener('submit', function(event) 
 
 // 檢查 Discord 登入並提交表單
 function checkLoginAndSubmit() {
-    // 向後端發送請求檢查是否登入 Discord
-    fetch('/check-discord-login')
-        .then(response => response.json())
-        .then(data => {
-            if (data.isLoggedIn) {
-                // 用戶已登入，提交表單
-                document.getElementById('checkout-form').submit();
-            } else {
-                // 未登入，顯示提示訊息或跳轉到登入頁面
-                alert('請先登入您的 Discord 帳戶!');
-                window.location.href = '/login';  // 重定向到登入頁面
-            }
-        })
-        .catch(error => {
-            console.error('檢查登入狀態時出錯:', error);
-        });
+    if (checkDiscordLogin()) {
+        // 使用者已登入，提交表單
+        document.getElementById('checkout-form').submit();
+    } else {
+        // 未登入，顯示提示訊息或跳轉到登入頁面
+        alert('請先登入您的 Discord 帳戶!');
+        window.location.href = '/login';  // 重定向到登入頁面
+    }
 }

@@ -31,6 +31,38 @@ async function exchangeCodeForToken(code) {
     return tokenResponse.data.access_token;
 }
 
+// 定義 getAccessToken 函數
+async function getAccessToken(code) {
+    try {
+        const response = await axios.post('https://discord.com/api/v10/oauth2/token', null, {
+            params: {
+                client_id: CLIENT_ID,  // 修正為正確的環境變數
+                client_secret: CLIENT_SECRET,  // 修正為正確的環境變數
+                code: code,
+                grant_type: 'authorization_code',
+                redirect_uri: REDIRECT_URI,  // 修正為正確的環境變數
+                scope: 'identify'  // 如果你需要更多的權限，這裡可以修改
+            },
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        });
+
+        const accessToken = response.data.access_token;
+
+        // 使用 access token 獲取用戶資料
+        const userDataResponse = await axios.get('https://discord.com/api/v10/users/@me', {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        });
+
+        return userDataResponse.data;  // 返回用戶資料
+    } catch (error) {
+        throw new Error('獲取用戶資料失敗：' + error.message);
+    }
+}
+
 // 獲取用戶資訊的函式
 async function getUserData(accessToken) {
     const userResponse = await axios.get('https://discord.com/api/users/@me', {
@@ -45,6 +77,6 @@ async function getUserData(accessToken) {
 module.exports = {
     getDiscordAuthUrl,
     exchangeCodeForToken,
-    getUserData
+    getUserData,
+    getAccessToken
 };
-

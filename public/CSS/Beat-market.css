@@ -121,7 +121,7 @@
     z-index: 500;
 }
 
-.checkout-form {
+#checkout-form {
     text-align: end;
     width: 30%;
     padding: 10% 0;

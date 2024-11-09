@@ -85,27 +85,26 @@ app.get('/login', (req, res) => {
 });
 
 // OAuth2 回調路徑，用於處理 Discord 授權返回
-app.get('/callback', async (req, res) => {
-    const code = req.query.code;
-    const originalUrl = req.query.state || 'https://yyrealseer.com';  // 默認跳轉回首頁
+app.get('/callback', (req, res) => {
+    const { code } = req.query;
 
     if (!code) {
-        return res.status(400).send("授權碼缺失");
+        return res.status(400).json({ success: false, message: '缺少授權碼' });
     }
 
-    try {
-        const accessToken = await discordAuth.exchangeCodeForToken(code);
-        const userData = await discordAuth.getUserData(accessToken);
-
-        req.session.discordUser = userData;
-
-        // 跳轉回 originalUrl
-        res.redirect(originalUrl);  // 使用原始 URL 跳轉
-    } catch (error) {
-        console.error('OAuth2 錯誤:', error);
-        res.send('登入失敗，請重試。');
-    }
+    getAccessToken(code)
+        .then(userData => {
+            res.json({
+                success: true,
+                userData: userData,
+                redirectUrl: 'http://localhost:3000/BeatMarket'
+            });
+        })
+        .catch(error => {
+            res.status(500).json({ success: false, message: error.message });
+        });
 });
+
 
 
 // #endregion
