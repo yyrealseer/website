@@ -1,0 +1,25 @@
+<button id="loginBtn" onclick="redirectToLogin()">用 Discord 登入</button>
+
+<script>
+    function redirectToLogin() {
+        window.location.href = 'http://localhost:3000/login';
+    }
+
+    // 確認是否有用戶資料在 URL 中，並儲存至 localStorage
+    window.onload = function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const user = urlParams.get('user');
+        if (user) {
+            localStorage.setItem('userData', user);
+            console.log("User Data:", JSON.parse(user));  // 顯示用戶資料
+        }
+    };
+</script>
+
+<style>
+    #loginBtn {
+        position: fixed;
+        left: 2%;
+        bottom: 7%;
+    }
+</style>

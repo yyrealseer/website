@@ -93,8 +93,8 @@
                 <input class="checkout-list readonly" type="text" id="description" name="description" required
                     readonly><br><br>
 
-                <label class="checkout-title" for="Discord ID"><%= t('beatmarket.form.Email') %></label>
-                <input class="checkout-list  readonly" type="text" id="discordId" name="Email" required readonly><br><br>
+                <label class="checkout-title" for="Discord ID"><%= t('beatmarket.form.discordID') %></label>
+                <input class="checkout-list  readonly" type="text" id="discordId" name="discordID" required readonly><br><br>
 
                 <button style=" background-color: var(--main-color); padding: 2px 10px; border-radius: 5px;"
                     type="submit" onclick="
@@ -108,18 +108,22 @@
         <div style="height: 5000px;"></div>
         <div id="output"></div>
     </div>
-
+    <%- include('input/input_discordLoginBtn') %>
     <%- include('input/input_changeLanguage') %>
     <%- include('input/input_footer') %>
     <script>
-        // 自動填入 Discord ID
-        const discordUserId = localStorage.getItem('discordUserId');
+document.addEventListener('DOMContentLoaded', function() {
+    // 確認 localStorage 中存在 userData
+    const userData = localStorage.getItem('userData');
+    
+    if (userData) {
+        // 將 userData 解析成 JSON 格式
+        const parsedData = JSON.parse(userData);
         
-        // 自動填入到輸入框
-        if (discordUserId) {
-            document.getElementById('discordId').value = discordUserId;
-        } 
-        else document.getElementById('discordId').value = '請登入Discord'
+        // 將 Discord ID 自動填入輸入框
+        document.getElementById('discordId').value = parsedData.id || '';
+    }
+});
         </script>
     <!-- plaer.js -->
     <script type="text/javascript" src="/JS/player.js"></script>

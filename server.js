@@ -1,15 +1,16 @@
 // #region 引入模組
 const express = require('express');
-const session = require('express-session');
+const axios = require('axios');
 const cookieParser = require('cookie-parser');
 const i18n = require('i18n');
 const { handlePayPalPaymentRequest, handlePayPalPaymentSuccess, handlePaymentCancel } = require('./services/paypal');
 
-const discordAuth = require('./services/discordAuth');
 const ecpayRouter = require('./services/ecpay');
 const dotenv = require('dotenv');
 const path = require('path');
 const fs = require('fs'); // 引入 fs 模組
+
+dotenv.config();
 // #endregion
 
 // #region 創建 Express 應用程序及加載環境變數
@@ -60,48 +61,49 @@ app.set('views', __dirname + '/views');
 // #endregion
 
 // #region Discord 登入系統設定
-app.use(session({
-    secret: '你的密鑰',
-    resave: false,
-    saveUninitialized: true,
-}));
+const CLIENT_ID = process.env.DISCORD_CLIENT_ID;
+const CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
+const REDIRECT_URI = 'http://localhost:3000/callback';
 
-
-// 確認是否登錄Discord
-app.get('/check-discord-login', (req, res) => {
-    if (req.session.discordUser) {
-        // 用戶已登入 Discord
-        res.json({ isLoggedIn: true });
-    } else {
-        // 用戶未登入 Discord
-        res.json({ isLoggedIn: false });
-    }
-});
-
-// 登錄路徑，生成 Discord OAuth2 URL 並重定向
+// 引導用戶至 Discord 登入頁面
 app.get('/login', (req, res) => {
-    const originalUrl = req.headers.referer || 'https://yyrealseer.com';
-    const authUrl = discordAuth.getDiscordAuthUrl(originalUrl); // 使用 discordAuth.getDiscordAuthUrl
-    res.redirect(authUrl);
+    const discordAuthUrl = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=identify`;
+    res.redirect(discordAuthUrl);
 });
 
-// OAuth2 回調路徑，用於處理 Discord 授權返回
+// 處理 Discord 回調
 app.get('/callback', async (req, res) => {
     const code = req.query.code;
-    if (code) {
-        try {
-            // 使用 discordAuth 物件來調用 getAccessToken 函數
-            const userData = await discordAuth.getAccessToken(code);
-            res.json({ success: true, userData, redirectUrl: 'http://localhost:3000/BeatMarket' });
-        } catch (error) {
-            res.json({ success: false, message: error.message });
-        }
-    } else {
-        res.json({ success: false, message: 'Code is missing' });
+
+    try {
+        // 用 `code` 換取 `access_token`
+        const tokenResponse = await axios.post('https://discord.com/api/oauth2/token', new URLSearchParams({
+            client_id: CLIENT_ID,
+            client_secret: CLIENT_SECRET,
+            grant_type: 'authorization_code',
+            code: code,
+            redirect_uri: REDIRECT_URI
+        }), {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        });
+
+        const accessToken = tokenResponse.data.access_token;
+
+        // 使用 `access_token` 獲取用戶資料
+        const userDataResponse = await axios.get('https://discord.com/api/users/@me', {
+            headers: { Authorization: `Bearer ${accessToken}` }
+        });
+
+        // 把用戶資料作為參數傳給前端，並重定向至首頁
+        const userData = JSON.stringify(userDataResponse.data);
+        res.redirect(`/?user=${encodeURIComponent(userData)}`);
+
+    } catch (error) {
+        console.error('Error fetching user data:', error.response ? error.response.data : error.message);
+        console.log(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);  // 確認 ID、密碼、和重定向 URI
+        res.status(500).json({ error: '獲取用戶資料失敗', details: error.response ? error.response.data : error.message });
     }
 });
-
-
 
 // #endregion
 

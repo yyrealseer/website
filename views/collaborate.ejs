@@ -68,10 +68,11 @@
         <option value="zh" <%=(currentLocale==='zh' ) ? 'selected' : '' %>>中文</option>
         <option value="en" <%=(currentLocale==='en' ) ? 'selected' : '' %>>English</option>
     </select>
-    <button id="backtop" style="font-family: 'Noto sans';z-index: 100;padding: 8px 18px;">
-        TOP
-    </button>
-    <footer class="footer"></footer>
+    <%- include('input/input_changeLanguage') %>
+    <%- include('input/input_backtopBtn') %>
+    <%- include('input/input_discordLoginBtn') %>
+        <%- include('input/input_footer') %>
+
 
     <style>
         .large-title {

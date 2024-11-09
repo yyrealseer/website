@@ -270,7 +270,7 @@
 			"currency": "Currency:",
 			"amount": "Amount:",
 			"description": "Track Name:",
-			"Email": "Email:",
+			"discordID": "Discord ID:",
 			"checkout": "Checkout"
 		}
 	},

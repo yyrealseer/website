@@ -271,7 +271,7 @@
 			"currency": "幣值:",
 			"amount": "金額:",
 			"description": "曲名:",
-			"Email": "電子郵件:",
+			"discordID": "Discord ID:",
 			"checkout": "去結帳"
 		}
 	},

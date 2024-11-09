@@ -34,7 +34,7 @@ function generateMerchantOrderNo() {
 }
 
 // 檢查用戶是否登入
-const isLoggedIn = !!sessionStorage.getItem('userToken');
+const isLoggedIn = !!localStorage.getItem('userData');
 
 // 監聽表單提交事件
 document.getElementById('popupForm').addEventListener('submit', function(event) {
@@ -44,7 +44,7 @@ document.getElementById('popupForm').addEventListener('submit', function(event) 
 
 // 檢查 Discord 登入並提交表單
 function checkLoginAndSubmit() {
-    if (checkDiscordLogin()) {
+    if (isLoggedIn) {  // 判斷是否已登入
         // 使用者已登入，提交表單
         document.getElementById('checkout-form').submit();
     } else {

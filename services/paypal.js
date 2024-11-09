@@ -1,6 +1,5 @@
 const paypal = require('@paypal/checkout-server-sdk');
 const axios = require('axios');
-const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 const path = require('path');
 const i18n = require('i18n');
@@ -12,17 +11,6 @@ dotenv.config({ path: './.env.links' });
 const environment = new paypal.core.LiveEnvironment(process.env.PAYPAL_CLIENT_ID, process.env.PAYPAL_CLIENT_SECRET);
 const client = new paypal.core.PayPalHttpClient(environment);
 
-// 設置 nodemailer 的傳輸器
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-});
-
 // 處理 PayPal 支付請求
 async function handlePayPalPaymentRequest(req, res) {
     console.log('收到的 PayPal 支付請求數據:', JSON.stringify(req.body, null, 2));
@@ -31,7 +19,7 @@ async function handlePayPalPaymentRequest(req, res) {
         currency: req.body.currency,
         amount: parseFloat(req.body.amount).toFixed(2),
         reference_id: req.body.description,
-        email: req.body.Email,
+        custom: req.body.discordID,
     };
 
     if (!orderInfo.currency || !orderInfo.amount || isNaN(orderInfo.amount)) {
@@ -90,18 +78,19 @@ async function handlePayPalPaymentSuccess(req, res) {
 
             const reference_id = capture.result.purchase_units[0].reference_id;
             const totalValue = parseFloat(capture.result.purchase_units[0].amount.value); // 獲取總價
-            const Email = capture.result.payer.email_address;
+            const discordID = capture.result.purchase_units[0].custom;
             const downloadLink = process.env[`${reference_id}_LINK`] || process.env.DEFAULT_LINK;
 
-            // 準備並發送郵件
-            const mailOptions = {
-                from: process.env.EMAIL_USER,
-                to: Email,
-                subject: req.__('success_email.title'), // 使用 req.__ 獲取 subject
-                text: `${req.__('success_email.content')} ${downloadLink}`, // 使用 req.__ 獲取 text
-            };
-
+            // 發送訂單資訊到 Discord Bot 的 API
             try {
+                await axios.post(`${process.env.DISCORD_BOT_API_URL}/order`, {
+                    discordID: discordID,
+                    reference_id: reference_id,
+                    downloadLink: downloadLink,
+                });
+
+                console.log('訂單訊息已成功發送至 Discord Bot');
+
                 // 使用 await 發送郵件
                 await transporter.sendMail(mailOptions);
                 console.log('確認郵件已發送');
@@ -137,17 +126,13 @@ async function handlePayPalPaymentSuccess(req, res) {
 
                 await axios.post(`https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${apiSecret}`, ga4Payload);
                 console.log('GA4 購買事件已發送');
-
+        
                 // 所有操作完成後，進行重定向
                 return res.redirect('https://yyrealseer.com/success');
-
             } catch (error) {
                 console.error('發送郵件或 GA4 事件時發生錯誤：', error);
                 return res.status(500).send('支付成功，但發送郵件或 GA4 事件時出錯');
             }
-        } else {
-            console.error('支付未完成');
-            return res.status(400).send('支付未完成');
         }
     } catch (error) {
         console.error('捕獲訂單時出錯：', error);
