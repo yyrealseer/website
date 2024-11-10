@@ -17,11 +17,11 @@ async function handlePayPalPaymentRequest(req, res) {
 
     // 定義訂單資訊
     const orderInfo = {
-        invoiceId: req.body.invoice_id,
+        invoiceId: req.body.invoiceId,
         currency: req.body.currency,
         amount: parseFloat(req.body.amount).toFixed(2),
-        reference_id: req.body.reference_id || 'default_reference_id',
-        custom: req.body.custom || 'default_custom'
+        reference_id: req.body.description,
+        discordId: req.body.discordId
     };
 
     if (!orderInfo.currency || !orderInfo.amount || isNaN(orderInfo.amount)) {
@@ -35,13 +35,12 @@ async function handlePayPalPaymentRequest(req, res) {
     request.requestBody({
         intent: 'CAPTURE',
         purchase_units: [{
-            reference_id: `${orderInfo.reference_id}-${orderInfo.custom}`,
+            reference_id: `${orderInfo.reference_id}-${orderInfo.discordId}`,
             amount: {
                 currency_code: orderInfo.currency,
                 value: orderInfo.amount
             },
-            description: orderInfo.description || '',
-            custom: orderInfo.custom
+            description: orderInfo.description || ''
         }],
         application_context: {
             return_url: `${req.protocol}://${req.get('host')}/paypal-success`,
@@ -79,16 +78,25 @@ async function handlePayPalPaymentSuccess(req, res) {
         if (capture.result.status === 'COMPLETED') {
             console.log('支付已完成：', capture.result);
 
+            // 解析 reference_id 和 discordId
             const reference_id = capture.result.purchase_units[0].reference_id;
-            const totalValue = parseFloat(capture.result.purchase_units[0].amount.value);
-            const discordID = capture.result.purchase_units[0].custom;
-            const downloadLink = process.env[`${reference_id}_LINK`] || process.env.DEFAULT_LINK;
+            const [orderReference, discordId] = reference_id.split('-');
+
+            const totalValue = capture.result.purchase_units[0].amount?.value 
+                ? parseFloat(capture.result.purchase_units[0].amount.value) 
+                : null;
+
+            if (!totalValue) {
+                return res.status(500).send('缺少金額資訊');
+            }
+
+            const downloadLink = process.env[`${orderReference}_LINK`] || process.env.DEFAULT_LINK;
 
             // 發送訂單資訊到 Discord Bot 的 API
             try {
                 await axios.post(`${process.env.DISCORD_BOT_API_URL}/order`, {
-                    discordID: discordID,
-                    reference_id: reference_id,
+                    discordID: discordId,
+                    reference_id: orderReference,
                     downloadLink: downloadLink,
                 });
                 console.log('訂單訊息已成功發送至 Discord Bot');
@@ -111,8 +119,8 @@ async function handlePayPalPaymentSuccess(req, res) {
                                 currency: 'USD',
                                 items: [
                                     {
-                                        item_name: reference_id,
-                                        item_id: reference_id,
+                                        item_name: orderReference,
+                                        item_id: orderReference,
                                         price: totalValue,
                                         quantity: 1
                                     }
