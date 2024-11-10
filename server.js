@@ -63,7 +63,7 @@ app.set('views', __dirname + '/views');
 // #region Discord 登入系統設定
 const CLIENT_ID = process.env.DISCORD_CLIENT_ID;
 const CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
-const REDIRECT_URI = 'https://yyrealseer/callback';
+const REDIRECT_URI = 'https://yyrealseer.com/callback';
 
 // 引導用戶至 Discord 登入頁面
 app.get('/login', (req, res) => {
