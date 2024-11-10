@@ -12,7 +12,7 @@ const ecpay_payment = require('./ECPAY_Payment_node_js/index');
 
 // 初始化
 const options = {
-  OperationMode: 'Production', // Test or Production
+  OperationMode: 'Test', // Test or Production
   MercProfile: {
     MerchantID: process.env.ECPAY_MERCHANT_ID,
     HashKey: process.env.ECPAY_HASH_KEY,
@@ -36,9 +36,9 @@ router.post('/ecpay-pay', (req, res) => {
   let base_param = {
     MerchantTradeNo: TradeNo,
     TotalAmount: parseInt(req.body.amount, 10).toString(), // 確保金額是整數且為字串格式
-    TradeDesc: encodeURIComponent(req.body.description.trim()), // URL編碼
+    TradeDesc: encodeURIComponent(req.body.invoiceId.trim()), // URL編碼
     ItemName: encodeURIComponent(req.body.description.trim()), // URL編碼
-    CustomField1: encodeURIComponent(req.body.description.trim()),
+    CustomField1: encodeURIComponent(req.body.discordId.trim()),
     CustomField2: encodeURIComponent(req.body.description.trim()),// URL編碼
     MerchantTradeDate: MerchantTradeDate,
     PaymentType: 'aio',

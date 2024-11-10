@@ -1,5 +1,5 @@
 // 顯示彈出表單
-function showPopup(description, amount) {
+function showPopup(description, amount,) {
     // 動態設置表單的值
     document.getElementById('description').value = description;
     document.getElementById('amount').value = amount;
