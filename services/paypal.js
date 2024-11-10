@@ -23,11 +23,13 @@ async function handlePayPalPaymentRequest(req, res) {
         discordId: req.body.discordId
     };
 
+    // 檢查幣別和金額
     if (!orderInfo.currency || !orderInfo.amount || isNaN(orderInfo.amount)) {
         console.log('無效的金額或幣別:', orderInfo.currency, orderInfo.amount);
         return res.status(400).send('幣別和金額為必填欄位，且金額必須為有效的數字（例如：currency: "TWD", amount: "50.00"）。');
     }
 
+    // 構建訂單請求
     const request = new paypal.orders.OrdersCreateRequest();
     request.prefer("return=representation");
     request.requestBody({
@@ -49,6 +51,7 @@ async function handlePayPalPaymentRequest(req, res) {
 
     try {
         const order = await client.execute(request);
+        // 確保 PayPal 回傳成功，並引導用戶進行支付
         res.redirect(303, order.result.links.find(link => link.rel === 'approve').href);
     } catch (error) {
         console.error('創建 PayPal 訂單時出錯：', error.message);
@@ -56,7 +59,6 @@ async function handlePayPalPaymentRequest(req, res) {
     }
 }
 
-// 處理支付成功回調
 async function handlePayPalPaymentSuccess(req, res) {
     const { token, PayerID } = req.query;
 
@@ -69,25 +71,31 @@ async function handlePayPalPaymentSuccess(req, res) {
     req.setLocale(userLocale);
 
     try {
+        // 捕獲支付
         const request = new paypal.orders.OrdersCaptureRequest(token);
         request.requestBody({});
         const capture = await client.execute(request);
 
+        // 檢查支付是否完成
         if (capture.result.status === 'COMPLETED') {
             console.log('支付已完成：', capture.result);
 
             const reference_id = capture.result.purchase_units[0].reference_id;
             const [orderReference, discordId] = reference_id.split('-');
 
+            // 進一步檢查金額
             const amountData = capture.result.purchase_units[0].amount;
             if (!amountData || !amountData.value) {
                 console.error('缺少金額資訊', amountData);
                 return res.status(500).send('缺少金額資訊');
             }
+
             const totalValue = parseFloat(amountData.value);
 
+            // 預設下載連結
             const downloadLink = process.env[`${orderReference}_LINK`] || process.env.DEFAULT_LINK;
 
+            // 發送訂單資訊至 Discord Bot
             try {
                 await axios.post(`${process.env.DISCORD_BOT_API_URL}/order`, {
                     discordID: discordId,
@@ -96,6 +104,7 @@ async function handlePayPalPaymentSuccess(req, res) {
                 });
                 console.log('訂單訊息已成功發送至 Discord Bot');
 
+                // 送出 GA4 購買事件
                 const measurementId = process.env.GA4_measurementId;
                 const apiSecret = process.env.GA4_Secret;
                 const clientId = req.body.client_id || 'default_client_id';
@@ -138,7 +147,6 @@ async function handlePayPalPaymentSuccess(req, res) {
         return res.status(500).send('捕獲訂單時出錯');
     }
 }
-
 // 處理支付取消回調
 function handlePaymentCancel(req, res) {
     res.send('支付已取消');
