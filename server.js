@@ -146,6 +146,17 @@ app.get('/', (req, res) => {
 });
 
 // 各頁面路由（如: BeatMarket, Collaborate, Course, Production, FAQ, Mixing, Success）
+app.get('/BeatMarket', (req, res) => {
+    res.render('BeatMarket', {
+        title: i18n.__('BeatMarket.meta_title'),
+        description: i18n.__('BeatMarket.meta_description'),
+        t: i18n.__,
+        currentLocale: res.getLocale(),
+        beatsData: beatsData // 傳遞 beatsData
+    });
+});
+
+
 app.get('/arrange', (req, res) => {
     res.render('arrange', {
         title: i18n.__('arrange.meta_title'),
@@ -155,10 +166,58 @@ app.get('/arrange', (req, res) => {
     });
 });
 
-app.get('/BeatMarket', (req, res) => {
-    res.render('BeatMarket', {
-        title: i18n.__('BeatMarket.meta_title'),
-        description: i18n.__('BeatMarket.meta_description'),
+app.get('/mixing', (req, res) => {
+    res.render('mixing', {
+        title: i18n.__('mixing.meta_title'),
+        description: i18n.__('mixing.meta_description'),
+        t: i18n.__,
+        currentLocale: res.getLocale()
+    });
+});
+
+app.get('/course', (req, res) => {
+    res.render('course', {
+        title: i18n.__('course.meta_title'),
+        description: i18n.__('course.meta_description'),
+        t: i18n.__,
+        currentLocale: res.getLocale()
+    });
+});
+
+app.get('/production', (req, res) => {
+    res.render('production', {
+        title: i18n.__('production.meta_title'),
+        description: i18n.__('production.meta_description'),
+        t: i18n.__,
+        currentLocale: res.getLocale(),
+        beatsData: beatsData // 傳遞 beatsData
+    });
+});
+
+app.get('/FAQ', (req, res) => {
+    res.render('FAQ', {
+        title: i18n.__('FAQ.meta_title'),
+        description: i18n.__('FAQ.meta_description'),
+        t: i18n.__,
+        currentLocale: res.getLocale(),
+        beatsData: beatsData // 傳遞 beatsData
+    });
+});
+
+app.get('/success', (req, res) => {
+    res.render('success', {
+        title: i18n.__('success.meta_title'),
+        description: i18n.__('success.meta_description'),
+        t: i18n.__,
+        currentLocale: res.getLocale(),
+        beatsData: beatsData // 傳遞 beatsData
+    });
+});
+
+app.get('/collaborate', (req, res) => {
+    res.render('collaborate', {
+        title: i18n.__('collaborate.meta_title'),
+        description: i18n.__('collaborate.meta_description'),
         t: i18n.__,
         currentLocale: res.getLocale(),
         beatsData: beatsData // 傳遞 beatsData
