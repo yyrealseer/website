@@ -14,12 +14,14 @@ const client = new paypal.core.PayPalHttpClient(environment);
 // 處理 PayPal 支付請求
 async function handlePayPalPaymentRequest(req, res) {
     console.log('收到的 PayPal 支付請求數據:', JSON.stringify(req.body, null, 2));
+
+    // 定義訂單資訊
     const orderInfo = {
         invoiceId: req.body.invoice_id,
         currency: req.body.currency,
         amount: parseFloat(req.body.amount).toFixed(2),
-        reference_id: req.body.description,
-        custom: req.body.discordID,
+        reference_id: req.body.reference_id || 'default_reference_id',
+        custom: req.body.custom || 'default_custom'
     };
 
     if (!orderInfo.currency || !orderInfo.amount || isNaN(orderInfo.amount)) {
@@ -27,17 +29,19 @@ async function handlePayPalPaymentRequest(req, res) {
         return res.status(400).send('幣別和金額為必填欄位，且金額必須為有效的數字（例如：currency: "TWD", amount: "50.00"）。');
     }
 
+    // 設置 PayPal 訂單請求
     const request = new paypal.orders.OrdersCreateRequest();
     request.prefer("return=representation");
     request.requestBody({
         intent: 'CAPTURE',
         purchase_units: [{
-            reference_id: orderInfo.reference_id,
+            reference_id: `${orderInfo.reference_id}-${orderInfo.custom}`,
             amount: {
                 currency_code: orderInfo.currency,
-                value: parseFloat(orderInfo.amount).toFixed(2)
+                value: orderInfo.amount
             },
-            description: orderInfo.description
+            description: orderInfo.description || '',
+            custom: orderInfo.custom
         }],
         application_context: {
             return_url: `${req.protocol}://${req.get('host')}/paypal-success`,
@@ -64,9 +68,8 @@ async function handlePayPalPaymentSuccess(req, res) {
         return res.status(400).send('支付成功回調參數缺失');
     }
 
-    // 設定語言，根據用戶的偏好或請求中的信息（例如：根據URL、Cookie或其他方式設置語言）
-    const userLocale = req.cookies.i18n || 'zh'; // 假設默認為中文，如果有語言Cookie則使用其值
-    req.setLocale(userLocale); // 使用 req.setLocale 設定語言
+    const userLocale = req.cookies.i18n || 'zh';
+    req.setLocale(userLocale);
 
     try {
         const request = new paypal.orders.OrdersCaptureRequest(token);
@@ -77,7 +80,7 @@ async function handlePayPalPaymentSuccess(req, res) {
             console.log('支付已完成：', capture.result);
 
             const reference_id = capture.result.purchase_units[0].reference_id;
-            const totalValue = parseFloat(capture.result.purchase_units[0].amount.value); // 獲取總價
+            const totalValue = parseFloat(capture.result.purchase_units[0].amount.value);
             const discordID = capture.result.purchase_units[0].custom;
             const downloadLink = process.env[`${reference_id}_LINK`] || process.env.DEFAULT_LINK;
 
@@ -88,17 +91,12 @@ async function handlePayPalPaymentSuccess(req, res) {
                     reference_id: reference_id,
                     downloadLink: downloadLink,
                 });
-
                 console.log('訂單訊息已成功發送至 Discord Bot');
 
-                // 使用 await 發送郵件
-                await transporter.sendMail(mailOptions);
-                console.log('確認郵件已發送');
-
                 // 發送 GA4 購買事件
-                const measurementId = process.env.GA4_measurementId;  // 你的 GA4 測量ID
-                const apiSecret = process.env.GA4_Secret;  // GA4 的 API 密鑰
-                const clientId = req.body.client_id || 'default_client_id';  // 假設從客戶端獲取 client_id，否則使用默認值
+                const measurementId = process.env.GA4_measurementId;
+                const apiSecret = process.env.GA4_Secret;
+                const clientId = req.body.client_id || 'default_client_id';
                 const transactionId = capture.result.id;
 
                 const ga4Payload = {
@@ -126,11 +124,10 @@ async function handlePayPalPaymentSuccess(req, res) {
 
                 await axios.post(`https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${apiSecret}`, ga4Payload);
                 console.log('GA4 購買事件已發送');
-        
-                // 所有操作完成後，進行重定向
+
                 return res.redirect('https://yyrealseer.com/success');
             } catch (error) {
-                console.error('發送郵件或 GA4 事件時發生錯誤：', error);
+                console.error('發送郵件或 GA4 事件時發生錯誤：', error.response?.data || error);
                 return res.status(500).send('支付成功，但發送郵件或 GA4 事件時出錯');
             }
         }
