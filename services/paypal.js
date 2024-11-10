@@ -15,7 +15,6 @@ const client = new paypal.core.PayPalHttpClient(environment);
 async function handlePayPalPaymentRequest(req, res) {
     console.log('收到的 PayPal 支付請求數據:', JSON.stringify(req.body, null, 2));
 
-    // 定義訂單資訊
     const orderInfo = {
         invoiceId: req.body.invoiceId,
         currency: req.body.currency,
@@ -29,7 +28,6 @@ async function handlePayPalPaymentRequest(req, res) {
         return res.status(400).send('幣別和金額為必填欄位，且金額必須為有效的數字（例如：currency: "TWD", amount: "50.00"）。');
     }
 
-    // 設置 PayPal 訂單請求
     const request = new paypal.orders.OrdersCreateRequest();
     request.prefer("return=representation");
     request.requestBody({
@@ -78,21 +76,18 @@ async function handlePayPalPaymentSuccess(req, res) {
         if (capture.result.status === 'COMPLETED') {
             console.log('支付已完成：', capture.result);
 
-            // 解析 reference_id 和 discordId
             const reference_id = capture.result.purchase_units[0].reference_id;
             const [orderReference, discordId] = reference_id.split('-');
 
-            const totalValue = capture.result.purchase_units[0].amount?.value 
-                ? parseFloat(capture.result.purchase_units[0].amount.value) 
-                : null;
-
-            if (!totalValue) {
+            const amountData = capture.result.purchase_units[0].amount;
+            if (!amountData || !amountData.value) {
+                console.error('缺少金額資訊', amountData);
                 return res.status(500).send('缺少金額資訊');
             }
+            const totalValue = parseFloat(amountData.value);
 
             const downloadLink = process.env[`${orderReference}_LINK`] || process.env.DEFAULT_LINK;
 
-            // 發送訂單資訊到 Discord Bot 的 API
             try {
                 await axios.post(`${process.env.DISCORD_BOT_API_URL}/order`, {
                     discordID: discordId,
@@ -101,7 +96,6 @@ async function handlePayPalPaymentSuccess(req, res) {
                 });
                 console.log('訂單訊息已成功發送至 Discord Bot');
 
-                // 發送 GA4 購買事件
                 const measurementId = process.env.GA4_measurementId;
                 const apiSecret = process.env.GA4_Secret;
                 const clientId = req.body.client_id || 'default_client_id';
@@ -150,7 +144,6 @@ function handlePaymentCancel(req, res) {
     res.send('支付已取消');
 }
 
-// 導出函數
 module.exports = {
     handlePayPalPaymentRequest,
     handlePayPalPaymentSuccess,
