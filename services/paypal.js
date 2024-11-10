@@ -8,7 +8,7 @@ dotenv.config();
 dotenv.config({ path: './.env.links' });
 
 // 初始化 PayPal
-const environment = new paypal.core.SandboxEnvironment(process.env.PAYPAL_CLIENT_ID, process.env.PAYPAL_CLIENT_SECRET);
+const environment = new paypal.core.LiveEnvironment(process.env.PAYPAL_CLIENT_ID, process.env.PAYPAL_CLIENT_SECRET);
 const client = new paypal.core.PayPalHttpClient(environment);
 
 // 處理 PayPal 支付請求
@@ -82,15 +82,7 @@ async function handlePayPalPaymentSuccess(req, res) {
 
             const reference_id = capture.result.purchase_units[0].reference_id;
             const [orderReference, discordId] = reference_id.split('-');
-
-            // 進一步檢查金額
-            const amountData = capture.result.purchase_units[0].amount;
-            if (!amountData || !amountData.value) {
-                console.error('缺少金額資訊', amountData);
-                return res.status(500).send('缺少金額資訊');
-            }
-
-            const totalValue = parseFloat(amountData.value);
+            const totalValue = capture.result.purchase_units[0].amount;
 
             // 預設下載連結
             const downloadLink = process.env[`${orderReference}_LINK`] || process.env.DEFAULT_LINK;

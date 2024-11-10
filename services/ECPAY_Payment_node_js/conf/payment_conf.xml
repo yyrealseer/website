@@ -1,6 +1,6 @@
 <?xml  version="1.0" encoding="utf-8"?>
 <Conf>
-    <OperatingMode>Test</OperatingMode> <!--Test or Production-->
+    <OperatingMode>Production</OperatingMode> <!--Test or Production-->
     <MercProfile>Stage_Account</MercProfile>
     <IsProjectContractor>N</IsProjectContractor>
     
