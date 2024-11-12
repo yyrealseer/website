@@ -31,13 +31,10 @@
 			"experience_2021_p2": "擔任獨立廠牌「Jailbirds 囚鳥」的混音師及創作者。與「ChynaTown 華風數位」合作並將作品發行於數位平台。"
 		},
 		"services": {
-			"production_content": "購買Beat即可享受免費的專業混音和母帶製作服務（原價$5000/首）！只需到我們的BeatMarket平台選購YY Studio的Beat分軌，我們將免費為您進行混音及母帶後製處理，讓您的作品達到最佳品質！",
-			"production_price": "NT$(Beat價格)",
+			"production_content": "購買Beat即可享受免費的專業混音和母帶製作服務！只需到我們的BeatMarket平台選購YY Studio的Beat分軌，我們將免費為您進行混音及母帶後製處理，讓您的作品達到最佳品質！",
 			"mixing_content": "提供專業的混音服務，將音軌進行調音、平衡和效果處理，確保音樂作品的聲音清晰、平衡且具有動感。同時，也提供母帶製作服務，將最終混音結果進行調整和優化，確保作品在不同播放環境下都能保持高品質。",
-			"mixing_price": "NT$5000/首",
 			"mixing_description": "包含兩次免費修改，超過另收修改費 $625/次。",
 			"arranging_content": "根據客戶提供的原始音樂DEMO或詞曲，進行編曲工作。這包括選擇合適的音色、樂器和編曲風格，並將它們組合成一個完整的音樂作品，根據客戶的需求進行量身定制。",
-			"arranging_price": "NT$5000/首",
 			"arranging_description": "包含兩次免費修改，超過另收修改費 $625/次。",
 			"course_content": "幫助對音樂有興趣的人成為一位音樂創作者。在課程中，我將分享創作技巧、構思方法和製作流程，並指導學生逐步完成自己的音樂作品。",
 			"course_price": "NT$3000/四堂",
@@ -68,6 +65,7 @@
 	"footer": {
 		"collaborate": "合作專區",
 		"site": "YY Studio",
+		"discord": "Discord群組",
 		"youtube": "Youtube頻道",
 		"contact": "聯絡我們：",
 		"phone": "0983565003",
@@ -79,7 +77,6 @@
 		"content": {
 			"service_title": "服務項目-編曲",
 			"service_description": "根據客戶提供的原始音樂DEMO或詞曲，進行編曲工作。這包括選擇合適的音色、樂器和編曲風格，並將它們組合成一個完整的音樂作品，根據客戶的需求進行量身定制。",
-			"price": "NT$5000/首",
 			"modification": "包含兩次免費修改，超過另收修改費 $625/次。",
 			"prepare_title": "你需準備的有：",
 			"prepare_items": {
@@ -103,7 +100,6 @@
 		"content": {
 			"service_title": "服務項目-混音與母帶製作",
 			"service_description": "提供專業的混音服務，將音軌進行調音、平衡和效果處理，確保音樂作品的聲音清晰、平衡且具有動感。同時，也提供母帶製作服務，將最終混音結果進行調整和優化，確保作品在不同播放環境下都能保持高品質。",
-			"price": "NT$5000/首",
 			"modification": "包含兩次免費修改，超過另收修改費 $625/次。",
 			"prepare_title": "你需準備的有：",
 			"prepare_items": {
@@ -162,8 +158,7 @@
 		"meta_description": "購買 Beat 即享免費混音和母帶製作！選購 YY Studio Beat 分軌，免費獲得專業混音與後製，讓您的作品達到完美音質。立即到 BeatMarket 選購！",
 		"content": {
 			"service_title": "服務項目-買Beat送混音",
-			"service_description": "購買Beat即可享受免費的專業混音和母帶製作服務（原價$5000/首）！只需到我們的BeatMarket平台選購YY Studio的Beat分軌，我們將免費為您進行混音及母帶後製處理，讓您的作品達到最佳品質！",
-			"price": "$(Beat價格)",
+			"service_description": "購買Beat即可享受免費的專業混音和母帶製作服務！只需到我們的BeatMarket平台選購YY Studio的Beat分軌，我們將免費為您進行混音及母帶後製處理，讓您的作品達到最佳品質！",
 			"modification": "混音部分包含兩次免費修改，超過另收修改費 $625/次。",
 			"prepare_title": "你需準備的有：",
 			"prepare_items1": "YY Studio購買的Beat分軌",
@@ -236,14 +231,10 @@
 			"a4": "如果上課前臨時有事，24HR以前提前請假可不算堂數，若在24HR以內臨時請假或曠課的話則算一堂課。"
 		}
 	},
-	"success_email": {
-        "title": "YY Studio | 您的訂單已成功付款",
-        "content": "感謝您的購買！您可以通過以下鏈接下載您購買的音樂分軌："
-    },
 	"success": {
 		"meta_title": "付款成功！ | YY Studio",
 		"success_title": "購買成功",
-		"success_text": "感謝你的購買！下載鏈結已傳送至你的Email，請妥善保管。(若未收到下載鏈結請聯繫我們，留意垃圾信件！)",
+		"success_text": "感謝你的購買！下載鏈結已傳送至你的Discord，請妥善保管，若未收到下載鏈結請聯繫我們！(留意有無封鎖\"陌生訊息\")",
 		"return_text": "返回Beat Market"
 	},
 	"beatmarket": {
@@ -263,7 +254,7 @@
 			"title": "購買須知 / NOTICE",
 			"notice-text1": "購買前請先閱讀購物須知，點擊\"去結帳\"即同意以下內容。",
 			"notice-text2": "此商品為虛擬商品(Digital Pruduct)，售出後不退貨。",
-			"notice-text3": "付款成功後，會收到包含分軌下載鏈結的Email，若未收到請至\"聯絡我們\"聯繫(留意\"垃圾信箱\")。",
+			"notice-text3": "付款成功後，我們的Discord 機器人會將分軌下載鏈結私訊給你的Discord帳號，若未收到請至聯繫我們！(留意有無封鎖\"陌生訊息\")。",
 			"notice-text4": "現在購買本商品即贈送免費混音及母帶製作，錄好音後可至\"線上諮詢\"留下你的LINE ID，我們將與你聯絡！"
 		},
 		"form": {

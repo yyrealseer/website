@@ -31,13 +31,10 @@
 			"experience_2021_p2": "Served as the mixing engineer and creator of the independent label 'Jailbirds'. Collaborated with 'ChynaTown Digital' to release works on digital platforms."
 		},
 		"services": {
-			"production_content": "Purchase a beat and enjoy free professional mixing and mastering services (original price $5000 per track)! Just go to our BeatMarket platform and choose a track from YY Studio; we will provide free mixing and mastering services to ensure your work reaches the highest quality!",
-			"production_price": "US$ (Beat price)",
+			"production_content": "Purchase a beat and enjoy free professional mixing and mastering services! Just go to our BeatMarket platform and choose a track from YY Studio; we will provide free mixing and mastering services to ensure your work reaches the highest quality!",
 			"mixing_content": "We provide professional mixing services, adjusting, balancing, and adding effects to the tracks to ensure the music is clear, balanced, and dynamic. Additionally, we offer mastering services to adjust and optimize the final mix, ensuring high-quality output in various playback environments.",
-			"mixing_price": "US$155/song",
 			"mixing_description": "Includes two free revisions, with an additional fee of $625 per revision thereafter.",
 			"arranging_content": "We arrange music based on the original demo or lyrics provided by the client. This includes selecting the appropriate sounds, instruments, and arrangement styles to create a complete musical work tailored to the client's needs.",
-			"arranging_price": "US$155/song",
 			"arranging_description": "Includes two free revisions, with an additional fee of $625 per revision thereafter.",
 			"course_content": "Helping those interested in music to become creators. In this course, I will share composition techniques, conceptual methods, and production processes, guiding students step-by-step to complete their music works.",
 			"course_price": "US$90/4 lessons",
@@ -68,7 +65,8 @@
 	"footer": {
 		"collaborate": "collaboration",
 		"site": "YY Studio",
-		"youtube": "Youtube channel",
+		"discord": "Discord Server",
+		"youtube": "Youtube Channel",
 		"contact": "Contact us：",
 		"phone": "+886 983565003",
 		"email": "xavier890930@gmail.com"
@@ -162,8 +160,7 @@
 		"meta_description": "Buy a Beat and get free mixing and mastering! Choose from YY Studio's Beat stems and receive professional mixing and post-production for perfect sound quality. Visit BeatMarket now to shop!",
 		"content": {
 			"service_title": "Services - Buy Beat, Get Free Mixing",
-			"service_description": "Purchase a beat and enjoy free professional mixing and mastering services (original price $5000 per track)! Just go to our BeatMarket platform and choose a track from YY Studio; we will provide free mixing and mastering services to ensure your work reaches the highest quality!",
-			"price": "USD (Beat price)",
+			"service_description": "Purchase a beat and enjoy free professional mixing and mastering services! Just go to our BeatMarket platform and choose a track from YY Studio; we will provide free mixing and mastering services to ensure your work reaches the highest quality!",
 			"modification": "Includes two free revisions for mixing, with an additional fee of $625 per revision thereafter.",
 			"prepare_title": "You Need to Prepare:",
 			"prepare_items1": "Beat Stems Purchased from YY Studio",
@@ -236,14 +233,10 @@
 			"a4": "If something comes up before the class, notifying us 24 hours in advance will not count as a lesson. If you cancel less than 24 hours in advance or miss the class without notice, it will count as a lesson."
 		}
 	},
-	"success_email": {
-        "title": "YY Studio | Your order has been successfully paid",
-        "content": "Thank you for your purchase! You can download the purchased music tracks via the following link:"
-    },
 	"success": {
 		"meta_title": "Payment Successful! | YY Studio",
 		"success_title": "Purchase Successful",
-		"success_text": "Thank you for your purchase! The download link has been sent to your email. Please keep it safe. (If you do not receive the download link, please contact us and check the spam folder!)",
+		"success_text": "Thank you for your purchase! The download link has been sent to your Discord account. Please safe it carfully. If you do not receive the download link, please contact us ! (make sure you haven’t blocked DMs from strangers)",
 		"return_text": "Return to Beat Market"
 	},
 	"beatmarket": {
@@ -262,7 +255,7 @@
 			"title": "/ NOTICE",
 			"notice-text1": "Please read the purchase notice before buying. Clicking 'Checkout' means you agree to the following content.",
 			"notice-text2": "This product is a digital product; no refunds after purchase.",
-			"notice-text3": "After successful payment, an email containing the download link will be sent. If not received, please contact us (check the spam folder).",
+			"notice-text3": "After a successful payment, our Discord BOT will send you a DM with the download link. If you don’t receive it, please contact us ! (make sure you haven’t blocked DMs from strangers)",
 			"notice-text4": "Purchase this product now and get free mixing and mastering. After recording, you can leave your LINE ID on 'Online Consultation,' and we will contact you!"
 		},
 		"form": {

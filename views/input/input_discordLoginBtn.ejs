@@ -65,7 +65,7 @@
     #loginBtn {
         position: fixed;
         right: 2%;
-        top: 7%;
+        bottom: 15%;
         background-color: #5865F2;
         color: white;
         font-size: 16px;
@@ -92,7 +92,7 @@
     #userMenu {
         position: fixed;
         right: 2%;
-        top: 17%;
+        bottom: 22%;
         background-color: #2C2F38;
         border-radius: 8px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -123,5 +123,13 @@
 
     #userMenu div:focus {
         outline: none;
+    }
+    @media (max-width: 767px) {
+        #loginBtn {
+            font-size: 14px;
+        }
+        #userMenu{
+            font-size: 13px;
+        }
     }
 </style>
