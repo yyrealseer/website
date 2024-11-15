@@ -12,6 +12,12 @@ dotenv.config({ path: './.env.links' });
 const environment = new paypal.core.SandboxEnvironment(process.env.PAYPAL_CLIENT_ID, process.env.PAYPAL_CLIENT_SECRET);
 const client = new paypal.core.PayPalHttpClient(environment);
 
+// 初始化 MongoDB
+const { MongoClient } = require('mongodb');
+const uri = process.env.MANGODB_CONNECTION_STRING;
+const mongoClient = new MongoClient(uri); // 使用 mongoClient 來命名
+
+
 // 處理 PayPal 支付請求
 async function handlePayPalPaymentRequest(req, res) {
     console.log('收到的 PayPal 支付請求數據:', JSON.stringify(req.body, null, 2));
