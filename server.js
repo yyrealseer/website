@@ -122,11 +122,12 @@ app.get('/callback', async (req, res) => {
 
         // 獲取用戶資料
         const userData = userDataResponse.data;
-        const discordUserId = userData.id;  // Discord 用戶的唯一 ID
+        const discordUserId = userData.id;
         const username = userData.username;
-        const email = userData.email || null;  // Discord 可能不會提供 email
+        const email = userData.email || null;
 
-        // 插入用戶資料到資料庫
+        // **連接 MongoDB 資料庫**
+        await client.connect();
         const db = client.db('your-database-name');
         const usersCollection = db.collection('Users');
 
@@ -145,12 +146,14 @@ app.get('/callback', async (req, res) => {
             console.log('User already exists in the database');
         }
 
+        // **關閉 MongoDB 連接**
+        await client.close();
+
         // 把用戶資料作為參數傳給前端，並重定向至首頁
-        res.redirect(`/?user=${encodeURIComponent(userData)}`);
+        res.redirect(`/?user=${encodeURIComponent(JSON.stringify(userData))}`);
 
     } catch (error) {
         console.error('Error fetching user data:', error.response ? error.response.data : error.message);
-        console.log(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);  // 確認 ID、密碼、和重定向 URI
         res.status(500).json({ error: '獲取用戶資料失敗', details: error.response ? error.response.data : error.message });
     }
 });
