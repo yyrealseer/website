@@ -90,10 +90,19 @@ async function handlePayPalPaymentSuccess(req, res) {
     req.setLocale(userLocale);
 
     try {
+        // 獲取訂單狀態
+        const getOrderRequest = new paypal.orders.OrdersGetRequest(token);
+        const orderDetails = await client.execute(getOrderRequest);
+
+        if (orderDetails.result.status === 'COMPLETED') {
+            console.log('訂單已被捕獲，跳過捕獲操作');
+            return res.redirect('https://yyrealseer.com/success');
+        }
+
         // 捕獲支付
-        const request = new paypal.orders.OrdersCaptureRequest(token);
-        request.requestBody({});
-        const capture = await client.execute(request);
+        const captureRequest = new paypal.orders.OrdersCaptureRequest(token);
+        captureRequest.requestBody({});
+        const capture = await client.execute(captureRequest);
 
         if (capture.result.status === 'COMPLETED') {
             console.log('支付已完成：', capture.result);
@@ -142,13 +151,13 @@ async function handlePayPalPaymentSuccess(req, res) {
                         params: {
                             transaction_id: transactionId,
                             affiliation: 'Online Store',
-                            value: totalValue,
-                            currency: 'USD',
+                            value: totalValue.value,
+                            currency: totalValue.currency_code,
                             items: [
                                 {
                                     item_name: orderReference,
                                     item_id: orderReference,
-                                    price: totalValue,
+                                    price: totalValue.value,
                                     quantity: 1
                                 }
                             ]
