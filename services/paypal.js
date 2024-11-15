@@ -88,7 +88,7 @@ async function handlePayPalPaymentSuccess(req, res) {
 
             // 連接 MongoDB 資料庫
             await connectToDatabase();
-            const db = mongoClient.db('your-database-name');
+            const db = mongoClient.db('UserManagement');
             const usersCollection = db.collection('Users');
 
             try {

@@ -128,7 +128,7 @@ app.get('/callback', async (req, res) => {
 
         // **連接 MongoDB 資料庫**
         await client.connect();
-        const db = client.db('User Management');
+        const db = client.db('UserManagement');
         const usersCollection = db.collection('Users');
 
         // 檢查用戶是否已存在
