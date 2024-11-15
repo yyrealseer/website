@@ -67,6 +67,7 @@ router.post('/ecpay-pay', (req, res) => {
 
   res.send(html);
 });
+
 // 處理支付成功回調
 router.post('/ecpay-return', async (req, res) => {
   console.log('req.body:', req.body);
@@ -97,7 +98,7 @@ router.post('/ecpay-return', async (req, res) => {
           {
             $push: {
               Purchased: {
-                item: orderReference, ordertime: orderTime
+                item: reference_id, ordertime: orderTime
               }
             }
           }
@@ -111,7 +112,7 @@ router.post('/ecpay-return', async (req, res) => {
 
         // 發送訂單資訊到 Discord Bot 的 API
         // 獲取下載連結
-        const downloadLink = process.env[`${orderReference}_LINK`] || process.env.DEFAULT_LINK;
+        const downloadLink = process.env[`${reference_id}_LINK`] || process.env.DEFAULT_LINK;
 
         try {
           await axios.post(`${process.env.DISCORD_BOT_API_URL}/order`, {
@@ -120,38 +121,42 @@ router.post('/ecpay-return', async (req, res) => {
             downloadLink: downloadLink,
           });
 
-        console.log('訂單訊息已成功發送至 Discord Bot');
+          console.log('訂單訊息已成功發送至 Discord Bot');
 
-        // GA4 購買事件
-        const measurementId = process.env.GA4_measurementId;
-        const apiSecret = process.env.GA4_Secret;
-        const clientId = crypto.randomUUID();
-        const transactionId = data.MerchantTradeNo;
-        const totalValue = parseFloat(data.TradeAmt);
+          // GA4 購買事件
+          const measurementId = process.env.GA4_measurementId;
+          const apiSecret = process.env.GA4_Secret;
+          const clientId = crypto.randomUUID();
+          const transactionId = data.MerchantTradeNo;
+          const totalValue = parseFloat(data.TradeAmt);
 
-        const ga4Payload = {
-          client_id: clientId,
-          events: [
-            {
-              name: 'purchase',
-              params: {
-                transaction_id: transactionId,
-                affiliation: 'Online Store',
-                value: totalValue,
-                currency: 'TWD',
-                items: [{ item_name: reference_id, item_id: reference_id, price: totalValue, quantity: 1 }]
+          const ga4Payload = {
+            client_id: clientId,
+            events: [
+              {
+                name: 'purchase',
+                params: {
+                  transaction_id: transactionId,
+                  affiliation: 'Online Store',
+                  value: totalValue,
+                  currency: 'TWD',
+                  items: [{ item_name: reference_id, item_id: reference_id, price: totalValue, quantity: 1 }]
+                }
               }
-            }
-          ]
-        };
+            ]
+          };
 
-        await axios.post(`https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${apiSecret}`, ga4Payload);
-        console.log('GA4 購買事件已發送');
+          await axios.post(`https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${apiSecret}`, ga4Payload);
+          console.log('GA4 購買事件已發送');
 
-        // 確保資料庫連接關閉
-        await client.close();
+          // 確保資料庫連接關閉
+          await client.close();
 
-        return res.send('1|OK');
+          return res.send('1|OK');
+        } catch (error) {
+          console.error('發送訂單訊息或 GA4 事件時發生錯誤：', error);
+          return res.status(500).send('支付成功，但處理時發生錯誤');
+        }
       } catch (error) {
         console.error('更新用戶資料或發送訂單訊息時發生錯誤：', error);
         return res.status(500).send('支付成功，但處理時發生錯誤');
@@ -165,6 +170,5 @@ router.post('/ecpay-return', async (req, res) => {
     res.status(500).send('處理交易時發生錯誤');
   }
 });
-
 
 module.exports = router;
