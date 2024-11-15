@@ -21,6 +21,32 @@ dotenv.config(); // 加載環境變數文件
 dotenv.config({ path: './.env.links' });
 // #endregion
 
+// #region MangoDB 資料庫設定
+
+// MangoDB 連接設定
+const { MongoClient } = require('mongodb');
+
+const uri = process.env.MANGODB_CONNECTION_STRING;
+const client = new MongoClient(uri);
+
+async function run() {
+    try {
+        await client.connect();
+        const database = client.db('your-database-name');
+        const collection = database.collection('your-collection-name');
+
+        // 查詢範例
+        const data = await collection.find({}).toArray();
+        console.log(data);
+    } finally {
+        await client.close();
+    }
+}
+
+run().catch(console.error);
+
+// #endregion
+
 // #region 中介軟體配置
 // 添加解析中介軟件
 app.use(express.json());
@@ -94,8 +120,32 @@ app.get('/callback', async (req, res) => {
             headers: { Authorization: `Bearer ${accessToken}` }
         });
 
+        // 獲取用戶資料
+        const userData = userDataResponse.data;
+        const discordUserId = userData.id;  // Discord 用戶的唯一 ID
+        const username = userData.username;
+        const email = userData.email || null;  // Discord 可能不會提供 email
+
+        // 插入用戶資料到資料庫
+        const db = client.db('your-database-name');
+        const usersCollection = db.collection('Users');
+
+        // 檢查用戶是否已存在
+        const existingUser = await usersCollection.findOne({ _id: discordUserId });
+        if (!existingUser) {
+            // 如果用戶不存在，插入新用戶
+            await usersCollection.insertOne({
+                _id: discordUserId,
+                username: username,
+                email: email,
+                createdAt: new Date()
+            });
+            console.log('User inserted into the database');
+        } else {
+            console.log('User already exists in the database');
+        }
+
         // 把用戶資料作為參數傳給前端，並重定向至首頁
-        const userData = JSON.stringify(userDataResponse.data);
         res.redirect(`/?user=${encodeURIComponent(userData)}`);
 
     } catch (error) {
@@ -188,6 +238,16 @@ app.get('/production', (req, res) => {
     res.render('production', {
         title: i18n.__('production.meta_title'),
         description: i18n.__('production.meta_description'),
+        t: i18n.__,
+        currentLocale: res.getLocale(),
+        beatsData: beatsData // 傳遞 beatsData
+    });
+});
+
+app.get('/ZeroToOne', (req, res) => {
+    res.render('ZeroToOne', {
+        title: i18n.__('ZeroToOne.meta_title'),
+        description: i18n.__('ZeroToOne.meta_description'),
         t: i18n.__,
         currentLocale: res.getLocale(),
         beatsData: beatsData // 傳遞 beatsData

@@ -1,0 +1,61 @@
+<%- include('input/input_layout', { metaTitle: t('faq.meta_title'), metaDescription: t('faq.meta_description'),
+    ogTitle:t('faq.meta_title'), ogDescription: t('faq.meta_description') }) %>
+
+    <body>
+        <header id="header">
+            <div class="header-container">
+                <a href="/" id="LOGO">
+                    <img id="LOGO2" style="height:var(--LOGO-height);" ; src="/ICON/LOGO_White.png">
+                </a>
+            </div>
+        </header>
+        <%- include('input/input_mobile-header') %>
+            <div class="serverce-descript">
+                <div id="content">
+                    <div class="title-container">
+                        <h class="box-title">
+                            <%= t('ZeroToOne.title') %>
+                        </h>
+                        <h class="box-title sub-title">
+                            <%= t('ZeroToOne.subtitle') %>
+                        </h>
+                    </div>
+                    <video class="trailer" controls>
+                        <source src="/Video/EP58 復刻光明會.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <%- include('input/input_changeLanguage') %>
+                <%- include('input/input_backtopBtn') %>
+                    <%- include('input/input_discordLoginBtn') %>
+                        <%- include('input/input_footer') %>
+    </body>
+    <style>
+        #content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title-container {
+            margin: 30px 0;
+        }
+
+        .box-title {
+            line-height: 100px;
+        }
+
+        .sub-title {
+            font-size: 22px;
+            line-height: 0px;
+            color: #ffffff;
+            font-family: 'Noto Sans TC';
+            font-weight: 400;
+        }
+
+        .trailer {
+            width: 50vw;
+            margin: 0 auto;
+        }
+    </style>
+
+    </html>
