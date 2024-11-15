@@ -1,4 +1,3 @@
-const { MongoClient } = require('mongodb');
 const paypal = require('@paypal/checkout-server-sdk');
 const axios = require('axios');
 const dotenv = require('dotenv');
