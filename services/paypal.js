@@ -93,6 +93,12 @@ async function handlePayPalPaymentSuccess(req, res) {
             const orderTime = new Date();
 
             // 連接 MongoDB 資料庫
+            async function connectToDatabase() {
+                if (!mongoClient.isConnected()) { // 檢查是否已連接
+                    await mongoClient.connect(); // 建立新的連接
+                }
+            }
+
             await connectToDatabase();
             const db = mongoClient.db('UserManagement');
             const usersCollection = db.collection('Users');
@@ -112,7 +118,7 @@ async function handlePayPalPaymentSuccess(req, res) {
                 // 發送訂單資訊至 Discord Bot
                 // 獲取下載連結
                 const downloadLink = process.env[`${orderReference}_LINK`] || process.env.DEFAULT_LINK;
-                
+
                 await axios.post(`${process.env.DISCORD_BOT_API_URL}/order`, {
                     discordID: discordId,
                     reference_id: orderReference,
