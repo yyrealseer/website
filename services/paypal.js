@@ -114,11 +114,11 @@ async function handlePayPalPaymentSuccess(req, res) {
                 {
                     $push: {
                         Purchased: {
-                            [orderReference]: { ordertime: orderTime }
+                            item: orderReference, ordertime: orderTime
                         }
                     }
                 }
-            )
+            );
 
             if (updateResult.modifiedCount > 0) {
                 console.log('用戶資料已更新');
@@ -150,7 +150,7 @@ async function handlePayPalPaymentSuccess(req, res) {
                             transaction_id: transactionId,
                             affiliation: 'Online Store',
                             value: totalValue,
-                            currency: totalValue.currency_code,
+                            currency: 'USD',
                             items: [
                                 {
                                     item_name: orderReference,

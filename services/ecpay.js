@@ -87,7 +87,7 @@ router.post('/ecpay-return', async (req, res) => {
           {
               $push: {
                   Purchased: {
-                      [orderReference]: { ordertime: orderTime }
+                      item: orderReference, ordertime: orderTime
                   }
               }
           }
