@@ -100,7 +100,7 @@ async function handlePayPalPaymentSuccess(req, res) {
 
             const reference_id = capture.result.purchase_units[0].reference_id;
             const [orderReference, discordId] = reference_id.split('-');
-            const totalValue = capture.result.purchase_units[0].amount.value;
+            const totalValue = capture.result.purchase_units[0].amount;
             const orderTime = new Date();
 
             // 連接 MongoDB 資料庫
