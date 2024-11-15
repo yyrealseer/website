@@ -27,7 +27,11 @@ dotenv.config({ path: './.env.links' });
 const { MongoClient } = require('mongodb');
 
 const uri = process.env.MANGODB_CONNECTION_STRING;
-const client = new MongoClient(uri);
+const client = new MongoClient(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    ssl: true // 或者 tls: true
+  });
 
 async function run() {
     try {
