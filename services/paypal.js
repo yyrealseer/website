@@ -118,7 +118,7 @@ async function handlePayPalPaymentSuccess(req, res) {
                         }
                     }
                 }
-            );
+            )
 
             if (updateResult.modifiedCount > 0) {
                 console.log('用戶資料已更新');
