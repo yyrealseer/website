@@ -83,9 +83,9 @@ router.post('/ecpay-return', async (req, res) => {
 
       try {
         const updateResult = await usersCollection.updateOne(
-          { _id: discordID },
-          { $push: { items: { reference_id, orderTime } } }
-        );
+          { _id: discordId },
+          { $push: { items: [reference_id, orderTime] } }
+      );;
 
         if (updateResult.modifiedCount > 0) {
           console.log('用戶資料已更新');

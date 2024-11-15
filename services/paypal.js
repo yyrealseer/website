@@ -119,7 +119,7 @@ async function handlePayPalPaymentSuccess(req, res) {
 
             const updateResult = await usersCollection.updateOne(
                 { _id: discordId },
-                { $push: { items: { reference_id: orderReference, orderTime } } }
+                { $push: { items: [orderReference, orderTime] } }
             );
 
             if (updateResult.modifiedCount > 0) {
