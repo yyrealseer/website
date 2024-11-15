@@ -62,29 +62,45 @@ router.post('/ecpay-return', async (req, res) => {
 
   const { CheckMacValue } = req.body;
   const data = { ...req.body };
-  delete data.CheckMacValue; // 刪除回傳的 CheckMacValue 以便重新計算
+  delete data.CheckMacValue;
 
   try {
     const create = new ecpay_payment(options);
-    const checkValue = create.payment_client.helper.gen_chk_mac_value(data); // 生成 CheckMacValue
+    const checkValue = create.payment_client.helper.gen_chk_mac_value(data);
 
     if (CheckMacValue === checkValue) {
       console.log('交易成功，驗證通過：', data);
-      const discordID = decodeURIComponent(data.CustomField1); // 解碼 Discord ID
-      const reference_id = data.CustomField2;
-      const downloadLink = process.env[`${reference_id}_LINK`] || process.env.DEFAULT_LINK;
 
-      // 發送訂單資訊到 Discord Bot 的 API
+      const discordID = decodeURIComponent(data.CustomField1);
+      const reference_id = data.CustomField2;
+      const orderTime = new Date();
+
+      // 連接 MongoDB 資料庫
+      await connectToDatabase();
+      const db = client.db('your-database-name');
+      const usersCollection = db.collection('Users');
+
       try {
-        await axios.post(`${process.env.DISCORD_BOT_API_URL}/order`, {
-          discordID: discordID,
-          reference_id: reference_id,
-          downloadLink: downloadLink,
-        });
-        
+        const updateResult = await usersCollection.updateOne(
+          { _id: discordID },
+          { $push: { items: { reference_id, orderTime } } }
+        );
+
+        if (updateResult.modifiedCount > 0) {
+          console.log('用戶資料已更新');
+        } else {
+          console.log('未找到用戶或未更新用戶資料');
+        }
+
+        // 發送訂單資訊到 Discord Bot 的 API
+        // 獲取下載連結
+        const downloadLink = process.env[`${orderReference}_LINK`] || process.env.DEFAULT_LINK;
+
+        await axios.post(`${process.env.DISCORD_BOT_API_URL}/order`, {discordID, reference_id, downloadLink });
+
         console.log('訂單訊息已成功發送至 Discord Bot');
-        
-        // 在這裡將事件發送到 GA4
+
+        // GA4 購買事件
         const measurementId = process.env.GA4_measurementId;
         const apiSecret = process.env.GA4_Secret;
         const clientId = crypto.randomUUID();
@@ -101,14 +117,7 @@ router.post('/ecpay-return', async (req, res) => {
                 affiliation: 'Online Store',
                 value: totalValue,
                 currency: 'TWD',
-                items: [
-                  {
-                    item_name: reference_id,
-                    item_id: reference_id,
-                    price: totalValue,
-                    quantity: 1
-                  }
-                ]
+                items: [{ item_name: reference_id, item_id: reference_id, price: totalValue, quantity: 1 }]
               }
             }
           ]
@@ -116,13 +125,15 @@ router.post('/ecpay-return', async (req, res) => {
 
         await axios.post(`https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${apiSecret}`, ga4Payload);
         console.log('GA4 購買事件已發送');
-        return res.send('1|OK'); // 確保只返回一次
 
+        // 確保資料庫連接關閉
+        await client.close();
+
+        return res.send('1|OK');
       } catch (error) {
-        console.error('發送訂單至 Discord Bot 或 GA4 購買事件時發生錯誤：', error);
+        console.error('更新用戶資料或發送訂單訊息時發生錯誤：', error);
         return res.status(500).send('支付成功，但處理時發生錯誤');
       }
-
     } else {
       console.error('支付驗證失敗');
       res.status(400).send('支付驗證失敗');
@@ -132,5 +143,6 @@ router.post('/ecpay-return', async (req, res) => {
     res.status(500).send('處理交易時發生錯誤');
   }
 });
+
 
 module.exports = router;

@@ -84,22 +84,40 @@ async function handlePayPalPaymentSuccess(req, res) {
             const [orderReference, discordId] = reference_id.split('-');
             const totalValue = capture.result.purchase_units[0].amount;
 
-            // 預設下載連結
-            const downloadLink = process.env[`${orderReference}_LINK`] || process.env.DEFAULT_LINK;
+            const orderTime = new Date();
 
-            // 發送訂單資訊至 Discord Bot
+            // 連接 MongoDB 資料庫
+            await connectToDatabase();
+            const db = mongoClient.db('your-database-name');
+            const usersCollection = db.collection('Users');
+
             try {
+                const updateResult = await usersCollection.updateOne(
+                    { _id: discordId },
+                    { $push: { items: { reference_id: orderReference, orderTime } } }
+                );
+
+                if (updateResult.modifiedCount > 0) {
+                    console.log('用戶資料已更新');
+                } else {
+                    console.log('未找到用戶或未更新用戶資料');
+                }
+
+                // 發送訂單資訊至 Discord Bot
+                // 獲取下載連結
+                const downloadLink = process.env[`${orderReference}_LINK`] || process.env.DEFAULT_LINK;
+                
                 await axios.post(`${process.env.DISCORD_BOT_API_URL}/order`, {
                     discordID: discordId,
                     reference_id: orderReference,
-                    downloadLink: downloadLink,
+                    downloadLink: downloadLink
                 });
                 console.log('訂單訊息已成功發送至 Discord Bot');
 
                 // 送出 GA4 購買事件
                 const measurementId = process.env.GA4_measurementId;
                 const apiSecret = process.env.GA4_Secret;
-                const clientId = req.body.client_id || 'default_client_id';
+                const clientId = crypto.randomUUID();
                 const transactionId = capture.result.id;
 
                 const ga4Payload = {
@@ -128,17 +146,30 @@ async function handlePayPalPaymentSuccess(req, res) {
                 await axios.post(`https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${apiSecret}`, ga4Payload);
                 console.log('GA4 購買事件已發送');
 
+                // 確保資料庫連接關閉
+                await mongoClient.close();
+
                 return res.redirect('https://yyrealseer.com/success');
             } catch (error) {
-                console.error('發送郵件或 GA4 事件時發生錯誤：', error.response?.data || error);
-                return res.status(500).send('支付成功，但發送郵件或 GA4 事件時出錯');
+                console.error('更新用戶資料或發送訂單資訊時發生錯誤：', error);
+
+                // 確保在錯誤時關閉資料庫連接
+                await mongoClient.close();
+                return res.status(500).send('支付成功，但發送訂單資訊或 GA4 事件時出錯');
             }
+        } else {
+            console.error('捕獲訂單時出錯');
+            res.status(500).send('捕獲訂單時出錯');
         }
     } catch (error) {
         console.error('捕獲訂單時出錯：', error);
+
+        // 確保在錯誤時關閉資料庫連接
+        await mongoClient.close();
         return res.status(500).send('捕獲訂單時出錯');
     }
 }
+
 // 處理支付取消回調
 function handlePaymentCancel(req, res) {
     res.send('支付已取消');
