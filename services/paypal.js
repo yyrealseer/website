@@ -90,6 +90,14 @@ async function handlePayPalPaymentSuccess(req, res) {
     req.setLocale(userLocale);
 
     try {
+        // 檢查訂單狀態
+        const getOrderRequest = new paypal.orders.OrdersGetRequest(token);
+        const orderDetails = await client.execute(getOrderRequest);
+
+        if (orderDetails.result.status === 'COMPLETED') {
+            console.log('訂單已被捕獲，跳過捕獲操作');
+            return res.redirect('https://yyrealseer.com/success');
+        }
 
         // 捕獲支付
         const captureRequest = new paypal.orders.OrdersCaptureRequest(token);
