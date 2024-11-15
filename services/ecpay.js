@@ -23,6 +23,16 @@ const options = {
   IsProjectContractor: false,
 };
 
+// MongoDB
+const uri = process.env.MANGODB_CONNECTION_STRING;
+const client = new MongoClient(uri);
+
+async function connectToDatabase() {
+  if (!client.topology || !client.topology.isConnected()) {
+    await client.connect();
+  }
+}
+
 // 處理 ECPay 支付請求
 router.post('/ecpay-pay', (req, res) => {
   const now = new Date();
@@ -85,13 +95,13 @@ router.post('/ecpay-return', async (req, res) => {
         const updateResult = await usersCollection.updateOne(
           { _id: discordId },
           {
-              $push: {
-                  Purchased: {
-                      item: orderReference, ordertime: orderTime
-                  }
+            $push: {
+              Purchased: {
+                item: orderReference, ordertime: orderTime
               }
+            }
           }
-      );
+        );
 
         if (updateResult.modifiedCount > 0) {
           console.log('用戶資料已更新');
@@ -103,7 +113,7 @@ router.post('/ecpay-return', async (req, res) => {
         // 獲取下載連結
         const downloadLink = process.env[`${orderReference}_LINK`] || process.env.DEFAULT_LINK;
 
-        await axios.post(`${process.env.DISCORD_BOT_API_URL}/order`, {discordID, reference_id, downloadLink });
+        await axios.post(`${process.env.DISCORD_BOT_API_URL}/order`, { discordID, reference_id, downloadLink });
 
         console.log('訂單訊息已成功發送至 Discord Bot');
 
