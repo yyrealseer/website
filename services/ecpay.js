@@ -93,7 +93,7 @@ router.post('/ecpay-return', async (req, res) => {
 
       try {
         const updateResult = await usersCollection.updateOne(
-          { _id: discordId },
+          { _id: discordID },
           {
             $push: {
               Purchased: {
@@ -113,7 +113,12 @@ router.post('/ecpay-return', async (req, res) => {
         // 獲取下載連結
         const downloadLink = process.env[`${orderReference}_LINK`] || process.env.DEFAULT_LINK;
 
-        await axios.post(`${process.env.DISCORD_BOT_API_URL}/order`, { discordID, reference_id, downloadLink });
+        try {
+          await axios.post(`${process.env.DISCORD_BOT_API_URL}/order`, {
+            discordID: discordID,
+            reference_id: reference_id,
+            downloadLink: downloadLink,
+          });
 
         console.log('訂單訊息已成功發送至 Discord Bot');
 
