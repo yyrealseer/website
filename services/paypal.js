@@ -151,13 +151,13 @@ async function handlePayPalPaymentSuccess(req, res) {
                         params: {
                             transaction_id: transactionId,
                             affiliation: 'Online Store',
-                            value: totalValue.value,
+                            value: totalValue,
                             currency: totalValue.currency_code,
                             items: [
                                 {
                                     item_name: orderReference,
                                     item_id: orderReference,
-                                    price: totalValue.value,
+                                    price: totalValue,
                                     quantity: 1
                                 }
                             ]
