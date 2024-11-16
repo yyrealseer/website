@@ -23,7 +23,7 @@ const options = {
 };
 
 // MongoDB
-const { mongoClient } = require('../server');
+const { mongoClient } = require('../server.js');
 
 // 處理 ECPay 支付請求
 router.post('/ecpay-pay', (req, res) => {

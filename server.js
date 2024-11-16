@@ -26,7 +26,7 @@ dotenv.config({ path: './.env.links' });
 // MangoDB 連接設定
 const { MongoClient } = require('mongodb');
 const uri = process.env.MANGODB_CONNECTION_STRING;
-const mongoClient = new MongoClient(uri);
+const mongoClient = new MongoClient(uri, { useUnifiedTopology: true });
 
 async function connectToDatabase() {
     try {

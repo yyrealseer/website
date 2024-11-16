@@ -17,7 +17,7 @@ const client = new paypal.core.PayPalHttpClient(environment);
 
 // MongoDB
 const uri = process.env.MANGODB_CONNECTION_STRING;
-const { mongoClient } = require('../server');
+const { mongoClient } = require('../server.js');
 
 // #endregion
 
