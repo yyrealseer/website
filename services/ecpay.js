@@ -27,9 +27,14 @@ const options = {
 const uri = process.env.MANGODB_CONNECTION_STRING;
 const { mongoClient } = require('../server.js');
 
+// 確保使用 `mongoClient` 時它已經成功連接
+if (!mongoClient.isConnected()) {
+  throw new Error('MongoClient 尚未連接');
+}
+
+// 使用 `mongoClient`
 const db = mongoClient.db('UserManagement');
 const usersCollection = db.collection('Users');
-console.log('mongoClient:', mongoClient);
 
 
 // 處理 ECPay 支付請求

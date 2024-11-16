@@ -30,15 +30,19 @@ async function connectToDatabase() {
     try {
         await mongoClient.connect();
         console.log('已連接到 MongoDB');
+        // 啟動 Express 應用程序
+        app.listen(port, () => {
+            console.log(`伺服器正在運行於 http://localhost:${port}`);
+        });
     } catch (error) {
         console.error('無法連接到 MongoDB:', error);
+        process.exit(1); // 終止進程
     }
 }
 
 // 在應用啟動時連接資料庫
 connectToDatabase();
 
-// 將 mongoClient 導出
 module.exports = { mongoClient };
 // #endregion
 
