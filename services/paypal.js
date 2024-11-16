@@ -13,19 +13,13 @@ dotenv.config({ path: './.env.links' });
 
 // #region 初始化
 // PayPal
-const environment = new paypal.core.LiveEnvironment(process.env.PAYPAL_CLIENT_ID, process.env.PAYPAL_CLIENT_SECRET);
+const environment = new paypal.core.SandboxEnvironment(process.env.PAYPAL_CLIENT_ID, process.env.PAYPAL_CLIENT_SECRET);
 const client = new paypal.core.PayPalHttpClient(environment);
 
 // MongoDB
 const uri = process.env.MANGODB_CONNECTION_STRING;
-const mongoClient = new MongoClient(uri);
+const { mongoClient } = require('../server');
 
-async function connectToDatabase() {
-    if (!mongoClient.topology || !mongoClient.topology.isConnected()) {
-        await mongoClient.connect();
-        console.log('已連接到 MongoDB');
-    }
-}
 // #endregion
 
 // #region 處理 PayPal 支付請求
@@ -113,7 +107,6 @@ async function handlePayPalPaymentSuccess(req, res) {
             const orderTime = new Date();
 
             // 連接 MongoDB 資料庫
-            await connectToDatabase();
             const db = mongoClient.db('UserManagement');
             const usersCollection = db.collection('Users');
 
@@ -183,9 +176,6 @@ async function handlePayPalPaymentSuccess(req, res) {
     } catch (error) {
         console.error('捕獲訂單時出錯：', error);
         res.status(500).send('捕獲訂單時出錯');
-    } finally {
-        // 確保在任何情況下都關閉資料庫連接
-        await mongoClient.close();
     }
 }
 // #endregion

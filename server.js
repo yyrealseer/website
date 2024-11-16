@@ -25,25 +25,22 @@ dotenv.config({ path: './.env.links' });
 
 // MangoDB 連接設定
 const { MongoClient } = require('mongodb');
-
 const uri = process.env.MANGODB_CONNECTION_STRING;
-const client = new MongoClient(uri);
+const mongoClient = new MongoClient(uri);
 
-async function run() {
+async function connectToDatabase() {
     try {
-        await client.connect();
-        const database = client.db('your-database-name');
-        const collection = database.collection('your-collection-name');
-
-        // 查詢範例
-        const data = await collection.find({}).toArray();
-        console.log(data);
-    } finally {
-        await client.close();
+        await mongoClient.connect();
+        console.log('已連接到 MongoDB');
+    } catch (error) {
+        console.error('無法連接到 MongoDB:', error);
     }
 }
 
-run().catch(console.error);
+// 在應用啟動時連接資料庫
+connectToDatabase();
+// 將 mongoClient 導出
+module.exports = { mongoClient };
 
 // #endregion
 
@@ -89,19 +86,13 @@ app.set('views', __dirname + '/views');
 // #region Discord 登入系統設定
 const CLIENT_ID = process.env.DISCORD_CLIENT_ID;
 const CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
-const REDIRECT_URI = 'https://yyrealseer.com/callback';
 
-// 引導用戶至 Discord 登入頁面
-app.get('/login', (req, res) => {
-    const discordAuthUrl = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=identify`;
-    res.redirect(discordAuthUrl);
-});
-
-// 處理 Discord 回調
 app.get('/callback', async (req, res) => {
     const code = req.query.code;
 
     try {
+        const REDIRECT_URI = req.query.redirectUrl; 
+        
         // 用 `code` 換取 `access_token`
         const tokenResponse = await axios.post('https://discord.com/api/oauth2/token', new URLSearchParams({
             client_id: CLIENT_ID,
@@ -126,8 +117,7 @@ app.get('/callback', async (req, res) => {
         const username = userData.username;
         const email = userData.email || null;
 
-        // **連接 MongoDB 資料庫**
-        await client.connect();
+        // 使用已連接的資料庫客戶端
         const db = client.db('UserManagement');
         const usersCollection = db.collection('Users');
 
@@ -146,9 +136,6 @@ app.get('/callback', async (req, res) => {
             console.log('User already exists in the database');
         }
 
-        // **關閉 MongoDB 連接**
-        await client.close();
-
         // 把用戶資料作為參數傳給前端，並重定向至首頁
         res.redirect(`/?user=${encodeURIComponent(JSON.stringify(userData))}`);
 
@@ -156,6 +143,34 @@ app.get('/callback', async (req, res) => {
         console.error('Error fetching user data:', error.response ? error.response.data : error.message);
         res.status(500).json({ error: '獲取用戶資料失敗', details: error.response ? error.response.data : error.message });
     }
+});
+
+// #endregion
+
+// #region 重新取貨
+
+async function sendToDiscord(reference_id, discordID) {
+    try {
+        // 獲取下載連結
+        const downloadLink = process.env[`${reference_id}_LINK`] || process.env.DEFAULT_LINK;
+
+        // 發送訊息至 Discord Bot 的 API
+        await axios.post(`${process.env.DISCORD_BOT_API_URL}/order`, {
+            discordID: discordID,
+            reference_id: reference_id,
+            downloadLink: downloadLink,
+        });
+
+        console.log('訂單訊息已成功發送至 Discord Bot');
+    } catch (error) {
+        console.error('無法發送訊息:', error);
+    }
+}
+
+app.post('/Pick-up', async (req, res) => {
+    const { reference_id, discordID } = req.body;
+    await sendToDiscord(reference_id, discordID);
+    res.send('訊息已發送');
 });
 
 // #endregion
@@ -287,6 +302,42 @@ app.get('/collaborate', (req, res) => {
     });
 });
 
+// 購買紀錄路由
+app.get('/user', async (req, res) => {
+    const userId = req.query.userId; // 從查詢參數中獲取 userId
+
+    if (!userId) {
+        return res.status(400).send('User ID is required');
+    }
+
+    try {
+        const db = mongoClient.db('UserManagement'); // 使用已連接的資料庫客戶端
+        const usersCollection = db.collection('Users');
+
+        console.log('Searching for user with ID:', userId);
+
+        // 查找特定用戶
+        const user = await usersCollection.findOne({ _id: userId });
+        console.log('User found:', user);
+
+        if (user && user.Purchased) {
+            res.render('user', {
+                title: i18n.__('user.meta_title'),
+                description: i18n.__('user.meta_description'),
+                t: i18n.__,
+                currentLocale: res.getLocale(),
+                userId: user._id,
+                Purchased: user.Purchased // 傳遞購買記錄
+            });
+        } else {
+            res.status(404).send('User or purchase history not found');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).send('Server error');
+    }
+});
+
 // 文章頁面路由
 app.get('/articles', (req, res) => {
     let articles = getArticles(); // 從 JSON 文件讀取所有文章
@@ -321,4 +372,14 @@ app.use('/', ecpayRouter);
 app.listen(port, () => {
     console.log(`伺服器正在運行於 http://localhost:${port}`);
 });
+// #endregion
+
+
+// #region 處理應用程序終止信號，安全關閉資料庫連接
+process.on('SIGINT', async () => {
+    console.log('Closing MongoDB connection');
+    await client.close();
+    process.exit(0);
+});
+
 // #endregion

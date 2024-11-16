@@ -13,7 +13,7 @@ const ecpay_payment = require('./ECPAY_Payment_node_js/index');
 
 // 初始化
 const options = {
-  OperationMode: 'Production', // Test or Production
+  OperationMode: 'Test', // Test or Production
   MercProfile: {
     MerchantID: process.env.ECPAY_MERCHANT_ID,
     HashKey: process.env.ECPAY_HASH_KEY,
@@ -24,14 +24,7 @@ const options = {
 };
 
 // MongoDB
-const uri = process.env.MANGODB_CONNECTION_STRING;
-const client = new MongoClient(uri);
-
-async function connectToDatabase() {
-  if (!client.topology || !client.topology.isConnected()) {
-    await client.connect();
-  }
-}
+const { mongoClient } = require('../server');
 
 // 處理 ECPay 支付請求
 router.post('/ecpay-pay', (req, res) => {
@@ -88,8 +81,7 @@ router.post('/ecpay-return', async (req, res) => {
       const orderTime = new Date();
 
       // 連接 MongoDB 資料庫
-      await connectToDatabase();
-      const db = client.db('UserManagement');
+      const db = mongoClient.db('UserManagement');
       const usersCollection = db.collection('Users');
 
       try {
@@ -148,9 +140,6 @@ router.post('/ecpay-return', async (req, res) => {
 
           await axios.post(`https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${apiSecret}`, ga4Payload);
           console.log('GA4 購買事件已發送');
-
-          // 確保資料庫連接關閉
-          await client.close();
 
           return res.send('1|OK');
         } catch (error) {

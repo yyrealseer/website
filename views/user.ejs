@@ -1,0 +1,109 @@
+<%- include('input/input_layout', { metaTitle: t('arrange.meta_title'), metaDescription: t('arrange.meta_description'),
+    ogTitle:t('arrange.meta_title'), ogDescription: t('arrange.meta_description') }) %>
+
+    <body>
+        <%- include('input/input_mobile-service') %>
+            <%- include('input/input_mobile-header') %>
+                <header id="header">
+                    <div class="header-container">
+                        <a href="/" id="LOGO">
+                            <img id="LOGO2" style="height:var(--LOGO-height);" ; src="/ICON/LOGO_White.png">
+                        </a>
+                    </div>
+                </header>
+                <div class="serverce-descript">
+                    <div id="content" style="padding: 0;">
+                        <h id="content-title">
+                            <%= t('user.title') %>
+                        </h>
+                        <table id="purchaseHistory">
+                            <thead style="text-align: justify;">
+                                <tr>
+                                    <th><%= t('user.number') %></th>
+                                    <th><%= t('user.pruduct') %></th>
+                                    <th><%= t('user.date') %></th>
+                                    <th><%= t('user.pickUp') %></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% Purchased.forEach((record, index)=> { %>
+                                    <tr>
+                                        <td>
+                                            <%= index + 1 %>
+                                        </td>
+                                        <td>
+                                            <%= record.item %>
+                                        </td>
+                                        <td>
+                                            <%= new Date(record.ordertime).toLocaleString() %>
+                                        </td>
+                                        <td>
+                                            <button class="pickUpBtn"
+                                                onclick="sendToDiscordAPI('<%= record.item %>','<%= userId %>')">
+                                                <i class="fa-solid fa-download"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                            </tbody>
+                        </table>
+                        <div class="blank" style="height: 200px;"></div>
+                    </div>
+                </div>
+                <%- include('input/input_changeLanguage') %>
+                    <%- include('input/input_backtopBtn') %>
+                        <%- include('input/input_discordLoginBtn') %>
+                            <%- include('input/input_footer') %>
+
+    </body>
+    <script>
+
+        function sendToDiscordAPI(reference_id, discordID) {
+            fetch('/pick-up', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ reference_id, discordID })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('訂單訊息已透過Discord私訊給你！(請留意有無封鎖陌生訊息)');
+                    } else {
+                        alert('發送失敗，請聯絡我們！');
+                    }
+                })
+                .catch(error => {
+                    console.error('無法發送訊息:', error);
+                    alert('無法發送訊息');
+                });
+        }
+
+    </script>
+
+    </html>
+    <style>
+        #purchaseHistory {
+            width: 75%;
+            margin: 0 auto;
+        }
+
+        .pickUpBtn {
+            width: 40px;
+            height: 40px;
+            background-color: #2abf00;
+            border-radius: 10px;
+            margin: 6px 0;
+            padding: 0;
+        }
+
+        @media (max-width: 767px) {
+            #purchaseHistory {
+                width: 95%;
+                font-size: 14px;
+            }
+
+            .pickUpBtn {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>

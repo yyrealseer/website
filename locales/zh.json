@@ -272,9 +272,18 @@
 		"content_title": "文章專區"
 	},
 	"ZeroToOne": {
-		"meta_title":"文章專區 | YY Studio",
+		"meta_title":"讓你自己掌握音樂創作的全過程，開啟自主創作的新旅程！ 《成為音樂創作者：Zero Yo One》 | YY Studio",
 		"meta_description": "這裡收錄了很多文章",
 		"title": "《成為音樂創作者：Zero to One》",
 		"subtitle":"讓你自己掌握音樂創作的全過程，開啟自主創作的新旅程！"
+	},
+	"user": {
+		"meta_title":"購買紀錄 | YY Studio",
+		"meta_description": "這裡收錄了很多文章",
+		"title": "購買紀錄",
+		"number":"No.",
+		"pruduct":"商品",
+		"date":"購買日期",
+		"pickUp":"再次取貨"
 	}
 }
