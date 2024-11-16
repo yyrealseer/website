@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const crypto = require('crypto');
 const path = require('path');
 const i18n = require('i18n');
+const { MongoClient } = require('mongodb');
 
 dotenv.config();
 dotenv.config({ path: './.env.links' });
