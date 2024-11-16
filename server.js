@@ -25,12 +25,12 @@ dotenv.config({ path: './.env.links' });
 const { MongoClient } = require('mongodb');
 
 const uri = process.env.MANGODB_CONNECTION_STRING;
-const client = new MongoClient(uri);
+const mongoClient = new MongoClient(uri);
 
 async function run() {
     try {
-        await client.connect();
-        const database = client.db('your-database-name');
+        await mongoClient.connect();
+        const database = mongoClient.db('your-database-name');
         const collection = database.collection('your-collection-name');
 
         // 查詢範例
@@ -43,6 +43,14 @@ async function run() {
 }
 
 run().catch(console.error);
+
+// connectToDatabase()
+
+async function connectToDatabase() {
+  if (!mongoClient.topology || !mongoClient.topology.isConnected()) {
+    await mongoClient.connect();
+  }
+}
 
 // #endregion
 
@@ -321,6 +329,7 @@ app.get('/user', async (req, res) => {
     }
 
     try {
+        await connectToDatabase();
         const db = mongoClient.db('UserManagement'); // 使用已連接的資料庫客戶端
         const usersCollection = db.collection('Users');
 
@@ -388,7 +397,7 @@ app.listen(port, () => {
 // #region 處理應用程序終止信號，安全關閉資料庫連接
 process.on('SIGINT', async () => {
     console.log('Closing MongoDB connection');
-    await client.close();
+    await mongoClient.close();
     process.exit(0);
 });
 
