@@ -19,7 +19,13 @@ const client = new paypal.core.PayPalHttpClient(environment);
 const uri = process.env.MANGODB_CONNECTION_STRING;
 const { mongoClient } = require('../server.js');
 
+const db = mongoClient.db('UserManagement');
+const usersCollection = db.collection('Users');
+console.log('mongoClient:', mongoClient);
+
 // #endregion
+
+
 
 // #region 處理 PayPal 支付請求
 async function handlePayPalPaymentRequest(req, res) {
@@ -104,10 +110,6 @@ async function handlePayPalPaymentSuccess(req, res) {
             const [orderReference, discordId] = reference_id.split('-');
             const totalValue = capture.result.purchase_units[0].amount;
             const orderTime = new Date();
-
-            // 連接 MongoDB 資料庫
-            const db = mongoClient.db('UserManagement');
-            const usersCollection = db.collection('Users');
 
             const updateResult = await usersCollection.updateOne(
                 { _id: discordId },

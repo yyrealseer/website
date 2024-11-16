@@ -22,8 +22,6 @@ dotenv.config({ path: './.env.links' });
 // #endregion
 
 // #region MangoDB 資料庫設定
-
-// MangoDB 連接設定
 const { MongoClient } = require('mongodb');
 const uri = process.env.MANGODB_CONNECTION_STRING;
 const mongoClient = new MongoClient(uri, { useUnifiedTopology: true });
@@ -39,9 +37,9 @@ async function connectToDatabase() {
 
 // 在應用啟動時連接資料庫
 connectToDatabase();
+
 // 將 mongoClient 導出
 module.exports = { mongoClient };
-
 // #endregion
 
 // #region 中介軟體配置

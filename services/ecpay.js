@@ -23,7 +23,13 @@ const options = {
 };
 
 // MongoDB
+const uri = process.env.MANGODB_CONNECTION_STRING;
 const { mongoClient } = require('../server.js');
+
+const db = mongoClient.db('UserManagement');
+const usersCollection = db.collection('Users');
+console.log('mongoClient:', mongoClient);
+
 
 // 處理 ECPay 支付請求
 router.post('/ecpay-pay', (req, res) => {
@@ -78,11 +84,6 @@ router.post('/ecpay-return', async (req, res) => {
       const discordID = decodeURIComponent(data.CustomField1);
       const reference_id = data.CustomField2;
       const orderTime = new Date();
-
-      // 連接 MongoDB 資料庫
-      const db = mongoClient.db('UserManagement');
-      const usersCollection = db.collection('Users');
-      console.log('mongoClient:', mongoClient);
 
       try {
         const updateResult = await usersCollection.updateOne(
