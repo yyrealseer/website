@@ -13,7 +13,7 @@ dotenv.config({ path: './.env.links' });
 
 // #region 初始化
 // PayPal
-const environment = new paypal.core.LiveEnvironment(process.env.PAYPAL_CLIENT_ID, process.env.PAYPAL_CLIENT_SECRET);
+const environment = new paypal.core.SandboxEnvironment(process.env.PAYPAL_CLIENT_ID, process.env.PAYPAL_CLIENT_SECRET);
 const client = new paypal.core.PayPalHttpClient(environment);
 
 // MongoDB
@@ -183,7 +183,7 @@ async function handlePayPalPaymentSuccess(req, res) {
     } catch (error) {
         console.error('捕獲訂單時出錯：', error);
         res.status(500).send('捕獲訂單時出錯');
-    }
+    } 
 }
 // #endregion
 

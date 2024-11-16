@@ -21,26 +21,27 @@ dotenv.config(); // 加載環境變數文件
 dotenv.config({ path: './.env.links' });
 // #endregion
 
-// #region MangoDB 資料庫設定
+// MangoDB 連接設定
 const { MongoClient } = require('mongodb');
-const uri = process.env.MANGODB_CONNECTION_STRING;
-const mongoClient = new MongoClient(uri, { useUnifiedTopology: true });
 
-async function connectToDatabase() {
+const uri = process.env.MANGODB_CONNECTION_STRING;
+const client = new MongoClient(uri);
+
+async function run() {
     try {
-        await mongoClient.connect();
-        console.log('已連接到 MongoDB');
-        // 啟動 Express 應用程序
-        app.listen(port, () => {
-            console.log(`伺服器正在運行於 http://localhost:${port}`);
-        });
-    } catch (error) {
-        console.error('無法連接到 MongoDB:', error);
-        process.exit(1); // 終止進程
+        await client.connect();
+        const database = client.db('your-database-name');
+        const collection = database.collection('your-collection-name');
+
+        // 查詢範例
+        const data = await collection.find({}).toArray();
+        console.log(data);
+    } finally {
+        await client.close();
     }
 }
 
-connectToDatabase();
+run().catch(console.error);
 
 // #endregion
 
