@@ -4,14 +4,8 @@
  ogTitle:t('success.meta_title'), ogDescription: t('success.meta_description') }) %>
 
 <body>
-    <header id="mobile-header"></header>
-    <header id="header">
-        <div class="header-container">
-            <a href="/" id="LOGO">
-                <img id="LOGO2" style="height:var(--LOGO-height);" ; src="/ICON/LOGO_White.png">
-            </a>
-        </div>
-    </header>
+    <%- include('input/input_mobile-header') %>
+    <%- include('input/input_pagesHeader') %>
     <div class="successmsg">
         <h class="success-title">
             <%= t('success.success_title') %>
@@ -24,6 +18,8 @@
         </a>
     </div>
     <%- include('input/input_changeLanguage') %>
+    <%- include('input/input_backtopBtn') %>
+    <%- include('input/input_discordLoginBtn') %>
     <%- include('input/input_footer') %>
     <style>
         .successmsg {

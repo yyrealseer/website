@@ -1,16 +1,10 @@
-<%- include('input/input_layout', { metaTitle: t('arrange.meta_title'), metaDescription: t('arrange.meta_description'),
-    ogTitle:t('arrange.meta_title'), ogDescription: t('arrange.meta_description') }) %>
+<%- include('input/input_layout', { metaTitle: t('user.meta_title'), metaDescription: t('user.meta_description'),
+    ogTitle:t('user.meta_title'), ogDescription: t('user.meta_description') }) %>
 
     <body>
         <%- include('input/input_mobile-service') %>
             <%- include('input/input_mobile-header') %>
-                <header id="header">
-                    <div class="header-container">
-                        <a href="/" id="LOGO">
-                            <img id="LOGO2" style="height:var(--LOGO-height);" ; src="/ICON/LOGO_White.png">
-                        </a>
-                    </div>
-                </header>
+            <%- include('input/input_pagesHeader') %>
                 <div class="serverce-descript">
                     <div id="content" style="padding: 0;">
                         <h id="content-title">
@@ -93,6 +87,10 @@
             border-radius: 10px;
             margin: 6px 0;
             padding: 0;
+        }
+
+        tr {
+            text-align: center;
         }
 
         @media (max-width: 767px) {
