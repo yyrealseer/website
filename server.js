@@ -36,8 +36,9 @@ async function run() {
         // 查詢範例
         const data = await collection.find({}).toArray();
         console.log(data);
-    } finally {
-        await client.close();
+    }
+    catch(error) {
+        console.log(error);
     }
 }
 
