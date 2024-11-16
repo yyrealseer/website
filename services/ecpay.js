@@ -1,4 +1,3 @@
-const { MongoClient } = require('mongodb');
 const express = require('express');
 const axios = require('axios');
 const router = express.Router();
@@ -83,6 +82,7 @@ router.post('/ecpay-return', async (req, res) => {
       // 連接 MongoDB 資料庫
       const db = mongoClient.db('UserManagement');
       const usersCollection = db.collection('Users');
+      console.log('mongoClient:', mongoClient);
 
       try {
         const updateResult = await usersCollection.updateOne(

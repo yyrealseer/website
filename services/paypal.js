@@ -3,7 +3,6 @@ const paypal = require('@paypal/checkout-server-sdk');
 const axios = require('axios');
 const dotenv = require('dotenv');
 const crypto = require('crypto');
-const { MongoClient } = require('mongodb');
 const path = require('path');
 const i18n = require('i18n');
 
