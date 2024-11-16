@@ -87,12 +87,21 @@ app.set('views', __dirname + '/views');
 const CLIENT_ID = process.env.DISCORD_CLIENT_ID;
 const CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
 
+
+
+// 引導用戶至 Discord 登入頁面
+app.get('/login', (req, res) => {
+    // 構建動態的 REDIRECT_URI
+    const REDIRECT_URI = `${req.protocol}://${req.get('host')}/callback`;
+    const discordAuthUrl = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=identify`;
+    res.redirect(discordAuthUrl);
+});
+
+// 處理 Discord 回調
 app.get('/callback', async (req, res) => {
     const code = req.query.code;
 
     try {
-        const REDIRECT_URI = req.query.redirectUrl; 
-        
         // 用 `code` 換取 `access_token`
         const tokenResponse = await axios.post('https://discord.com/api/oauth2/token', new URLSearchParams({
             client_id: CLIENT_ID,
@@ -118,7 +127,7 @@ app.get('/callback', async (req, res) => {
         const email = userData.email || null;
 
         // 使用已連接的資料庫客戶端
-        const db = client.db('UserManagement');
+        const db = mongoClient.db('UserManagement');
         const usersCollection = db.collection('Users');
 
         // 檢查用戶是否已存在

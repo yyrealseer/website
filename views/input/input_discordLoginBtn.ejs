@@ -20,14 +20,10 @@
         }
     }
 
-    function redirectToLogin() {
-        // 獲取當前頁面的 URL
-        const currentUrl = window.location.href;
-
-        // 將當前頁面 URL 作為查詢參數附加到 /login 路徑
-        window.location.href = `/login?redirectUrl=${encodeURIComponent(currentUrl)}`;
-        window.location.href = '/login';
+    function redirectToLogin() { 
+        window.location.href = `/login`;
     }
+
 
     function logout() {
         // 移除用戶資料並重新載入頁面
