@@ -86,13 +86,12 @@ app.set('views', __dirname + '/views');
 // #region Discord 登入系統設定
 const CLIENT_ID = process.env.DISCORD_CLIENT_ID;
 const CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
-
+REDIRECT_URI='https://yyrealseer.com/callback'
 
 
 // 引導用戶至 Discord 登入頁面
+
 app.get('/login', (req, res) => {
-    // 構建動態的 REDIRECT_URI
-    const REDIRECT_URI = `${req.protocol}://${req.get('host')}/callback`;
     const discordAuthUrl = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=identify`;
     res.redirect(discordAuthUrl);
 });
