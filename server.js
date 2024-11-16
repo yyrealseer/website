@@ -40,10 +40,8 @@ async function connectToDatabase() {
     }
 }
 
-// 在應用啟動時連接資料庫
 connectToDatabase();
 
-module.exports = { mongoClient };
 // #endregion
 
 // #region 中介軟體配置

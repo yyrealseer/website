@@ -3,9 +3,9 @@ const paypal = require('@paypal/checkout-server-sdk');
 const axios = require('axios');
 const dotenv = require('dotenv');
 const crypto = require('crypto');
+const { MongoClient } = require('mongodb');
 const path = require('path');
 const i18n = require('i18n');
-const { MongoClient } = require('mongodb');
 
 dotenv.config();
 dotenv.config({ path: './.env.links' });
@@ -13,25 +13,20 @@ dotenv.config({ path: './.env.links' });
 
 // #region 初始化
 // PayPal
-const environment = new paypal.core.SandboxEnvironment(process.env.PAYPAL_CLIENT_ID, process.env.PAYPAL_CLIENT_SECRET);
+const environment = new paypal.core.LiveEnvironment(process.env.PAYPAL_CLIENT_ID, process.env.PAYPAL_CLIENT_SECRET);
 const client = new paypal.core.PayPalHttpClient(environment);
 
 // MongoDB
 const uri = process.env.MANGODB_CONNECTION_STRING;
-const { mongoClient } = require('../server.js');
+const mongoClient = new MongoClient(uri);
 
-// 確保使用 `mongoClient` 時它已經成功連接
-if (!mongoClient.isConnected()) {
-    throw new Error('MongoClient 尚未連接');
+async function connectToDatabase() {
+    if (!mongoClient.topology || !mongoClient.topology.isConnected()) {
+        await mongoClient.connect();
+        console.log('已連接到 MongoDB');
+    }
 }
-
-// 使用 `mongoClient`
-const db = mongoClient.db('UserManagement');
-const usersCollection = db.collection('Users');
-
 // #endregion
-
-
 
 // #region 處理 PayPal 支付請求
 async function handlePayPalPaymentRequest(req, res) {
@@ -116,6 +111,11 @@ async function handlePayPalPaymentSuccess(req, res) {
             const [orderReference, discordId] = reference_id.split('-');
             const totalValue = capture.result.purchase_units[0].amount;
             const orderTime = new Date();
+
+            // 連接 MongoDB 資料庫
+            await connectToDatabase();
+            const db = mongoClient.db('UserManagement');
+            const usersCollection = db.collection('Users');
 
             const updateResult = await usersCollection.updateOne(
                 { _id: discordId },

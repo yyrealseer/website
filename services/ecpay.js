@@ -1,9 +1,9 @@
+const { MongoClient } = require('mongodb');
 const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 const crypto = require('crypto');
 const dotenv = require('dotenv');
-const { MongoClient } = require('mongodb');
 
 dotenv.config();
 dotenv.config({ path: './.env.links' });
@@ -25,17 +25,13 @@ const options = {
 
 // MongoDB
 const uri = process.env.MANGODB_CONNECTION_STRING;
-const { mongoClient } = require('../server.js');
+const client = new MongoClient(uri);
 
-// 確保使用 `mongoClient` 時它已經成功連接
-if (!mongoClient.isConnected()) {
-  throw new Error('MongoClient 尚未連接');
+async function connectToDatabase() {
+  if (!client.topology || !client.topology.isConnected()) {
+    await client.connect();
+  }
 }
-
-// 使用 `mongoClient`
-const db = mongoClient.db('UserManagement');
-const usersCollection = db.collection('Users');
-
 
 // 處理 ECPay 支付請求
 router.post('/ecpay-pay', (req, res) => {
@@ -90,6 +86,11 @@ router.post('/ecpay-return', async (req, res) => {
       const discordID = decodeURIComponent(data.CustomField1);
       const reference_id = data.CustomField2;
       const orderTime = new Date();
+
+      // 連接 MongoDB 資料庫
+      await connectToDatabase();
+      const db = client.db('UserManagement');
+      const usersCollection = db.collection('Users');
 
       try {
         const updateResult = await usersCollection.updateOne(
