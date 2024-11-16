@@ -320,6 +320,15 @@ app.get('/collaborate', (req, res) => {
     });
 });
 
+// 提供 sitemap.xml 路由
+app.get('/sitemap.xml', (req, res) => {
+    res.sendFile(path.join(__dirname, 'sitemap.xml'));
+  });
+
+
+// #endregion
+
+// #region 動態路由
 // 購買紀錄路由
 app.get('/user', async (req, res) => {
     const userId = req.query.userId; // 從查詢參數中獲取 userId
